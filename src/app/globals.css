@@ -10,13 +10,7 @@
   --font-family-body: 'Poppins', sans-serif;
 }
 
-/*
-  Custom Styles for Femure Landing Page
-  ------------------------------------
-  These styles are extracted from the original HTML file.
-  They are not Tailwind utility classes and need to be defined globally.
-*/
-
+/* Custom Styles for Femure Landing Page */
 .hero-bg {
   background-image: linear-gradient(to bottom, #FFF8F8, #FFFFFF);
 }
@@ -39,4 +33,239 @@
 /* Carousel dots styling */
 .carousel-dot {
   transition: opacity 0.3s ease;
+}
+
+/* Light doodling decorative elements */
+.doodle-decoration {
+  position: absolute;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.doodle-connecting-line {
+  position: absolute;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+  border: none;
+  background: linear-gradient(45deg, var(--color-femure-accent), var(--color-femure-primary));
+  border-radius: 50px;
+  transform-origin: left center;
+}
+
+.doodle-heart {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-femure-primary);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+.doodle-flower {
+  width: 15px;
+  height: 15px;
+  border: 1.5px solid var(--color-femure-accent);
+  border-radius: 50%;
+  position: relative;
+}
+
+.doodle-flower::before,
+.doodle-flower::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--color-femure-accent);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.doodle-flower::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.doodle-flower::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.doodle-leaf {
+  width: 12px;
+  height: 20px;
+  border: 1.5px solid var(--color-femure-accent);
+  border-radius: 50% 0 50% 0;
+  transform: rotate(45deg);
+}
+
+.doodle-wave {
+  width: 30px;
+  height: 8px;
+  border: 1.5px solid var(--color-femure-secondary);
+  border-radius: 50%;
+  position: relative;
+}
+
+.doodle-wave::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 6px;
+  border: 1px solid var(--color-femure-secondary);
+  border-radius: 50%;
+  top: -3px;
+  left: 5px;
+}
+
+.doodle-wave::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 4px;
+  border: 1px solid var(--color-femure-secondary);
+  border-radius: 50%;
+  top: -2px;
+  left: 7px;
+}
+
+.doodle-star {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--color-femure-primary);
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.doodle-star::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--color-femure-primary);
+  top: 0;
+  left: 0;
+  transform: rotate(90deg);
+}
+
+.doodle-circle {
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--color-femure-accent);
+  border-radius: 50%;
+}
+
+.doodle-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-femure-primary);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+/* Animation for doodles */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes gentle-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.doodle-animate {
+  animation: float 6s ease-in-out infinite;
+}
+
+.doodle-rotate {
+  animation: gentle-rotate 20s linear infinite;
+}
+
+/* Herbal/Organic specific elements */
+.doodle-herb {
+  width: 16px;
+  height: 24px;
+  border: 1.5px solid var(--color-femure-accent);
+  border-radius: 50% 50% 0 0;
+  position: relative;
+  transform: rotate(15deg);
+}
+
+.doodle-herb::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  border: 1px solid var(--color-femure-accent);
+  border-radius: 50% 50% 0 0;
+  top: -6px;
+  left: 4px;
+  transform: rotate(-30deg);
+}
+
+.doodle-herb::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 10px;
+  border: 1px solid var(--color-femure-accent);
+  border-radius: 50% 50% 0 0;
+  top: -5px;
+  right: 3px;
+  transform: rotate(30deg);
+}
+
+.doodle-vine {
+  width: 40px;
+  height: 3px;
+  border: 1.5px solid var(--color-femure-accent);
+  border-radius: 50px;
+  position: relative;
+  transform: rotate(25deg);
+}
+
+.doodle-vine::before {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  border: 1px solid var(--color-femure-accent);
+  border-radius: 50px;
+  top: -8px;
+  left: 10px;
+  transform: rotate(-15deg);
+}
+
+.doodle-vine::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  border: 1px solid var(--color-femure-accent);
+  border-radius: 50px;
+  top: 8px;
+  right: 5px;
+  transform: rotate(20deg);
+}
+
+.doodle-bud {
+  width: 8px;
+  height: 12px;
+  border: 1.5px solid var(--color-femure-primary);
+  border-radius: 50% 50% 0 0;
+  position: relative;
+  transform: rotate(45deg);
+}
+
+.doodle-bud::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 6px;
+  border: 1px solid var(--color-femure-primary);
+  border-radius: 50% 50% 0 0;
+  top: -3px;
+  left: 2px;
+  transform: rotate(-20deg);
 }
