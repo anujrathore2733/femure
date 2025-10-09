@@ -7,7 +7,7 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "postbuild": "touch out/.nojekyll",
+    "postbuild": "touch out/.nojekyll && cp -r out/_next out/next && find out -name '*.html' -exec sed -i '' 's/_next\\//next\\//g' {} \\;",
     "deploy": "npm run build && npm run postbuild && gh-pages -d out"
   },
   "homepage": "https://anujrathore2733.github.io/femure",
