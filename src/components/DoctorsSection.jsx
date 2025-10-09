@@ -14,7 +14,7 @@ const doctors = [
         patients: '8,000+',
         languages: 'English, Hindi',
         quote: 'Your health journey is unique, and so should be your treatment.',
-        image: '/img1.png'
+        image: '/femure/img1.png'
     },
     {
         name: 'Dr. Ananya Patel',
@@ -24,7 +24,7 @@ const doctors = [
         patients: '6,500+',
         languages: 'English, Gujarati, Hindi',
         quote: "Balance comes from understanding your body's natural rhythm.",
-        image: '/img1.png'
+        image: '/femure/img1.png'
     },
     {
         name: 'Dr. Meera Krishnan',
@@ -34,7 +34,7 @@ const doctors = [
         patients: '7,500+',
         languages: 'English, Tamil, Kannada',
         quote: 'True healing addresses mind, body and emotions together.',
-        image: '/img1.png'
+        image: '/femure/img1.png'
     },
 ];
 

@@ -45,7 +45,7 @@ export default function CommunitySection() {
                             </button>
                         </div>
                         <div className="md:w-1/2 flex justify-center">
-                            <Image src="/img4.png" alt="Women in circle" width={500} height={300} className="rounded-lg shadow-xl max-w-md w-full" />
+                            <Image src="/femure/img4.png" alt="Women in circle" width={500} height={300} className="rounded-lg shadow-xl max-w-md w-full" />
                         </div>
                     </div>
                 </div>

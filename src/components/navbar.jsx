@@ -12,7 +12,7 @@ export default function Navbar() {
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <div className="flex items-center space-x-2">
                     <Image 
-                        src="/logo.svg" 
+                        src="/femure/logo.svg" 
                         alt="Femure Logo" 
                         width={32} 
                         height={32} 

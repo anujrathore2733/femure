@@ -6,9 +6,9 @@ import { Check, CheckCircle } from 'react-feather';
 import ConsultationModal from './ConsultationModal';
 
 const images = [
-    { src: '/img1.png', alt: 'Woman smiling in first slide' },
-    { src: '/img2.png', alt: 'Doctor consulting patient in second slide' },
-    { src: '/img3.png', alt: 'Happy woman doing yoga in third slide' },
+    { src: '/femure/img1.png', alt: 'Woman smiling in first slide' },
+    { src: '/femure/img2.png', alt: 'Doctor consulting patient in second slide' },
+    { src: '/femure/img3.png', alt: 'Happy woman doing yoga in third slide' },
 ];
 
 export default function HeroSection() {

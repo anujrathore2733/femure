@@ -6,19 +6,19 @@ const testimonials = [
         name: 'Ritika, 28 — Mumbai',
         quote: 'After my Femure treatment, my PCOS symptoms improved and I feel more in control of my body.',
         rating: 5,
-        image: '/img1.png',
+        image: '/femure/img1.png',
     },
     {
         name: 'Aditi, 35 — Bangalore',
         quote: 'The consultation felt personal. I finally felt heard and understood.',
         rating: 5,
-        image: '/img1.png',
+        image: '/femure/img1.png',
     },
     {
         name: 'Meera, 27 — Delhi',
         quote: 'The follow-ups and lifestyle tips made healing sustainable.',
         rating: 5,
-        image: '/img1.png',
+        image: '/femure/img1.png',
     },
 ];
 
