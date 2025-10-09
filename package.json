@@ -7,7 +7,8 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "deploy": "gh-pages -d out"
+    "postbuild": "touch out/.nojekyll",
+    "deploy": "npm run build && npm run postbuild && gh-pages -d out"
   },
   "homepage": "https://anujrathore2733.github.io/femure",
   "dependencies": {
