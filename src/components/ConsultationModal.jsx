@@ -159,7 +159,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
     if (isSubmitted) {
         return (
             <div 
-                className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+                className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4"
                 onClick={handleClose}
                 style={{ 
                     position: 'fixed', 
@@ -201,7 +201,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
 
     return (
         <div 
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4"
             onClick={handleClose}
             style={{ 
                 position: 'fixed', 
