@@ -1,43 +1,97 @@
-import { AlertCircle, Heart } from 'react-feather';
+import { Shield, Heart, Zap, Target } from 'react-feather';
 
 export default function WhyFemureSection() {
     return (
-        <section className="py-16" style={{ background: 'linear-gradient(to bottom, #FFF8F8, #FFFFFF)' }}>
+        <section className="py-20" style={{ background: 'linear-gradient(to bottom, #FFF8F8, #FFFFFF)' }}>
             <div className="container mx-auto px-6">
-                <h2 className="font-headline text-3xl text-center mb-12">The Femure Difference</h2>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
-                    <div className="bg-white p-8 rounded-xl shadow-md flex flex-col justify-between">
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-6 mx-auto">
-                                <AlertCircle className="text-gray-500 w-8 h-8" />
+                <div className="text-center mb-16">
+                    <h2 className="font-headline text-4xl text-femure-primary mb-4">The Femure Difference</h2>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        Two philosophies, one choice. Discover how homeopathy empowers your body's natural healing intelligence.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch max-w-6xl mx-auto">
+                    {/* Allopathic Approach */}
+                    <div className="bg-white p-10 rounded-2xl shadow-lg border border-gray-100 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-gray-100 rounded-bl-full"></div>
+                        <div className="text-center relative z-10">
+                            <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center mb-8 mx-auto">
+                                <Zap className="text-gray-500 w-10 h-10" />
                             </div>
-                            <h3 className="font-headline text-xl text-center mb-2">The Allopathic Approach</h3>
-                            <ul className="text-gray-600 text-sm text-center list-disc pl-5 space-y-2">
-                                <li>Focuses on quickly suppressing symptoms with chemical drugs.</li>
-                                <li>Can lead to long-term side effects and drug resistance.</li>
-                                <li>Often requires lifelong medication without addressing the underlying cause.</li>
-                                <li>Treats specific organs, not the whole person.</li>
-                            </ul>
+                            <h3 className="font-headline text-2xl text-center mb-6 text-gray-800">The Allopathic Philosophy</h3>
+                            <div className="space-y-4 text-gray-600">
+                                <div className="flex items-start">
+                                    <div className="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <p className="text-sm leading-relaxed">Focuses on <span className="font-semibold">suppressing symptoms</span> with chemical interventions</p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <p className="text-sm leading-relaxed">Treats the <span className="font-semibold">disease, not the person</span> - one size fits all approach</p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <p className="text-sm leading-relaxed">Can create <span className="font-semibold">dependency</span> and mask underlying imbalances</p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <p className="text-sm leading-relaxed">May require <span className="font-semibold">lifelong medication</span> without addressing root causes</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="bg-white p-8 rounded-xl shadow-xl flex flex-col justify-between border-4 border-femure-primary relative">
-                        <div className="absolute -top-4 -right-4 bg-femure-primary text-white px-3 py-1 rounded-full text-xs font-medium uppercase shadow-md -rotate-3">Our Approach</div>
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-full bg-femure-secondary flex items-center justify-center mb-6 mx-auto">
-                                <Heart className="text-femure-primary w-8 h-8" />
+                    {/* Homeopathic Approach */}
+                    <div className="bg-gradient-to-br from-femure-primary/5 to-femure-secondary/10 p-10 rounded-2xl shadow-xl border-2 border-femure-primary/20 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-femure-primary/10 rounded-bl-full"></div>
+                        <div className="absolute bottom-0 left-0 w-16 h-16 bg-femure-secondary/20 rounded-tr-full"></div>
+                        <div className="text-center relative z-10">
+                            <div className="w-20 h-20 rounded-full bg-femure-primary flex items-center justify-center mb-8 mx-auto shadow-lg">
+                                <Shield className="text-white w-10 h-10" />
                             </div>
-                            <h3 className="font-headline text-xl text-center mb-2">Femure Personalized Homeopathy</h3>
-                            <ul className="text-gray-600 text-sm text-center list-disc pl-5 space-y-2">
-                                <li>A holistic approach that targets the root cause of your condition.</li>
-                                <li>Uses gentle, personalized formulations with minimal side effects.</li>
-                                <li>Doctor-guided care and continuous support for lasting healing.</li>
-                                <li>Restores balance to your entire body and mind.</li>
-                            </ul>
+                            <h3 className="font-headline text-2xl text-center mb-6 text-femure-primary">Femure's Homeopathic Philosophy</h3>
+                            <div className="space-y-4 text-gray-700">
+                                <div className="flex items-start">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <p className="text-sm leading-relaxed"><span className="font-semibold text-femure-primary">Empowers your immune system</span> to recognize and fight the root cause</p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <p className="text-sm leading-relaxed">Treats the <span className="font-semibold text-femure-primary">whole person</span> - mind, body, and spirit as one</p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <p className="text-sm leading-relaxed">Stimulates your body's <span className="font-semibold text-femure-primary">natural healing intelligence</span></p>
+                                </div>
+                                <div className="flex items-start">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <p className="text-sm leading-relaxed">Creates <span className="font-semibold text-femure-primary">lasting wellness</span> by restoring internal balance</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <p className="text-center text-xs text-gray-500 mt-8 italic max-w-lg mx-auto">Femure is not a substitute for allopathic treatment in emergency situations. Please seek immediate medical help for serious conditions.</p>
+
+                {/* Key Insight Section */}
+                <div className="mt-16 bg-gradient-to-r from-femure-primary/10 to-femure-secondary/10 rounded-2xl p-8 max-w-4xl mx-auto">
+                    <div className="text-center">
+                        <div className="w-16 h-16 rounded-full bg-femure-primary flex items-center justify-center mb-6 mx-auto">
+                            <Target className="text-white w-8 h-8" />
+                        </div>
+                        <h3 className="font-headline text-2xl text-femure-primary mb-4">The Core Difference</h3>
+                        <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto">
+                            <span className="font-semibold text-femure-primary">Homeopathy doesn't fight your symptoms</span> - it teaches your immune system to recognize and eliminate the underlying cause. 
+                            Like training a muscle, we strengthen your body's natural defense mechanisms, creating lasting health rather than temporary relief.
+                        </p>
+                        <div className="mt-6 text-sm text-gray-600 italic">
+                            "The highest ideal of cure is the speedy, gentle, and permanent restoration of health." - Samuel Hahnemann, Founder of Homeopathy
+                        </div>
+                    </div>
+                </div>
+
+                <p className="text-center text-xs text-gray-500 mt-8 italic max-w-lg mx-auto">
+                    Femure is not a substitute for allopathic treatment in emergency situations. Please seek immediate medical help for serious conditions.
+                </p>
             </div>
         </section>
     );
