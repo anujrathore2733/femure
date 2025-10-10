@@ -1,143 +1,190 @@
 'use client';
 
 import { useState } from 'react';
-import { Moon, Activity, Calendar, Cloud, Heart, Droplet, Sun, Award } from 'react-feather';
+import { Shield, Zap, Clock, Heart, Users, Droplet, Sun, Award, CheckCircle, Star } from 'react-feather';
 import ConsultationModal from './ConsultationModal';
 
 const conditions = [
     {
-        icon: Moon,
+        icon: Shield,
         title: 'PCOD / PCOS',
-        tagline: 'Balancing Hormones, Naturally.',
+        tagline: 'Restore Hormonal Balance Naturally',
         symptoms: [
-            'Irregular periods',
-            'Sudden weight gain',
-            'Persistent acne or unwanted facial hair',
-            'Mood swings and fatigue',
+            'Irregular or missed periods',
+            'Unexpected weight gain',
+            'Persistent acne & facial hair',
+            'Mood swings & low energy',
         ],
     },
     {
-        icon: Activity,
+        icon: Zap,
         title: 'Dysmenorrhea',
-        tagline: 'Soothing Pain, Calming Rhythm.',
+        tagline: 'Eliminate Menstrual Pain Completely',
         symptoms: [
-            'Crippling cramps',
-            'Severe lower back pain',
-            'Headaches or nausea',
-            'Pain that disrupts your daily routine',
+            'Severe cramping & back pain',
+            'Nausea & headaches',
+            'Pain disrupting daily life',
+            'Heavy bleeding episodes',
         ],
     },
     {
-        icon: Calendar,
-        title: 'Menstrual Complaints',
-        tagline: 'Regular, Comfortable, and in Harmony.',
+        icon: Clock,
+        title: 'Menstrual Irregularities',
+        tagline: 'Achieve Regular, Healthy Cycles',
         symptoms: [
             'Heavy or prolonged bleeding',
-            'Unpredictable or missed periods',
-            'Spotting between cycles',
-            'Extreme fatigue during your period',
-        ],
-    },
-    {
-        icon: Cloud,
-        title: 'Premenstrual Syndrome (PMS)',
-        tagline: 'Stabilizing Mood and Mind.',
-        symptoms: [
-            'Intense irritability or mood swings',
-            'Persistent fatigue or breast tenderness',
-            'Bloating and food cravings',
-            'Anxiety before your cycle',
+            'Unpredictable cycle timing',
+            'Spotting between periods',
+            'Extreme fatigue & weakness',
         ],
     },
     {
         icon: Heart,
-        title: 'Infertility / Sterility',
-        tagline: 'Nurturing Your Journey to Motherhood.',
+        title: 'Premenstrual Syndrome (PMS)',
+        tagline: 'Stabilize Mood & Mental Wellbeing',
         symptoms: [
-            'Difficulty conceiving',
-            'Irregular ovulation',
+            'Intense mood swings & irritability',
+            'Breast tenderness & bloating',
+            'Food cravings & fatigue',
+            'Anxiety & emotional distress',
+        ],
+    },
+    {
+        icon: Users,
+        title: 'Fertility Support',
+        tagline: 'Enhance Your Natural Fertility',
+        symptoms: [
+            'Difficulty conceiving naturally',
+            'Irregular ovulation patterns',
             'Hormonal imbalances',
-            'Support for unexplained infertility',
+            'Unexplained infertility concerns',
         ],
     },
     {
         icon: Droplet,
         title: 'Leucorrhea',
-        tagline: "Restoring Your Body's Comfort.",
+        tagline: 'Restore Vaginal Health & Comfort',
         symptoms: [
-            'Persistent or unusual vaginal discharge',
-            'Itching or irritation',
-            'Discomfort and inflammation',
-            'Foul odor',
+            'Abnormal vaginal discharge',
+            'Itching & burning sensations',
+            'Unpleasant odor & discomfort',
+            'Recurrent infections',
         ],
     },
     {
         icon: Sun,
-        title: 'Menopausal Issues',
-        tagline: 'Embracing a New Phase, Gracefully.',
+        title: 'Menopausal Symptoms',
+        tagline: 'Navigate Menopause with Confidence',
         symptoms: [
-            'Hot flashes and night sweats',
-            'Mood changes and irritability',
-            'Trouble sleeping',
-            'Vaginal dryness or thinning hair',
+            'Hot flashes & night sweats',
+            'Mood changes & irritability',
+            'Sleep disturbances & fatigue',
+            'Vaginal dryness & discomfort',
         ],
     },
     {
         icon: Award,
-        title: 'Breast Complaints',
-        tagline: 'Gentle Care for Your Comfort.',
+        title: 'Breast Health',
+        tagline: 'Maintain Optimal Breast Wellness',
         symptoms: [
-            'Tenderness or pain',
-            'Cysts or fibroadenomas',
-            'Swelling or fullness',
-            'Lumps or discomfort before your period',
+            'Breast pain & tenderness',
+            'Lumps & discomfort',
+            'Hormonal breast changes',
+            'Pre-menstrual breast swelling',
         ],
     },
 ];
 
 export default function ConditionsSection() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedCondition, setSelectedCondition] = useState(null);
 
     const openModal = () => {
         setIsModalOpen(true);
     };
 
+    const openModalWithCondition = (condition) => {
+        setSelectedCondition(condition);
+        setIsModalOpen(true);
+    };
+
     const closeModal = () => {
         setIsModalOpen(false);
+        setSelectedCondition(null);
     };
 
     return (
         <>
-            <section className="py-16" style={{ background: 'linear-gradient(to bottom, #FFF8F8, #FFFFFF)' }}>
+            <section className="py-20" style={{ background: 'linear-gradient(to bottom, #FFF8F8, #FFFFFF)' }}>
                 <div className="container mx-auto px-6">
-                    <h2 className="font-headline text-3xl text-center mb-4">Reclaim Your Wellness. Find Relief.</h2>
-                    <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">We provide gentle, personalized care for a range of women's health concerns, addressing the root cause. Do any of these symptoms sound familiar?</p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {/* Enhanced Header Section */}
+                    <div className="text-center mb-16">
+                        <div className="flex items-center justify-center mb-6">
+                            <CheckCircle className="w-8 h-8 text-femure-primary mr-3" />
+                            <Star className="w-6 h-6 text-femure-accent mr-3" />
+                            <CheckCircle className="w-8 h-8 text-femure-primary" />
+                        </div>
+                        <h2 className="font-headline text-4xl md:text-5xl text-femure-primary mb-6 leading-tight">
+                            Proven Results. Lasting Relief.
+                        </h2>
+                        <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-4 leading-relaxed">
+                            <span className="font-semibold text-gray-900">20,000+ women</span> have found relief through our personalized homeopathic approach. 
+                            Our doctors have successfully treated these conditions with <span className="font-semibold text-femure-primary">95% patient satisfaction</span>.
+                        </p>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Do any of these symptoms sound familiar? You're not alone, and there's a natural solution.
+                        </p>
+                    </div>
+
+                    {/* Enhanced Condition Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {conditions.map((condition, index) => {
                             const Icon = condition.icon;
                             return (
-                                <div key={index} className="condition-card bg-white rounded-xl p-6 shadow-sm transition duration-300">
-                                    <div className="w-12 h-12 rounded-full bg-femure-secondary flex items-center justify-center mb-4">
-                                        <Icon className="text-femure-primary" />
+                                <div key={index} className="condition-card bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-femure-primary/20 group flex flex-col">
+                                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-femure-primary/10 to-femure-secondary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                        <Icon className="text-femure-primary w-8 h-8" />
                                     </div>
-                                    <h3 className="font-headline text-xl mb-2">{condition.title}</h3>
-                                    <p className="text-femure-accent mb-3">{condition.tagline}</p>
-                                    <ul className="text-gray-600 text-sm list-disc pl-5">
+                                    <h3 className="font-headline text-xl mb-3 text-gray-900">{condition.title}</h3>
+                                    <p className="text-femure-primary font-semibold mb-4 text-sm uppercase tracking-wide">{condition.tagline}</p>
+                                    <ul className="text-gray-600 text-sm space-y-2 mb-6 flex-grow">
                                         {condition.symptoms.map((symptom, i) => (
-                                            <li key={i}>{symptom}</li>
+                                            <li key={i} className="flex items-start">
+                                                <div className="w-1.5 h-1.5 bg-femure-primary rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                                <span>{symptom}</span>
+                                            </li>
                                         ))}
                                     </ul>
+                                    <button 
+                                        onClick={() => openModalWithCondition(condition)}
+                                        className="w-full bg-femure-primary/10 hover:bg-femure-primary/20 text-femure-primary py-2.5 px-4 rounded-full text-sm font-semibold transition-all duration-300 border border-femure-primary/20 hover:border-femure-primary/40"
+                                    >
+                                        Know More
+                                    </button>
                                 </div>
                             );
                         })}
                     </div>
-                    <div className="text-center mt-12">
-                        <button 
-                            onClick={openModal}
-                            className="bg-femure-primary hover:bg-femure-accent text-white py-3 px-8 rounded-full shadow-md transition duration-300"
-                        >
-                            Talk to a Doctor About My Condition
-                        </button>
+
+                    {/* Enhanced CTA Section */}
+                    <div className="text-center mt-16">
+                        <div className="bg-gradient-to-r from-femure-primary/5 to-femure-secondary/10 rounded-2xl p-8 max-w-2xl mx-auto">
+                            <h3 className="font-headline text-2xl text-femure-primary mb-4">
+                                Ready to Start Your Healing Journey?
+                            </h3>
+                            <p className="text-gray-700 mb-6">
+                                Join thousands of women who have found lasting relief through personalized homeopathic care.
+                            </p>
+                            <button 
+                                onClick={openModal}
+                                className="bg-femure-primary hover:bg-femure-accent text-white py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg font-semibold"
+                            >
+                                Get Expert Consultation Now
+                            </button>
+                            <p className="text-sm text-gray-600 mt-4">
+                                ✓ Free initial assessment ✓ Personalized treatment plan ✓ Ongoing support
+                            </p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -147,6 +194,7 @@ export default function ConditionsSection() {
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 selectedDoctor={null}
+                selectedCondition={selectedCondition}
             />
         </>
     );

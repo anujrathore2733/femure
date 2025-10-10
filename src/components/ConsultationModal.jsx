@@ -15,7 +15,7 @@ const conditions = [
     'General feminine health issues'
 ];
 
-export default function ConsultationModal({ isOpen, onClose, selectedDoctor = null }) {
+export default function ConsultationModal({ isOpen, onClose, selectedDoctor = null, selectedCondition = null }) {
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
@@ -33,6 +33,15 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
+
+    useEffect(() => {
+        if (selectedCondition) {
+            setFormData(prev => ({
+                ...prev,
+                condition: selectedCondition.title
+            }));
+        }
+    }, [selectedCondition]);
 
     useEffect(() => {
         const handleEscape = (e) => {
@@ -112,6 +121,16 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                                     <p className="text-femure-accent text-sm">{selectedDoctor.specialty}</p>
                                 </div>
                             </>
+                        ) : selectedCondition ? (
+                            <>
+                                <div className="w-15 h-15 rounded-full bg-femure-primary/10 flex items-center justify-center">
+                                    <MessageCircle className="w-8 h-8 text-femure-primary" />
+                                </div>
+                                <div>
+                                    <h3 className="font-headline text-xl text-femure-primary">Consultation for {selectedCondition.title}</h3>
+                                    <p className="text-femure-accent text-sm">{selectedCondition.tagline}</p>
+                                </div>
+                            </>
                         ) : (
                             <>
                                 <div className="w-15 h-15 rounded-full bg-femure-primary flex items-center justify-center">
@@ -135,7 +154,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                 {/* Modal Body */}
                 <div className="p-6">
                     <h4 className="font-headline text-lg mb-4 text-femure-primary">
-                        {selectedDoctor ? 'Book Your Consultation' : 'Get Expert Consultation'}
+                        {selectedDoctor ? 'Book Your Consultation' : selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
                     </h4>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Consultation Type Selector */}
