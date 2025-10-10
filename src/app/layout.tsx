@@ -19,6 +19,11 @@ const playfairDisplay = Playfair_Display({
 export const metadata = {
   title: 'Femure | Personalized Homeopathy for Women',
   description: 'Personalized homeopathy and wellness for women.',
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
