@@ -196,7 +196,7 @@ export default function HeroSection() {
             </div>
 
             {/* Desktop Hero - Original Layout */}
-            <div className="hidden md:block hero-bg py-28">
+            <div className="hidden md:block hero-bg py-10">
                 <div className="container mx-auto px-6 flex flex-row items-center gap-12 min-h-[600px]">
                     {/* Text Content */}
                     <div className="w-1/2 flex flex-col justify-center">

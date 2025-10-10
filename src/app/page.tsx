@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import HeroSection from '@/components/heroSection';
 import DoctorsSection from '@/components/DoctorsSection';
+import InquiryForm from '@/components/InquiryForm';
 import ConditionsSection from '@/components/ConditionsSection';
 import WhyFemureSection from '@/components/WhyFemureSection';
 import WhyChooseFemureSection from '@/components/WhyChooseFemureSection';
@@ -27,6 +28,7 @@ export default function Home() {
     <main>
       <HeroSection />
       <DoctorsSection />
+      <InquiryForm />
       <ConditionsSection />
       <WhyFemureSection />
       <WhyChooseFemureSection />
