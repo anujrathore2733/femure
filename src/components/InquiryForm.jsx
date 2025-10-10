@@ -1,15 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { User, Phone, Send } from 'react-feather';
+import { User, Phone, Send, CheckCircle, AlertCircle } from 'react-feather';
+import { submitToLeadSquared, validatePhoneNumber } from '@/lib/leadsquared';
 
 export default function InquiryForm() {
     const [formData, setFormData] = useState({
         name: '',
         mobile: ''
     });
+    const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [submitError, setSubmitError] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -17,20 +20,56 @@ export default function InquiryForm() {
             ...prev,
             [name]: value
         }));
+        
+        // Clear error when user starts typing
+        if (errors[name]) {
+            setErrors(prev => ({
+                ...prev,
+                [name]: ''
+            }));
+        }
+    };
+
+    const validateForm = () => {
+        const newErrors = {};
+        
+        if (!formData.name.trim()) {
+            newErrors.name = 'Name is required';
+        }
+        
+        if (!formData.mobile.trim()) {
+            newErrors.mobile = 'Mobile number is required';
+        } else if (!validatePhoneNumber(formData.mobile)) {
+            newErrors.mobile = 'Please enter a valid 10-digit mobile number';
+        }
+        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        if (!validateForm()) {
+            return;
+        }
+        
         setIsSubmitting(true);
+        setSubmitError('');
 
         try {
-            console.log('Inquiry form submitted:', formData);
-            await new Promise(resolve => setTimeout(resolve, 500));
-            setIsSubmitted(true);
-            setFormData({ name: '', mobile: '' });
+            const result = await submitToLeadSquared(formData, 'quick-inquiry');
+            
+            if (result.success) {
+                setIsSubmitted(true);
+                setFormData({ name: '', mobile: '' });
+                console.log('Inquiry submitted successfully:', result);
+            } else {
+                throw new Error(result.message || 'Failed to submit inquiry');
+            }
         } catch (error) {
             console.error('Error submitting form:', error);
-            alert('Error submitting. Please try again.');
+            setSubmitError('Failed to submit inquiry. Please try again.');
         } finally {
             setIsSubmitting(false);
         }
@@ -38,6 +77,9 @@ export default function InquiryForm() {
 
     const resetForm = () => {
         setIsSubmitted(false);
+        setFormData({ name: '', mobile: '' });
+        setErrors({});
+        setSubmitError('');
     };
 
     if (isSubmitted) {
@@ -45,6 +87,7 @@ export default function InquiryForm() {
             <section className="py-6 bg-gray-50">
                 <div className="container mx-auto px-6">
                     <div className="max-w-sm mx-auto text-center">
+                        <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-3" />
                         <h3 className="text-sm font-medium text-gray-900 mb-2">Thank You!</h3>
                         <p className="text-xs text-gray-600 mb-3">We'll contact you soon.</p>
                         <button
@@ -84,9 +127,17 @@ export default function InquiryForm() {
                                 value={formData.name}
                                 onChange={handleInputChange}
                                 required
-                                className="block w-full pl-10 pr-3 py-2.5 bg-white border-0 rounded-full shadow-sm focus:ring-2 focus:ring-femure-primary focus:outline-none text-sm placeholder-gray-500"
+                                className={`block w-full pl-10 pr-3 py-2.5 bg-white border-0 rounded-full shadow-sm focus:ring-2 focus:ring-femure-primary focus:outline-none text-sm placeholder-gray-500 ${
+                                    errors.name ? 'ring-2 ring-red-500' : ''
+                                }`}
                                 placeholder="Your name"
                             />
+                            {errors.name && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center">
+                                    <AlertCircle className="w-3 h-3 mr-1" />
+                                    {errors.name}
+                                </p>
+                            )}
                         </div>
 
                         {/* Mobile Field */}
@@ -100,10 +151,28 @@ export default function InquiryForm() {
                                 value={formData.mobile}
                                 onChange={handleInputChange}
                                 required
-                                className="block w-full pl-10 pr-3 py-2.5 bg-white border-0 rounded-full shadow-sm focus:ring-2 focus:ring-femure-primary focus:outline-none text-sm placeholder-gray-500"
-                                placeholder="Mobile number"
+                                maxLength="10"
+                                className={`block w-full pl-10 pr-3 py-2.5 bg-white border-0 rounded-full shadow-sm focus:ring-2 focus:ring-femure-primary focus:outline-none text-sm placeholder-gray-500 ${
+                                    errors.mobile ? 'ring-2 ring-red-500' : ''
+                                }`}
+                                placeholder="10-digit mobile number"
                             />
+                            {errors.mobile && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center">
+                                    <AlertCircle className="w-3 h-3 mr-1" />
+                                    {errors.mobile}
+                                </p>
+                            )}
                         </div>
+
+                        {submitError && (
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-2">
+                                <p className="text-red-600 text-xs flex items-center">
+                                    <AlertCircle className="w-3 h-3 mr-1" />
+                                    {submitError}
+                                </p>
+                            </div>
+                        )}
 
                         {/* Submit Button */}
                         <button

@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { X, Phone, User, MessageCircle, Video } from 'react-feather';
+import { X, Phone, User, MessageCircle, Video, CheckCircle, AlertCircle } from 'react-feather';
+import { submitToLeadSquared, validatePhoneNumber, getFormType } from '@/lib/leadsquared';
 
 const conditions = [
     'PCOS and Hormonal Imbalances',
@@ -22,6 +23,10 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
         condition: '',
         consultationType: 'video'
     });
+    const [errors, setErrors] = useState({});
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [submitError, setSubmitError] = useState('');
 
     useEffect(() => {
         if (isOpen) {
@@ -65,27 +70,134 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
             ...prev,
             [name]: value
         }));
+        
+        // Clear error when user starts typing
+        if (errors[name]) {
+            setErrors(prev => ({
+                ...prev,
+                [name]: ''
+            }));
+        }
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Here you would typically send the data to your backend
-        console.log('Consultation request:', {
-            doctor: selectedDoctor,
-            patient: formData
-        });
+    const validateForm = () => {
+        const newErrors = {};
         
-        // Show success message
-        alert('Consultation request submitted successfully! We will contact you soon.');
-        handleClose();
+        if (!formData.name.trim()) {
+            newErrors.name = 'Name is required';
+        }
+        
+        if (!formData.mobile.trim()) {
+            newErrors.mobile = 'Mobile number is required';
+        } else if (!validatePhoneNumber(formData.mobile)) {
+            newErrors.mobile = 'Please enter a valid 10-digit mobile number';
+        }
+        
+        if (selectedDoctor && !formData.condition) {
+            newErrors.condition = 'Please select a condition';
+        }
+        
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        if (!validateForm()) {
+            return;
+        }
+        
+        setIsSubmitting(true);
+        setSubmitError('');
+        
+        try {
+            const formType = getFormType(selectedDoctor, selectedCondition);
+            const additionalData = {
+                mx_SelectedDoctor: selectedDoctor ? selectedDoctor.name : '',
+                mx_SelectedCondition: selectedCondition ? selectedCondition.title : '',
+                mx_DoctorSpecialty: selectedDoctor ? selectedDoctor.specialty : '',
+                mx_ConditionTagline: selectedCondition ? selectedCondition.tagline : '',
+            };
+            
+            const result = await submitToLeadSquared(formData, formType, additionalData);
+            
+            if (result.success) {
+                setIsSubmitted(true);
+                console.log('Lead submitted successfully:', result);
+            } else {
+                throw new Error(result.message || 'Failed to submit consultation request');
+            }
+            
+        } catch (error) {
+            console.error('Consultation submission error:', error);
+            setSubmitError('Failed to submit consultation request. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleClose = () => {
         setFormData({ name: '', mobile: '', condition: '', consultationType: 'video' });
+        setErrors({});
+        setSubmitError('');
+        setIsSubmitted(false);
+        setIsSubmitting(false);
         onClose();
     };
 
+    const handleNewConsultation = () => {
+        setIsSubmitted(false);
+        setFormData({ name: '', mobile: '', condition: '', consultationType: 'video' });
+        setErrors({});
+        setSubmitError('');
+    };
+
     if (!isOpen) return null;
+
+    // Success state
+    if (isSubmitted) {
+        return (
+            <div 
+                className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4"
+                onClick={handleClose}
+                style={{ 
+                    position: 'fixed', 
+                    top: 0, 
+                    left: 0, 
+                    right: 0, 
+                    bottom: 0,
+                    zIndex: 9999
+                }}
+            >
+                <div 
+                    className="bg-white rounded-xl shadow-2xl max-w-md w-full p-8 text-center"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+                    <p className="text-gray-600 mb-6">
+                        Your consultation request has been submitted successfully. 
+                        Our team will contact you within 24 hours.
+                    </p>
+                    <div className="flex space-x-3">
+                        <button
+                            onClick={handleClose}
+                            className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-300"
+                        >
+                            Close
+                        </button>
+                        <button
+                            onClick={handleNewConsultation}
+                            className="flex-1 px-4 py-2 bg-femure-primary text-white rounded-lg hover:bg-femure-accent transition duration-300"
+                        >
+                            Book Another
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div 
@@ -201,9 +313,17 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                                 value={formData.name}
                                 onChange={handleInputChange}
                                 required
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300"
+                                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 ${
+                                    errors.name ? 'border-red-500' : 'border-gray-300'
+                                }`}
                                 placeholder="Enter your full name"
                             />
+                            {errors.name && (
+                                <p className="text-red-500 text-sm mt-1 flex items-center">
+                                    <AlertCircle className="w-4 h-4 mr-1" />
+                                    {errors.name}
+                                </p>
+                            )}
                         </div>
 
                         <div>
@@ -217,9 +337,18 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                                 value={formData.mobile}
                                 onChange={handleInputChange}
                                 required
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300"
-                                placeholder="Enter your mobile number"
+                                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 ${
+                                    errors.mobile ? 'border-red-500' : 'border-gray-300'
+                                }`}
+                                placeholder="Enter your 10-digit mobile number"
+                                maxLength="10"
                             />
+                            {errors.mobile && (
+                                <p className="text-red-500 text-sm mt-1 flex items-center">
+                                    <AlertCircle className="w-4 h-4 mr-1" />
+                                    {errors.mobile}
+                                </p>
+                            )}
                         </div>
 
                         {selectedDoctor && (
@@ -233,7 +362,9 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                                     value={formData.condition}
                                     onChange={handleInputChange}
                                     required
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300"
+                                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 ${
+                                        errors.condition ? 'border-red-500' : 'border-gray-300'
+                                    }`}
                                 >
                                     <option value="">Select your condition</option>
                                     {conditions.map((condition, index) => (
@@ -242,6 +373,21 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                                         </option>
                                     ))}
                                 </select>
+                                {errors.condition && (
+                                    <p className="text-red-500 text-sm mt-1 flex items-center">
+                                        <AlertCircle className="w-4 h-4 mr-1" />
+                                        {errors.condition}
+                                    </p>
+                                )}
+                            </div>
+                        )}
+
+                        {submitError && (
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                                <p className="text-red-600 text-sm flex items-center">
+                                    <AlertCircle className="w-4 h-4 mr-2" />
+                                    {submitError}
+                                </p>
                             </div>
                         )}
 
@@ -249,15 +395,24 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                             <button
                                 type="button"
                                 onClick={handleClose}
-                                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-300"
+                                disabled={isSubmitting}
+                                className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-300 disabled:opacity-50"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="submit"
-                                className="flex-1 px-4 py-2 bg-femure-primary text-white rounded-lg hover:bg-femure-accent transition duration-300"
+                                disabled={isSubmitting}
+                                className="flex-1 px-4 py-2 bg-femure-primary text-white rounded-lg hover:bg-femure-accent transition duration-300 disabled:opacity-50 flex items-center justify-center"
                             >
-                                {selectedDoctor ? 'Book Now' : 'Get Consultation'}
+                                {isSubmitting ? (
+                                    <>
+                                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                                        Submitting...
+                                    </>
+                                ) : (
+                                    selectedDoctor ? 'Book Now' : 'Get Consultation'
+                                )}
                             </button>
                         </div>
                     </form>
