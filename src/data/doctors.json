@@ -1,0 +1,433 @@
+{
+  "doctors": [
+    {
+      "id": "dr-priya-sharma",
+      "name": "Dr. Priya Sharma",
+      "firstName": "Priya",
+      "lastName": "Sharma",
+      "specialty": "Women's Health Specialist",
+      "rating": 4.9,
+      "experience": "15+ years",
+      "patients": "8,000+",
+      "languages": ["English", "Hindi"],
+      "quote": "Your health journey is unique, and so should be your treatment.",
+      "image": "/img1.png",
+      "education": [
+        {
+          "degree": "MD in Homeopathy",
+          "institution": "National Institute of Homeopathy, Kolkata",
+          "year": "2010"
+        },
+        {
+          "degree": "BHMS",
+          "institution": "Dr. D.Y. Patil Homeopathic Medical College, Pune",
+          "year": "2008"
+        },
+        {
+          "degree": "Diploma in Women's Health",
+          "institution": "AIIMS, New Delhi",
+          "year": "2012"
+        }
+      ],
+      "specializations": [
+        "PCOS and Hormonal Disorders",
+        "Menstrual Irregularities",
+        "Fertility Enhancement",
+        "Menopausal Management",
+        "Pregnancy Care"
+      ],
+      "achievements": [
+        {
+          "title": "Best Homeopathic Doctor",
+          "organization": "Indian Homeopathic Medical Association",
+          "year": "2022"
+        },
+        {
+          "title": "Research Publications",
+          "description": "Published 15+ research papers in international journals",
+          "year": "2015-2023"
+        },
+        {
+          "title": "Conference Speaker",
+          "description": "Speaker at 20+ national and international conferences",
+          "year": "2018-2023"
+        },
+        {
+          "title": "Mentorship",
+          "description": "Mentored 50+ junior doctors in homeopathic practice",
+          "year": "2015-2023"
+        }
+      ],
+      "approach": "Dr. Priya believes in treating the whole person, not just the symptoms. She combines classical homeopathy with modern diagnostic techniques to provide personalized care that addresses the root cause of health issues.",
+      "consultationFee": "₹800",
+      "availability": "Mon-Sat: 9 AM - 6 PM",
+      "location": "Delhi, Mumbai, Online",
+      "bio": "With over 15 years of experience in women's health, Dr. Priya Sharma has helped thousands of women overcome hormonal imbalances, fertility challenges, and reproductive health issues. Her gentle approach and deep understanding of homeopathic principles make her a trusted choice for women seeking natural healing.",
+      "testimonials": [
+        {
+          "name": "Sarah M.",
+          "condition": "PCOS",
+          "rating": 5,
+          "text": "Dr. Priya helped me manage my PCOS naturally. My cycles are now regular and I feel so much better!",
+          "date": "2023-08-15"
+        },
+        {
+          "name": "Priya K.",
+          "condition": "Fertility",
+          "rating": 5,
+          "text": "After 3 years of trying, I conceived naturally with Dr. Priya's treatment. She's truly amazing!",
+          "date": "2023-06-22"
+        },
+        {
+          "name": "Anita R.",
+          "condition": "Menopause",
+          "rating": 5,
+          "text": "Dr. Priya's approach to menopause management is wonderful. I feel more balanced and energetic.",
+          "date": "2023-09-10"
+        }
+      ],
+      "socialMedia": {
+        "linkedin": "https://linkedin.com/in/dr-priya-sharma",
+        "twitter": "https://twitter.com/drpriyasharma"
+      },
+      "certifications": [
+        "Certified Homeopathic Practitioner (CHP)",
+        "Advanced Diploma in Women's Health",
+        "Fertility Counseling Certification"
+      ],
+      "awards": [
+        "Best Homeopathic Doctor 2022",
+        "Excellence in Women's Health 2021",
+        "Patient Choice Award 2020"
+      ]
+    },
+    {
+      "id": "dr-ananya-patel",
+      "name": "Dr. Ananya Patel",
+      "firstName": "Ananya",
+      "lastName": "Patel",
+      "specialty": "Homeopathy & Hormone Expert",
+      "rating": 4.8,
+      "experience": "12+ years",
+      "patients": "6,500+",
+      "languages": ["English", "Gujarati", "Hindi"],
+      "quote": "Balance comes from understanding your body's natural rhythm.",
+      "image": "/img1.png",
+      "education": [
+        {
+          "degree": "MD in Homeopathy",
+          "institution": "Gujarat Homeopathic Medical College",
+          "year": "2011"
+        },
+        {
+          "degree": "BHMS",
+          "institution": "Smt. K.M. Shah Homeopathic Medical College",
+          "year": "2009"
+        },
+        {
+          "degree": "Certificate in Hormone Therapy",
+          "institution": "International Homeopathic Association",
+          "year": "2013"
+        }
+      ],
+      "specializations": [
+        "Hormonal Imbalances",
+        "Thyroid Disorders",
+        "Stress and Anxiety",
+        "Digestive Health",
+        "Skin Conditions"
+      ],
+      "achievements": [
+        {
+          "title": "Excellence in Homeopathic Practice",
+          "organization": "Gujarat Homeopathic Association",
+          "year": "2021"
+        },
+        {
+          "title": "Author",
+          "description": "Author of 'Natural Hormone Balance' book",
+          "year": "2020"
+        },
+        {
+          "title": "Community Leader",
+          "description": "Founder of 'Women's Wellness Circle' support group",
+          "year": "2019"
+        },
+        {
+          "title": "Media Recognition",
+          "description": "Featured in leading health magazines",
+          "year": "2020-2023"
+        }
+      ],
+      "approach": "Dr. Ananya focuses on restoring hormonal balance through personalized homeopathic treatment. She emphasizes lifestyle modifications and stress management as integral parts of healing.",
+      "consultationFee": "₹750",
+      "availability": "Mon-Fri: 10 AM - 7 PM, Sat: 9 AM - 2 PM",
+      "location": "Ahmedabad, Online",
+      "bio": "Dr. Ananya Patel is a passionate homeopath who specializes in hormonal health. Her holistic approach combines homeopathic remedies with lifestyle counseling to help women achieve optimal health and vitality.",
+      "testimonials": [
+        {
+          "name": "Meera S.",
+          "condition": "Thyroid",
+          "rating": 5,
+          "text": "Dr. Ananya helped me manage my thyroid naturally. My energy levels have improved significantly!",
+          "date": "2023-07-18"
+        },
+        {
+          "name": "Kavita P.",
+          "condition": "Stress",
+          "rating": 5,
+          "text": "Her approach to stress management is wonderful. I feel more balanced and peaceful now.",
+          "date": "2023-08-25"
+        },
+        {
+          "name": "Sunita M.",
+          "condition": "Hormonal Imbalance",
+          "rating": 5,
+          "text": "Dr. Ananya's treatment helped me balance my hormones naturally. Highly recommended!",
+          "date": "2023-09-05"
+        }
+      ],
+      "socialMedia": {
+        "linkedin": "https://linkedin.com/in/dr-ananya-patel",
+        "instagram": "https://instagram.com/drananyapatel"
+      },
+      "certifications": [
+        "Certified Hormone Specialist",
+        "Advanced Homeopathic Practitioner",
+        "Stress Management Counselor"
+      ],
+      "awards": [
+        "Excellence in Homeopathic Practice 2021",
+        "Women's Health Advocate 2020",
+        "Community Service Award 2019"
+      ]
+    },
+    {
+      "id": "dr-meera-krishnan",
+      "name": "Dr. Meera Krishnan",
+      "firstName": "Meera",
+      "lastName": "Krishnan",
+      "specialty": "Fertility & Wellness Coach",
+      "rating": 5.0,
+      "experience": "10+ years",
+      "patients": "7,500+",
+      "languages": ["English", "Tamil", "Kannada"],
+      "quote": "True healing addresses mind, body and emotions together.",
+      "image": "/img1.png",
+      "education": [
+        {
+          "degree": "MD in Homeopathy",
+          "institution": "Government Homeopathic Medical College, Bangalore",
+          "year": "2013"
+        },
+        {
+          "degree": "BHMS",
+          "institution": "Father Muller Homeopathic Medical College",
+          "year": "2011"
+        },
+        {
+          "degree": "Advanced Diploma in Fertility Counseling",
+          "institution": "UK Fertility Institute",
+          "year": "2015"
+        }
+      ],
+      "specializations": [
+        "Fertility Enhancement",
+        "Pregnancy Support",
+        "Postpartum Care",
+        "Mental Health",
+        "Lifestyle Counseling"
+      ],
+      "achievements": [
+        {
+          "title": "Highest Success Rate",
+          "description": "85% success rate in fertility treatment",
+          "year": "2023"
+        },
+        {
+          "title": "Certified Fertility Counselor",
+          "organization": "UK Fertility Institute",
+          "year": "2015"
+        },
+        {
+          "title": "Community Builder",
+          "description": "Founder of 'Fertility Support Group'",
+          "year": "2018"
+        },
+        {
+          "title": "Content Creator",
+          "description": "Regular contributor to fertility blogs and magazines",
+          "year": "2019-2023"
+        }
+      ],
+      "approach": "Dr. Meera believes in treating the emotional and physical aspects of fertility challenges. She provides comprehensive support including counseling, lifestyle guidance, and homeopathic treatment.",
+      "consultationFee": "₹900",
+      "availability": "Mon-Sat: 8 AM - 8 PM",
+      "location": "Bangalore, Chennai, Online",
+      "bio": "Dr. Meera Krishnan is a dedicated fertility specialist who has helped hundreds of couples achieve their dream of parenthood. Her compassionate approach and expertise in both homeopathy and counseling make her a sought-after practitioner.",
+      "testimonials": [
+        {
+          "name": "Deepa R.",
+          "condition": "Fertility",
+          "rating": 5,
+          "text": "Dr. Meera's support was incredible. She helped us conceive after 5 years of trying!",
+          "date": "2023-05-12"
+        },
+        {
+          "name": "Anita L.",
+          "condition": "Pregnancy",
+          "rating": 5,
+          "text": "Her pregnancy care was exceptional. I had a healthy pregnancy and delivery.",
+          "date": "2023-07-30"
+        },
+        {
+          "name": "Rekha K.",
+          "condition": "Postpartum",
+          "rating": 5,
+          "text": "Dr. Meera's postpartum support helped me recover quickly and feel confident as a new mother.",
+          "date": "2023-08-20"
+        }
+      ],
+      "socialMedia": {
+        "linkedin": "https://linkedin.com/in/dr-meera-krishnan",
+        "facebook": "https://facebook.com/drmeerakrishnan"
+      },
+      "certifications": [
+        "Certified Fertility Counselor (UK)",
+        "Advanced Homeopathic Practitioner",
+        "Pregnancy and Postpartum Specialist"
+      ],
+      "awards": [
+        "Fertility Excellence Award 2023",
+        "Patient Care Champion 2022",
+        "Innovation in Women's Health 2021"
+      ]
+    }
+  ],
+  "specialties": [
+    {
+      "id": "womens-health",
+      "name": "Women's Health",
+      "description": "Comprehensive care for all women's health issues",
+      "doctors": ["dr-priya-sharma"]
+    },
+    {
+      "id": "hormone-expert",
+      "name": "Hormone Expert",
+      "description": "Specialized treatment for hormonal imbalances",
+      "doctors": ["dr-ananya-patel"]
+    },
+    {
+      "id": "fertility-wellness",
+      "name": "Fertility & Wellness",
+      "description": "Fertility enhancement and wellness coaching",
+      "doctors": ["dr-meera-krishnan"]
+    }
+  ],
+  "locations": [
+    {
+      "id": "delhi",
+      "name": "Delhi",
+      "doctors": ["dr-priya-sharma"]
+    },
+    {
+      "id": "mumbai",
+      "name": "Mumbai",
+      "doctors": ["dr-priya-sharma"]
+    },
+    {
+      "id": "ahmedabad",
+      "name": "Ahmedabad",
+      "doctors": ["dr-ananya-patel"]
+    },
+    {
+      "id": "bangalore",
+      "name": "Bangalore",
+      "doctors": ["dr-meera-krishnan"]
+    },
+    {
+      "id": "chennai",
+      "name": "Chennai",
+      "doctors": ["dr-meera-krishnan"]
+    },
+    {
+      "id": "online",
+      "name": "Online",
+      "doctors": ["dr-priya-sharma", "dr-ananya-patel", "dr-meera-krishnan"]
+    }
+  ],
+  "languages": [
+    {
+      "id": "english",
+      "name": "English",
+      "doctors": ["dr-priya-sharma", "dr-ananya-patel", "dr-meera-krishnan"]
+    },
+    {
+      "id": "hindi",
+      "name": "Hindi",
+      "doctors": ["dr-priya-sharma", "dr-ananya-patel"]
+    },
+    {
+      "id": "gujarati",
+      "name": "Gujarati",
+      "doctors": ["dr-ananya-patel"]
+    },
+    {
+      "id": "tamil",
+      "name": "Tamil",
+      "doctors": ["dr-meera-krishnan"]
+    },
+    {
+      "id": "kannada",
+      "name": "Kannada",
+      "doctors": ["dr-meera-krishnan"]
+    }
+  ],
+  "conditions": [
+    {
+      "id": "pcos",
+      "name": "PCOS",
+      "description": "Polycystic Ovary Syndrome treatment",
+      "doctors": ["dr-priya-sharma", "dr-ananya-patel"]
+    },
+    {
+      "id": "fertility",
+      "name": "Fertility Issues",
+      "description": "Natural fertility enhancement",
+      "doctors": ["dr-priya-sharma", "dr-meera-krishnan"]
+    },
+    {
+      "id": "menopause",
+      "name": "Menopause",
+      "description": "Menopausal symptom management",
+      "doctors": ["dr-priya-sharma", "dr-ananya-patel"]
+    },
+    {
+      "id": "thyroid",
+      "name": "Thyroid Disorders",
+      "description": "Thyroid imbalance treatment",
+      "doctors": ["dr-ananya-patel"]
+    },
+    {
+      "id": "stress",
+      "name": "Stress & Anxiety",
+      "description": "Stress and anxiety management",
+      "doctors": ["dr-ananya-patel", "dr-meera-krishnan"]
+    },
+    {
+      "id": "pregnancy",
+      "name": "Pregnancy Care",
+      "description": "Prenatal and postnatal care",
+      "doctors": ["dr-priya-sharma", "dr-meera-krishnan"]
+    }
+  ],
+  "statistics": {
+    "totalDoctors": 3,
+    "totalPatients": 22000,
+    "averageRating": 4.9,
+    "totalExperience": 37,
+    "languagesSupported": 5,
+    "locationsServed": 6,
+    "conditionsTreated": 6
+  }
+}
