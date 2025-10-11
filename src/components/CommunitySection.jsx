@@ -33,8 +33,8 @@ export default function CommunitySection() {
                                     <p className="text-gray-700">Mindful Mornings — stress relief sessions</p>
                                 </div>
                                 <div className="flex items-start">
-                                    <span className="text-xl mr-3">🍵</span>
-                                    <p className="text-gray-700">Ayurveda & You — food and lifestyle balance</p>
+                                    <span className="text-xl mr-3">💚</span>
+                                    <p className="text-gray-700">Mental Wellness — anxiety & emotional balance support</p>
                                 </div>
                             </div>
                             <button 
@@ -55,7 +55,6 @@ export default function CommunitySection() {
             <ConsultationModal 
                 isOpen={isModalOpen}
                 onClose={closeModal}
-                selectedDoctor={null}
             />
         </>
     );

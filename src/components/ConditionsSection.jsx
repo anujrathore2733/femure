@@ -193,7 +193,6 @@ export default function ConditionsSection() {
             <ConsultationModal 
                 isOpen={isModalOpen}
                 onClose={closeModal}
-                selectedDoctor={null}
                 selectedCondition={selectedCondition}
             />
         </>

@@ -176,9 +176,7 @@ export function formatPhoneNumber(phone) {
  * Get form type based on context
  */
 export function getFormType(selectedDoctor, selectedCondition) {
-    if (selectedDoctor) {
-        return 'doctor-consultation';
-    } else if (selectedCondition) {
+    if (selectedCondition) {
         return 'condition-consultation';
     } else {
         return 'general-inquiry';

@@ -16,7 +16,7 @@ const conditions = [
     'General feminine health issues'
 ];
 
-export default function ConsultationModal({ isOpen, onClose, selectedDoctor = null, selectedCondition = null }) {
+export default function ConsultationModal({ isOpen, onClose, selectedCondition = null }) {
     const [formData, setFormData] = useState({
         name: '',
         mobile: '',
@@ -93,7 +93,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
             newErrors.mobile = 'Please enter a valid 10-digit mobile number';
         }
         
-        if (selectedDoctor && !formData.condition) {
+        if (selectedCondition && !formData.condition) {
             newErrors.condition = 'Please select a condition';
         }
         
@@ -112,11 +112,11 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
         setSubmitError('');
         
         try {
-            const formType = getFormType(selectedDoctor, selectedCondition);
+            const formType = getFormType(null, selectedCondition);
             const additionalData = {
-                mx_SelectedDoctor: selectedDoctor ? selectedDoctor.name : '',
+                mx_SelectedDoctor: '',
                 mx_SelectedCondition: selectedCondition ? selectedCondition.title : '',
-                mx_DoctorSpecialty: selectedDoctor ? selectedDoctor.specialty : '',
+                mx_DoctorSpecialty: '',
                 mx_ConditionTagline: selectedCondition ? selectedCondition.tagline : '',
             };
             
@@ -219,21 +219,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                 {/* Modal Header */}
                 <div className="flex items-center justify-between p-6 border-b border-gray-200">
                     <div className="flex items-center space-x-4">
-                        {selectedDoctor ? (
-                            <>
-                                <Image 
-                                    src={selectedDoctor.image} 
-                                    alt={selectedDoctor.name} 
-                                    width={60} 
-                                    height={60} 
-                                    className="w-15 h-15 rounded-full object-cover border-2 border-femure-secondary" 
-                                />
-                                <div>
-                                    <h3 className="font-headline text-xl text-femure-primary">{selectedDoctor.name}</h3>
-                                    <p className="text-femure-accent text-sm">{selectedDoctor.specialty}</p>
-                                </div>
-                            </>
-                        ) : selectedCondition ? (
+                        {selectedCondition ? (
                             <>
                                 <div className="w-15 h-15 rounded-full bg-femure-primary/10 flex items-center justify-center">
                                     <MessageCircle className="w-8 h-8 text-femure-primary" />
@@ -266,7 +252,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                 {/* Modal Body */}
                 <div className="p-6">
                     <h4 className="font-headline text-lg mb-4 text-femure-primary">
-                        {selectedDoctor ? 'Book Your Consultation' : selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
+                        {selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
                     </h4>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Consultation Type Selector */}
@@ -351,7 +337,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                             )}
                         </div>
 
-                        {selectedDoctor && (
+                        {selectedCondition && (
                             <div>
                                 <label htmlFor="condition" className="block text-sm font-medium text-gray-700 mb-2">
                                     Condition/Concern *
@@ -411,7 +397,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedDoctor = nu
                                         Submitting...
                                     </>
                                 ) : (
-                                    selectedDoctor ? 'Book Now' : 'Get Consultation'
+                                    'Get Consultation'
                                 )}
                             </button>
                         </div>

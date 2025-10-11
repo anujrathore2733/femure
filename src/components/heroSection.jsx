@@ -14,7 +14,9 @@ const images = [
 const headings = [
     'Struggling with PCOS or Hormonal Issues?',
     'Tired of Irregular Periods & Pain?',
-    'Looking for Natural Fertility Support?'
+    'Looking for Natural Fertility Support?',
+    'Stress & Anxiety Stealing Your Peace?',
+    'Menopause Making You Feel Lost & Alone?'
 ];
 
 export default function HeroSection() {
@@ -316,11 +318,10 @@ export default function HeroSection() {
             </div>
 
             {/* Consultation Modal */}
-            <ConsultationModal
-                isOpen={isModalOpen}
-                onClose={closeModal}
-                selectedDoctor={null}
-            />
+                <ConsultationModal
+                    isOpen={isModalOpen}
+                    onClose={closeModal}
+                />
         </section>
     );
 }

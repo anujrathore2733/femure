@@ -28,12 +28,12 @@ export default function Home() {
     <main>
       <HeroSection />
       <DoctorsSection />
-      <InquiryForm />
       <ConditionsSection />
+      <InquiryForm />
+      <JourneySection />
       <WhyFemureSection />
       <WhyChooseFemureSection />
       <TestimonialsSection />
-      <JourneySection />
       <CommunitySection />
 
       {/* Final Call to Action Section */}
@@ -57,7 +57,6 @@ export default function Home() {
       <ConsultationModal 
         isOpen={isModalOpen}
         onClose={closeModal}
-        selectedDoctor={null}
       />
     </main>
   );
