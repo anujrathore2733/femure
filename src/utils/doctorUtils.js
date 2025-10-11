@@ -84,7 +84,7 @@ export function getConsultationTypes() {
 /**
  * Get doctor availability status
  */
-export function getDoctorAvailability(doctor) {
+export function getDoctorAvailability() {
     const now = new Date();
     const currentHour = now.getHours();
     const currentDay = now.getDay(); // 0 = Sunday, 1 = Monday, etc.

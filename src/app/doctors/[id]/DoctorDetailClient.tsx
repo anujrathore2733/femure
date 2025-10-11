@@ -20,16 +20,27 @@ import ConsultationModal from '@/components/ConsultationModal';
 interface Doctor {
     id: string;
     name: string;
+    firstName: string;
+    lastName: string;
     specialty: string;
     rating: number;
     experience: string;
     patients: string;
-    languages: string;
+    languages: string[];
     quote: string;
     image: string;
-    education: string[];
+    education: Array<{
+        degree: string;
+        institution: string;
+        year: string;
+    }>;
     specializations: string[];
-    achievements: string[];
+    achievements: Array<{
+        title: string;
+        organization?: string;
+        description?: string;
+        year: string;
+    }>;
     approach: string;
     consultationFee: string;
     availability: string;
@@ -40,7 +51,16 @@ interface Doctor {
         condition: string;
         rating: number;
         text: string;
+        date: string;
     }>;
+    socialMedia?: {
+        linkedin?: string;
+        twitter?: string;
+        instagram?: string;
+        facebook?: string;
+    };
+    certifications?: string[];
+    awards?: string[];
 }
 
 interface DoctorDetailClientProps {
@@ -118,7 +138,7 @@ export default function DoctorDetailClient({ doctor }: DoctorDetailClientProps) 
                                         </div>
                                         <div className="flex items-center text-gray-600">
                                             <MessageCircle className="w-4 h-4 mr-3 text-femure-primary" />
-                                            <span>{doctor.languages}</span>
+                                            <span>{doctor.languages.join(', ')}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +167,11 @@ export default function DoctorDetailClient({ doctor }: DoctorDetailClientProps) 
                                     {doctor.education.map((edu, index) => (
                                         <li key={index} className="flex items-start">
                                             <CheckCircle className="w-5 h-5 text-femure-primary mr-3 mt-1 flex-shrink-0" />
-                                            <span className="text-gray-700">{edu}</span>
+                                            <div className="text-gray-700">
+                                                <div className="font-semibold">{edu.degree}</div>
+                                                <div className="text-sm text-gray-600">{edu.institution}</div>
+                                                <div className="text-sm text-femure-primary">({edu.year})</div>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
@@ -179,7 +203,16 @@ export default function DoctorDetailClient({ doctor }: DoctorDetailClientProps) 
                                     {doctor.achievements.map((achievement, index) => (
                                         <li key={index} className="flex items-start">
                                             <Award className="w-5 h-5 text-femure-primary mr-3 mt-1 flex-shrink-0" />
-                                            <span className="text-gray-700">{achievement}</span>
+                                            <div className="text-gray-700">
+                                                <div className="font-semibold">{achievement.title}</div>
+                                                {achievement.organization && (
+                                                    <div className="text-sm text-gray-600">{achievement.organization}</div>
+                                                )}
+                                                {achievement.description && (
+                                                    <div className="text-sm text-gray-600">{achievement.description}</div>
+                                                )}
+                                                <div className="text-sm text-femure-primary">({achievement.year})</div>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
@@ -203,6 +236,7 @@ export default function DoctorDetailClient({ doctor }: DoctorDetailClientProps) 
                                             <div className="text-sm text-gray-600">
                                                 <span className="font-semibold">{testimonial.name}</span>
                                                 <span className="text-femure-primary"> • {testimonial.condition}</span>
+                                                <div className="text-xs text-gray-500 mt-1">{testimonial.date}</div>
                                             </div>
                                         </div>
                                     ))}
