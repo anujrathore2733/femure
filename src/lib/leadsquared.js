@@ -37,22 +37,20 @@ function buildLeadSquaredPayload(formData, formType = 'general', additionalData 
         // Core LeadSquared fields
         FirstName: formData.name || '',
         Phone: formData.mobile || '',
-        Email: formData.email || '',
         
         // Custom fields for Femure
         mx_FormType: formType,
         mx_ConsultationType: formData.consultationType || '',
-        mx_MedicalCondition: formData.condition || '',
-        mx_Doctor: formData.doctor || '',
-        mx_SelectedCondition: formData.selectedCondition || '',
+        mx_SelectedCondition: formData.selectedCondition || formData.condition || '',
+        mx_Query: formData.query || '',
         
         // Source and tracking information
-        mx_Source: 'Femure-Website',
-        mx_Campaign: 'Women-Health-Consultation',
+        mx_Source: 'Website',
+        mx_Campaign: formData.utmCampaign || 'Direct',
         mx_Device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
-        mx_UTMSource: 'Direct',
-        mx_UTMMedium: 'Website',
-        mx_UTMCampaign: 'Homeopathy-Consultation',
+        mx_UTMSource: formData.utmSource || 'Direct',
+        mx_UTMMedium: formData.utmMedium || 'Website',
+        mx_UTMCampaign: formData.utmCampaign || 'Homeopathy-Consultation',
         mx_SubmissionTime: new Date().toISOString(),
         
         // Additional data
@@ -74,13 +72,9 @@ function buildLeadSquaredPayload(formData, formType = 'general', additionalData 
  */
 export async function submitToLeadSquared(formData, formType = 'general', additionalData = {}) {
     try {
-        // Validate required fields
+        // Validate required fields - Only Phone is mandatory
         if (!formData.mobile) {
             throw new Error('Mobile number is required');
-        }
-
-        if (!formData.name) {
-            throw new Error('Name is required');
         }
 
         // Build payload

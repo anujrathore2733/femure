@@ -7,7 +7,8 @@ import { submitToLeadSquared, validatePhoneNumber } from '@/lib/leadsquared';
 export default function InquiryForm() {
     const [formData, setFormData] = useState({
         name: '',
-        mobile: ''
+        mobile: '',
+        query: ''
     });
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,10 +33,6 @@ export default function InquiryForm() {
 
     const validateForm = () => {
         const newErrors = {};
-        
-        if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
-        }
         
         if (!formData.mobile.trim()) {
             newErrors.mobile = 'Mobile number is required';
@@ -62,7 +59,7 @@ export default function InquiryForm() {
             
             if (result.success) {
                 setIsSubmitted(true);
-                setFormData({ name: '', mobile: '' });
+                setFormData({ name: '', mobile: '', query: '' });
                 console.log('Inquiry submitted successfully:', result);
             } else {
                 throw new Error(result.message || 'Failed to submit inquiry');
@@ -77,7 +74,7 @@ export default function InquiryForm() {
 
     const resetForm = () => {
         setIsSubmitted(false);
-        setFormData({ name: '', mobile: '' });
+        setFormData({ name: '', mobile: '', query: '' });
         setErrors({});
         setSubmitError('');
     };
@@ -126,7 +123,6 @@ export default function InquiryForm() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleInputChange}
-                                required
                                 className={`block w-full pl-10 pr-3 py-2.5 bg-white border-0 rounded-full shadow-sm focus:ring-2 focus:ring-femure-primary focus:outline-none text-sm placeholder-gray-500 ${
                                     errors.name ? 'ring-2 ring-red-500' : ''
                                 }`}
@@ -161,6 +157,26 @@ export default function InquiryForm() {
                                 <p className="text-red-500 text-xs mt-1 flex items-center">
                                     <AlertCircle className="w-3 h-3 mr-1" />
                                     {errors.mobile}
+                                </p>
+                            )}
+                        </div>
+
+                        {/* Query Field */}
+                        <div>
+                            <textarea
+                                name="query"
+                                value={formData.query}
+                                onChange={handleInputChange}
+                                rows={3}
+                                className={`block w-full px-3 py-2.5 bg-white border-0 rounded-lg shadow-sm focus:ring-2 focus:ring-femure-primary focus:outline-none text-sm placeholder-gray-500 ${
+                                    errors.query ? 'ring-2 ring-red-500' : ''
+                                }`}
+                                placeholder="Your health concerns or questions..."
+                            />
+                            {errors.query && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center">
+                                    <AlertCircle className="w-3 h-3 mr-1" />
+                                    {errors.query}
                                 </p>
                             )}
                         </div>

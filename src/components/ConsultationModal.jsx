@@ -17,12 +17,12 @@ const conditions = [
 ];
 
 export default function ConsultationModal({ isOpen, onClose, selectedCondition = null }) {
-    const [formData, setFormData] = useState({
-        name: '',
-        mobile: '',
-        condition: '',
-        consultationType: 'video'
-    });
+        const [formData, setFormData] = useState({
+            name: '',
+            mobile: '',
+            condition: '',
+            consultationType: 'video'
+        });
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -83,18 +83,10 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
     const validateForm = () => {
         const newErrors = {};
         
-        if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
-        }
-        
         if (!formData.mobile.trim()) {
             newErrors.mobile = 'Mobile number is required';
         } else if (!validatePhoneNumber(formData.mobile)) {
             newErrors.mobile = 'Please enter a valid 10-digit mobile number';
-        }
-        
-        if (selectedCondition && !formData.condition) {
-            newErrors.condition = 'Please select a condition';
         }
         
         setErrors(newErrors);
@@ -114,10 +106,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
         try {
             const formType = getFormType(null, selectedCondition);
             const additionalData = {
-                mx_SelectedDoctor: '',
-                mx_SelectedCondition: selectedCondition ? selectedCondition.title : '',
-                mx_DoctorSpecialty: '',
-                mx_ConditionTagline: selectedCondition ? selectedCondition.tagline : '',
+                selectedCondition: selectedCondition ? selectedCondition.title : '',
             };
             
             const result = await submitToLeadSquared(formData, formType, additionalData);
@@ -137,14 +126,14 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
         }
     };
 
-    const handleClose = () => {
-        setFormData({ name: '', mobile: '', condition: '', consultationType: 'video' });
-        setErrors({});
-        setSubmitError('');
-        setIsSubmitted(false);
-        setIsSubmitting(false);
-        onClose();
-    };
+        const handleClose = () => {
+            setFormData({ name: '', mobile: '', condition: '', consultationType: 'video' });
+            setErrors({});
+            setSubmitError('');
+            setIsSubmitted(false);
+            setIsSubmitting(false);
+            onClose();
+        };
 
     const handleNewConsultation = () => {
         setIsSubmitted(false);
@@ -290,7 +279,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
 
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                                Full Name *
+                                Full Name
                             </label>
                             <input
                                 type="text"
@@ -298,7 +287,6 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                                 name="name"
                                 value={formData.name}
                                 onChange={handleInputChange}
-                                required
                                 className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 ${
                                     errors.name ? 'border-red-500' : 'border-gray-300'
                                 }`}
@@ -337,17 +325,17 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                             )}
                         </div>
 
-                        {selectedCondition && (
+                        {/* Only show condition selection if no specific condition was selected */}
+                        {!selectedCondition && (
                             <div>
                                 <label htmlFor="condition" className="block text-sm font-medium text-gray-700 mb-2">
-                                    Condition/Concern *
+                                    Condition/Concern
                                 </label>
                                 <select
                                     id="condition"
                                     name="condition"
                                     value={formData.condition}
                                     onChange={handleInputChange}
-                                    required
                                     className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 ${
                                         errors.condition ? 'border-red-500' : 'border-gray-300'
                                     }`}
