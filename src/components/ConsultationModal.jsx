@@ -16,12 +16,13 @@ const conditions = [
     'General feminine health issues'
 ];
 
-export default function ConsultationModal({ isOpen, onClose, selectedCondition = null }) {
+export default function ConsultationModal({ isOpen, onClose, selectedCondition = null, selectedPlan = null }) {
         const [formData, setFormData] = useState({
             name: '',
             mobile: '',
             condition: '',
-            consultationType: 'video'
+            consultationType: 'video',
+            selectedPlan: ''
         });
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,6 +48,15 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
             }));
         }
     }, [selectedCondition]);
+
+    useEffect(() => {
+        if (selectedPlan) {
+            setFormData(prev => ({
+                ...prev,
+                selectedPlan: selectedPlan.name
+            }));
+        }
+    }, [selectedPlan]);
 
     useEffect(() => {
         const handleEscape = (e) => {
@@ -107,6 +117,10 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
             const formType = getFormType(null, selectedCondition);
             const additionalData = {
                 selectedCondition: selectedCondition ? selectedCondition.title : '',
+                selectedPlan: formData.selectedPlan || (selectedPlan ? selectedPlan.name : ''),
+                planPrice: selectedPlan ? selectedPlan.price : '',
+                originalPrice: selectedPlan ? selectedPlan.originalPrice : '',
+                discount: selectedPlan ? selectedPlan.discount : '',
             };
             
             const result = await submitToLeadSquared(formData, formType, additionalData);
@@ -127,7 +141,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
     };
 
         const handleClose = () => {
-            setFormData({ name: '', mobile: '', condition: '', consultationType: 'video' });
+            setFormData({ name: '', mobile: '', condition: '', consultationType: 'video', selectedPlan: '' });
             setErrors({});
             setSubmitError('');
             setIsSubmitted(false);
@@ -137,7 +151,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
 
     const handleNewConsultation = () => {
         setIsSubmitted(false);
-        setFormData({ name: '', mobile: '', condition: '', consultationType: 'video' });
+        setFormData({ name: '', mobile: '', condition: '', consultationType: 'video', selectedPlan: '' });
         setErrors({});
         setSubmitError('');
     };
@@ -208,7 +222,21 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                 {/* Modal Header */}
                 <div className="flex items-center justify-between p-6 border-b border-gray-200">
                     <div className="flex items-center space-x-4">
-                        {selectedCondition ? (
+                        {selectedPlan ? (
+                            <>
+                                <div className="w-15 h-15 rounded-full bg-femure-primary/10 flex items-center justify-center">
+                                    <CheckCircle className="w-8 h-8 text-femure-primary" />
+                                </div>
+                                <div>
+                                    <h3 className="font-headline text-xl text-femure-primary">Book {selectedPlan.name}</h3>
+                                    <div className="flex items-center gap-2">
+                                        <span className="text-sm text-gray-500 line-through">{selectedPlan.originalPrice}</span>
+                                        <span className="text-femure-accent text-sm font-semibold">{selectedPlan.price}</span>
+                                        <span className="text-xs text-gray-600">• {selectedPlan.duration}</span>
+                                    </div>
+                                </div>
+                            </>
+                        ) : selectedCondition ? (
                             <>
                                 <div className="w-15 h-15 rounded-full bg-femure-primary/10 flex items-center justify-center">
                                     <MessageCircle className="w-8 h-8 text-femure-primary" />
@@ -241,9 +269,18 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                 {/* Modal Body */}
                 <div className="p-6">
                     <h4 className="font-headline text-lg mb-4 text-femure-primary">
-                        {selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
+                        {selectedPlan ? `Start Your ${selectedPlan.name} Journey` : selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
                     </h4>
                     <form onSubmit={handleSubmit} className="space-y-4">
+                        {/* Hidden field for selected plan */}
+                        {selectedPlan && (
+                            <input
+                                type="hidden"
+                                name="selectedPlan"
+                                value={formData.selectedPlan}
+                            />
+                        )}
+                        
                         {/* Consultation Type Selector */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-3">

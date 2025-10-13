@@ -43,6 +43,10 @@ function buildLeadSquaredPayload(formData, formType = 'general', additionalData 
         mx_ConsultationType: formData.consultationType || '',
         mx_SelectedCondition: formData.selectedCondition || formData.condition || '',
         mx_Query: formData.query || '',
+        mx_SelectedPlan: additionalData.selectedPlan || '',
+        mx_PlanPrice: additionalData.planPrice || '',
+        mx_OriginalPrice: additionalData.originalPrice || '',
+        mx_Discount: additionalData.discount || '',
         
         // Source and tracking information
         mx_Source: 'Website',
