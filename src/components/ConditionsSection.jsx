@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Shield, Zap, Clock, Heart, Users, Droplet, Sun, Award, CheckCircle, Star } from 'react-feather';
+import { Shield, Zap, Clock, Heart, Users, Droplet, Sun, Award, TrendingUp, Target } from 'react-feather';
 import ConsultationModal from './ConsultationModal';
 
 const conditions = [
@@ -136,11 +136,6 @@ export default function ConditionsSection() {
                 <div className="container mx-auto px-6">
                     {/* Enhanced Header Section */}
                     <div className="text-center mb-16">
-                        <div className="flex items-center justify-center mb-6">
-                            <CheckCircle className="w-8 h-8 text-femure-primary mr-3" />
-                            <Star className="w-6 h-6 text-femure-accent mr-3" />
-                            <CheckCircle className="w-8 h-8 text-femure-primary" />
-                        </div>
                         <h2 className="font-headline text-4xl md:text-5xl text-femure-primary mb-6 leading-tight">
                             Proven Results. Lasting Relief.
                         </h2>
@@ -235,9 +230,26 @@ export default function ConditionsSection() {
                             >
                                 Get Expert Consultation Now
                             </button>
-                            <p className="text-sm text-gray-600 mt-4">
-                                ✓ Free initial assessment ✓ Personalized treatment plan ✓ Ongoing support
-                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-4">
+                                <div className="flex items-center">
+                                    <div className="w-5 h-5 rounded-full bg-femure-primary/10 flex items-center justify-center mr-2">
+                                        <div className="w-2 h-2 rounded-full bg-femure-primary"></div>
+                                    </div>
+                                    <span className="text-sm text-gray-600">Personalized treatment plan</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="w-5 h-5 rounded-full bg-femure-primary/10 flex items-center justify-center mr-2">
+                                        <div className="w-2 h-2 rounded-full bg-femure-primary"></div>
+                                    </div>
+                                    <span className="text-sm text-gray-600">Regular follow-ups</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="w-5 h-5 rounded-full bg-femure-primary/10 flex items-center justify-center mr-2">
+                                        <div className="w-2 h-2 rounded-full bg-femure-primary"></div>
+                                    </div>
+                                    <span className="text-sm text-gray-600">Ongoing support</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
