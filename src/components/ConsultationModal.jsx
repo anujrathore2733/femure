@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { X, Phone, User, MessageCircle, Video, CheckCircle, AlertCircle } from 'react-feather';
+import { X, User, MessageCircle, CheckCircle, AlertCircle } from 'react-feather';
 import { submitToLeadSquared, validatePhoneNumber, getFormType } from '@/lib/leadsquared';
 
 const conditions = [
@@ -21,7 +21,6 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
             name: '',
             mobile: '',
             condition: '',
-            consultationType: 'video',
             selectedPlan: ''
         });
     const [errors, setErrors] = useState({});
@@ -141,7 +140,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
     };
 
         const handleClose = () => {
-            setFormData({ name: '', mobile: '', condition: '', consultationType: 'video', selectedPlan: '' });
+            setFormData({ name: '', mobile: '', condition: '', selectedPlan: '' });
             setErrors({});
             setSubmitError('');
             setIsSubmitted(false);
@@ -149,12 +148,12 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
             onClose();
         };
 
-    const handleNewConsultation = () => {
-        setIsSubmitted(false);
-        setFormData({ name: '', mobile: '', condition: '', consultationType: 'video', selectedPlan: '' });
-        setErrors({});
-        setSubmitError('');
-    };
+        const handleNewConsultation = () => {
+            setIsSubmitted(false);
+            setFormData({ name: '', mobile: '', condition: '', selectedPlan: '' });
+            setErrors({});
+            setSubmitError('');
+        };
 
     if (!isOpen) return null;
 
@@ -219,57 +218,43 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                 className="bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
             >
-                {/* Modal Header */}
-                <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                    <div className="flex items-center space-x-4">
-                        {selectedPlan ? (
-                            <>
-                                <div className="w-15 h-15 rounded-full bg-femure-primary/10 flex items-center justify-center">
-                                    <CheckCircle className="w-8 h-8 text-femure-primary" />
-                                </div>
-                                <div>
-                                    <h3 className="font-headline text-xl text-femure-primary">Book {selectedPlan.name}</h3>
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-sm text-gray-500 line-through">{selectedPlan.originalPrice}</span>
-                                        <span className="text-femure-accent text-sm font-semibold">{selectedPlan.price}</span>
-                                        <span className="text-xs text-gray-600">• {selectedPlan.duration}</span>
+                    {/* Modal Header */}
+                    <div className="flex items-center justify-between p-6 border-b border-gray-200">
+                        <div className="flex items-center space-x-4">
+                            {selectedCondition ? (
+                                <>
+                                    <div className="w-15 h-15 rounded-full bg-femure-primary/10 flex items-center justify-center">
+                                        <MessageCircle className="w-8 h-8 text-femure-primary" />
                                     </div>
-                                </div>
-                            </>
-                        ) : selectedCondition ? (
-                            <>
-                                <div className="w-15 h-15 rounded-full bg-femure-primary/10 flex items-center justify-center">
-                                    <MessageCircle className="w-8 h-8 text-femure-primary" />
-                                </div>
-                                <div>
-                                    <h3 className="font-headline text-xl text-femure-primary">Consultation for {selectedCondition.title}</h3>
-                                    <p className="text-femure-accent text-sm">{selectedCondition.tagline}</p>
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div className="w-15 h-15 rounded-full bg-femure-primary flex items-center justify-center">
-                                    <User className="w-8 h-8 text-white" />
-                                </div>
-                                <div>
-                                    <h3 className="font-headline text-xl text-femure-primary">Book Consultation</h3>
-                                    <p className="text-femure-accent text-sm">Get expert advice</p>
-                                </div>
-                            </>
-                        )}
+                                    <div>
+                                        <h3 className="font-headline text-xl text-femure-primary">Consultation for {selectedCondition.title}</h3>
+                                        <p className="text-femure-accent text-sm">{selectedCondition.tagline}</p>
+                                    </div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="w-15 h-15 rounded-full bg-femure-primary flex items-center justify-center">
+                                        <User className="w-8 h-8 text-white" />
+                                    </div>
+                                    <div>
+                                        <h3 className="font-headline text-xl text-femure-primary">Book Consultation</h3>
+                                        <p className="text-femure-accent text-sm">Get expert advice</p>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+                        <button 
+                            onClick={handleClose}
+                            className="text-gray-400 hover:text-gray-600 transition duration-300"
+                        >
+                            <X className="w-6 h-6" />
+                        </button>
                     </div>
-                    <button 
-                        onClick={handleClose}
-                        className="text-gray-400 hover:text-gray-600 transition duration-300"
-                    >
-                        <X className="w-6 h-6" />
-                    </button>
-                </div>
 
                 {/* Modal Body */}
                 <div className="p-6">
                     <h4 className="font-headline text-lg mb-4 text-femure-primary">
-                        {selectedPlan ? `Start Your ${selectedPlan.name} Journey` : selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
+                        {selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
                     </h4>
                     <form onSubmit={handleSubmit} className="space-y-4">
                         {/* Hidden field for selected plan */}
@@ -280,39 +265,6 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                                 value={formData.selectedPlan}
                             />
                         )}
-                        
-                        {/* Consultation Type Selector */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-3">
-                                Consultation Type *
-                            </label>
-                            <div className="grid grid-cols-2 gap-3">
-                                <button
-                                    type="button"
-                                    onClick={() => setFormData(prev => ({ ...prev, consultationType: 'video' }))}
-                                    className={`flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                                        formData.consultationType === 'video'
-                                            ? 'border-femure-primary bg-femure-primary/5 text-femure-primary'
-                                            : 'border-gray-300 text-gray-600 hover:border-femure-primary/50'
-                                    }`}
-                                >
-                                    <Video className="w-5 h-5" />
-                                    <span className="font-medium">Video</span>
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => setFormData(prev => ({ ...prev, consultationType: 'audio' }))}
-                                    className={`flex items-center justify-center space-x-2 px-4 py-3 rounded-lg border-2 transition-all duration-300 ${
-                                        formData.consultationType === 'audio'
-                                            ? 'border-femure-primary bg-femure-primary/5 text-femure-primary'
-                                            : 'border-gray-300 text-gray-600 hover:border-femure-primary/50'
-                                    }`}
-                                >
-                                    <Phone className="w-5 h-5" />
-                                    <span className="font-medium">Audio</span>
-                                </button>
-                            </div>
-                        </div>
 
                         <div>
                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">

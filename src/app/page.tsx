@@ -6,7 +6,6 @@ import DoctorsSection from '@/components/DoctorsSection';
 import InquiryForm from '@/components/InquiryForm';
 import ConditionsSection from '@/components/ConditionsSection';
 import WhyFemureSection from '@/components/WhyFemureSection';
-import WhyChooseFemureSection from '@/components/WhyChooseFemureSection';
 import PricingSection from '@/components/PricingSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import JourneySection from '@/components/JourneySection';
@@ -32,9 +31,8 @@ export default function Home() {
       <ConditionsSection />
       <InquiryForm />
       <JourneySection />
-      <WhyFemureSection />
-      <WhyChooseFemureSection />
       <PricingSection />
+      <WhyFemureSection />
       <TestimonialsSection />
       <CommunitySection />
 

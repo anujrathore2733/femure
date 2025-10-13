@@ -40,7 +40,6 @@ function buildLeadSquaredPayload(formData, formType = 'general', additionalData 
         
         // Custom fields for Femure
         mx_FormType: formType,
-        mx_ConsultationType: formData.consultationType || '',
         mx_SelectedCondition: formData.selectedCondition || formData.condition || '',
         mx_Query: formData.query || '',
         mx_SelectedPlan: additionalData.selectedPlan || '',

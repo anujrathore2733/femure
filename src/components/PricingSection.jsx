@@ -103,14 +103,14 @@ export default function PricingSection() {
                         </p>
                     </div>
 
-                    {/* Minimal Premium Cards */}
+                    {/* Minimal Premium Cards - Fixed Alignment */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                         {plans.map((plan, index) => {
                             const Icon = plan.icon;
                             return (
                                 <div 
                                     key={plan.id}
-                                    className={`relative group transition-all duration-700 ${
+                                    className={`relative group transition-all duration-700 flex flex-col ${
                                         plan.popular ? 'md:scale-105' : ''
                                     }`}
                                 >
@@ -123,8 +123,8 @@ export default function PricingSection() {
                                         </div>
                                     )}
 
-                                    {/* Card */}
-                                    <div className={`border transition-all duration-500 rounded-2xl ${
+                                    {/* Card - Fixed Height */}
+                                    <div className={`border transition-all duration-500 rounded-2xl flex flex-col h-full ${
                                         plan.id === 'essential'
                                             ? 'bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200 shadow-xl'
                                             : plan.id === 'holistic'
@@ -134,13 +134,13 @@ export default function PricingSection() {
                                                     : 'bg-white border-gray-200 hover:border-femure-primary/50 shadow-lg hover:shadow-xl'
                                     }`}>
                                         {/* Header - Ultra Minimal */}
-                                        <div className="p-8 pb-6">
+                                        <div className="p-8 pb-6 flex-shrink-0">
                                             <div className="text-center">
                                                 <div className="w-12 h-12 mx-auto mb-4 flex items-center justify-center">
                                                     <Icon className={`w-6 h-6 ${plan.iconColor}`} />
                                                 </div>
                                                 <h3 className="text-lg font-medium text-gray-900 mb-2 tracking-wide">{plan.name}</h3>
-                                                <p className="text-sm text-gray-500 mb-6 hidden md:block">{plan.description}</p>
+                                                <p className="text-sm text-gray-500 mb-6 hidden md:block min-h-[2.5rem]">{plan.description}</p>
                                                 
                                                 {/* Price - Minimal */}
                                                 <div className="mb-6">
@@ -156,14 +156,14 @@ export default function PricingSection() {
                                             </div>
                                         </div>
 
-                                        {/* Features - Minimal */}
-                                        <div className="px-8 pb-8">
-                                            <div className="space-y-3 mb-8">
+                                        {/* Features - Minimal - Flexible Height */}
+                                        <div className="px-8 pb-8 flex-grow flex flex-col">
+                                            <div className="space-y-3 mb-8 flex-grow">
                                                 {plan.features.map((feature, featureIndex) => {
                                                     const FeatureIcon = feature.icon;
                                                     return (
                                                         <div key={featureIndex} className="flex items-center">
-                                                            <div className={`w-4 h-4 rounded-full mr-3 flex items-center justify-center ${
+                                                            <div className={`w-4 h-4 rounded-full mr-3 flex items-center justify-center flex-shrink-0 ${
                                                                 feature.included 
                                                                     ? 'bg-femure-primary' 
                                                                     : 'bg-gray-200'
@@ -174,7 +174,7 @@ export default function PricingSection() {
                                                                     <div className="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
                                                                 )}
                                                             </div>
-                                                            <FeatureIcon className={`w-4 h-4 mr-3 ${
+                                                            <FeatureIcon className={`w-4 h-4 mr-3 flex-shrink-0 ${
                                                                 feature.included ? 'text-femure-primary' : 'text-gray-400'
                                                             }`} />
                                                             <span className={`text-sm ${
@@ -187,10 +187,10 @@ export default function PricingSection() {
                                                 })}
                                             </div>
 
-                                            {/* CTA - Minimal */}
+                                            {/* CTA - Minimal - Fixed at Bottom */}
                                             <button
                                                 onClick={() => openModal(plan)}
-                                                className={`w-full py-3 px-4 text-sm font-medium transition-all duration-300 ${
+                                                className={`w-full py-3 px-4 text-sm font-medium transition-all duration-300 mt-auto ${
                                                     plan.popular
                                                         ? 'bg-femure-primary hover:bg-femure-accent text-white'
                                                         : 'bg-gray-50 hover:bg-femure-primary hover:text-white text-gray-700 border border-gray-200 hover:border-femure-primary'
