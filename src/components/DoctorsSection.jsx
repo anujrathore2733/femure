@@ -7,15 +7,16 @@ import ConsultationModal from './ConsultationModal';
 
 const doctors = [
     {
-        name: 'Dr. Pooja Patidar',
-        specialty: "Women's Health Specialist",
-        rating: 4.5,
-        experience: '6+ years',
-        patients: '1700+',
+        name: 'Dr. Tanya Vaish',
+        specialty: 'Homeopathy, PCOS & Fertility Specialist',
+        rating: 4.8,
+        experience: '8+ years',
+        patients: '3700+',
         languages: 'English, Hindi',
-        quote: 'Your health journey is unique, and so should be your treatment.',
-        image: '/DrPoojaPatidar.jpeg'
+        quote: "Empowering women through holistic, personalized care is my passion.",
+        image: '/drtanya.png'
     },
+    ,
     {
         name: 'Dr. Sakshi Bhadana',
         specialty: 'Homeopathy & Hormone Expert',
@@ -25,7 +26,18 @@ const doctors = [
         languages: 'English, Hindi',
         quote: "Balance comes from understanding your body's natural rhythm.",
         image: '/SakshiBhadana.png'
+    },
+    {
+        name: 'Dr. Pooja Patidar',
+        specialty: "Women's Health Specialist",
+        rating: 4.5,
+        experience: '6+ years',
+        patients: '1700+',
+        languages: 'English, Hindi',
+        quote: 'Your health journey is unique, and so should be your treatment.',
+        image: '/DrPoojaPatidar.jpeg'
     }
+    
 ];
 
 export default function DoctorsSection() {
@@ -48,7 +60,19 @@ export default function DoctorsSection() {
                         {doctors.map((doctor, index) => (
                             <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-lg border-2 md:border-4 border-femure-primary">
                                 <div className="p-4 md:p-6 flex flex-col items-center">
-                                    <Image src={doctor.image} alt={doctor.name} width={80} height={80} className="w-20 h-20 md:w-32 md:h-32 rounded-full object-cover border-2 md:border-4 border-femure-secondary" />
+                                    <Image 
+                                        src={doctor.image} 
+                                        alt={doctor.name} 
+                                        width={80} 
+                                        height={80} 
+                                        className="w-20 h-20 md:w-32 md:h-32 rounded-full object-cover border-2 md:border-4 border-femure-secondary"
+                                        style={{
+                                            objectPosition: doctor.name === 'Dr. Tanya Vaish' ? 'center 30%' : 'center'
+                                        }}
+                                        onError={(e) => {
+                                            e.target.src = '/img1.png'; // Fallback image
+                                        }}
+                                    />
                                     <h3 className="mt-3 md:mt-4 font-headline text-xl md:text-xl">{doctor.name}</h3>
                                     <p className="text-femure-accent text-base md:text-base mb-2 md:mb-3">{doctor.specialty}</p>
                                     <div className="flex items-center text-sm md:text-sm text-gray-600 mb-2">
