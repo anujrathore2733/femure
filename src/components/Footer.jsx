@@ -19,8 +19,12 @@ export default function Footer() {
                         <a href="#" className="text-gray-600 hover:text-femure-primary">Contact</a>
                     </div>
                     <div className="flex space-x-4">
-                        <a href="#" className="text-gray-600 hover:text-femure-primary"><Instagram /></a>
-                        <a href="#" className="text-gray-600 hover:text-femure-primary"><Linkedin /></a>
+                        <a href="https://www.instagram.com/femure.india/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-femure-primary transition-colors duration-300">
+                            <Instagram className="w-5 h-5" />
+                        </a>
+                        <a href="#" className="text-gray-600 hover:text-femure-primary transition-colors duration-300">
+                            <Linkedin className="w-5 h-5" />
+                        </a>
                     </div>
                 </div>
                 
