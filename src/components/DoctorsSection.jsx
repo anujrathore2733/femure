@@ -7,35 +7,25 @@ import ConsultationModal from './ConsultationModal';
 
 const doctors = [
     {
-        name: 'Dr. Priya Sharma',
+        name: 'Dr. Pooja Patidar',
         specialty: "Women's Health Specialist",
-        rating: 4.9,
-        experience: '15+ years',
-        patients: '8,000+',
+        rating: 4.5,
+        experience: '6+ years',
+        patients: '1700+',
         languages: 'English, Hindi',
         quote: 'Your health journey is unique, and so should be your treatment.',
-        image: '/img1.png'
+        image: '/DrPoojaPatidar.jpeg'
     },
     {
-        name: 'Dr. Ananya Patel',
+        name: 'Dr. Sakshi Bhadana',
         specialty: 'Homeopathy & Hormone Expert',
         rating: 4.8,
-        experience: '12+ years',
-        patients: '6,500+',
-        languages: 'English, Gujarati, Hindi',
+        experience: '7+ years',
+        patients: '2500+',
+        languages: 'English, Hindi',
         quote: "Balance comes from understanding your body's natural rhythm.",
-        image: '/img1.png'
-    },
-    {
-        name: 'Dr. Meera Krishnan',
-        specialty: 'Fertility & Wellness Coach',
-        rating: 5.0,
-        experience: '10+ years',
-        patients: '7,500+',
-        languages: 'English, Tamil, Kannada',
-        quote: 'True healing addresses mind, body and emotions together.',
-        image: '/img1.png'
-    },
+        image: '/SakshiBhadana.png'
+    }
 ];
 
 export default function DoctorsSection() {
