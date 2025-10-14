@@ -10,6 +10,16 @@
   --font-family-body: 'Poppins', sans-serif;
 }
 
+/* Smooth scrolling for navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset for fixed navbar */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
 /* Custom Styles for Femure Landing Page */
 .hero-bg {
   background-image: linear-gradient(to bottom, #FFF8F8, #FFFFFF);

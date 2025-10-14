@@ -17,7 +17,7 @@ export default function CommunitySection() {
 
     return (
         <>
-            <section className="py-16" style={{ background: 'linear-gradient(to right, #FFE8E8, #FFD6D6)' }}>
+            <section className="py-10 md:py-16" style={{ background: 'linear-gradient(to right, #FFE8E8, #FFD6D6)' }}>
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col md:flex-row items-center">
                         <div className="md:w-1/2 mb-12 md:mb-0">

@@ -24,10 +24,10 @@ const testimonials = [
 
 export default function TestimonialsSection() {
     return (
-        <section className="py-16" style={{ background: 'linear-gradient(to right, #FFF8F8, #FFFFFF)' }}>
+        <section className="py-10 md:py-16" style={{ background: 'linear-gradient(to right, #FFF8F8, #FFFFFF)' }}>
             <div className="container mx-auto px-6">
-                <h2 className="font-headline text-3xl text-center mb-12">Stories of Healing</h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <h2 className="font-headline text-3xl text-center mb-8 md:mb-12">Stories of Healing</h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                     {testimonials.map((testimonial, index) => (
                         <div key={index} className="bg-white p-8 rounded-xl shadow-sm">
                             <div className="flex items-center mb-4">

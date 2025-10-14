@@ -132,10 +132,10 @@ export default function ConditionsSection() {
 
     return (
         <>
-            <section className="py-20" style={{ background: 'linear-gradient(to bottom, #FFF8F8, #FFFFFF)' }}>
+            <section className="py-12 md:py-16" style={{ background: 'linear-gradient(to bottom, #FFF8F8, #FFFFFF)' }}>
                 <div className="container mx-auto px-6">
                     {/* Enhanced Header Section */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-10 md:mb-16">
                         <h2 className="font-headline text-4xl md:text-5xl text-femure-primary mb-6 leading-tight">
                             Proven Results. Lasting Relief.
                         </h2>

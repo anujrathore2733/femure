@@ -26,18 +26,28 @@ export default function Home() {
 
   return (
     <main>
-      <HeroSection />
-      <DoctorsSection />
-      <ConditionsSection />
+      <section id="home">
+        <HeroSection />
+      </section>
+      <section id="doctors">
+        <DoctorsSection />
+      </section>
+      <section id="conditions">
+        <ConditionsSection />
+      </section>
       <InquiryForm />
       <JourneySection />
-      <PricingSection />
+      <section id="pricing">
+        <PricingSection />
+      </section>
       <WhyFemureSection />
-      <TestimonialsSection />
+      <section id="testimonials">
+        <TestimonialsSection />
+      </section>
       <CommunitySection />
 
       {/* Final Call to Action Section */}
-      <section className="py-20" style={{ background: 'linear-gradient(to right, #C24C6E, #E8C9B1)' }}>
+      <section className="py-12 md:py-20" style={{ background: 'linear-gradient(to right, #C24C6E, #E8C9B1)' }}>
         <div className="container mx-auto px-6 text-center text-white">
           <h2 className="font-headline text-3xl md:text-4xl mb-6">You deserve care that listens and heals.</h2>
           <button 

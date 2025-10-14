@@ -55,7 +55,7 @@ export default function HeroSection() {
     return (
         <section className="relative overflow-hidden">
             {/* Mobile Hero - Premium Minimalist Design */}
-            <div className="md:hidden relative bg-gradient-to-br from-rose-50 via-white to-pink-50 min-h-screen flex flex-col">
+            <div className="md:hidden relative bg-gradient-to-br from-rose-50 via-white to-pink-50 min-h-[75vh] flex flex-col">
                 {/* Top Section - Hero Content */}
                 <div className="flex-1 flex flex-col justify-center px-6 pt-6 pb-4">
                     <div className="max-w-lg mx-auto text-center">
