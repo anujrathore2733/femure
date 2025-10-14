@@ -114,10 +114,10 @@ export default function PricingSection() {
                                         plan.popular ? 'md:scale-105' : ''
                                     }`}
                                 >
-                                    {/* Popular Badge - Minimal */}
+                                    {/* Popular Badge - Top Right Corner */}
                                     {plan.popular && (
-                                        <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 z-20">
-                                            <div className="bg-femure-primary text-white px-3 py-1 text-xs font-medium tracking-wide">
+                                        <div className="absolute -top-2 -right-2 z-20">
+                                            <div className="bg-femure-primary text-white px-3 py-1 text-xs font-medium tracking-wide transform rotate-12 shadow-lg">
                                                 POPULAR
                                             </div>
                                         </div>
@@ -190,13 +190,9 @@ export default function PricingSection() {
                                             {/* CTA - Minimal - Fixed at Bottom */}
                                             <button
                                                 onClick={() => openModal(plan)}
-                                                className={`w-full py-3 px-4 text-sm font-medium transition-all duration-300 mt-auto ${
-                                                    plan.popular
-                                                        ? 'bg-femure-primary hover:bg-femure-accent text-white'
-                                                        : 'bg-gray-50 hover:bg-femure-primary hover:text-white text-gray-700 border border-gray-200 hover:border-femure-primary'
-                                                }`}
+                                                className="w-full py-3 px-4 text-sm font-medium transition-all duration-300 mt-auto rounded-full bg-femure-primary hover:bg-femure-accent text-white shadow-lg hover:shadow-xl"
                                             >
-                                                {plan.popular ? 'Start My Healing Journey' : 'Begin My Wellness'}
+                                                Start Your Journey
                                             </button>
                                         </div>
                                     </div>
