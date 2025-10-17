@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
+import { Phone, Users, Heart, MessageCircle, Calendar, Shield } from 'react-feather';
 import ConsultationModal from './ConsultationModal';
 
 export default function CommunitySection() {
@@ -17,35 +17,118 @@ export default function CommunitySection() {
 
     return (
         <>
-            <section className="py-10 md:py-16" style={{ background: 'linear-gradient(to right, #FFE8E8, #FFD6D6)' }}>
+            <section className="py-10 md:py-16 bg-gradient-to-br from-rose-50 via-white to-pink-50">
                 <div className="container mx-auto px-6">
-                    <div className="flex flex-col md:flex-row items-center">
-                        <div className="md:w-1/2 mb-12 md:mb-0">
-                            <h2 className="font-headline text-3xl mb-6">More Than Medicine — The Femure Circle</h2>
-                            <p className="text-gray-700 mb-6">Join the Femure Wellness Circle for monthly workshops and group sessions to maintain emotional and physical balance.</p>
-                            <div className="space-y-4 mb-8">
-                                <div className="flex items-start">
-                                    <span className="text-xl mr-3">🌙</span>
-                                    <p className="text-gray-700">Hormone Harmony — cycle awareness workshop</p>
+                    {/* Header */}
+                    <div className="text-center mb-16">
+                        <h2 className="font-headline text-3xl md:text-4xl text-gray-900 mb-4">
+                            Your <span className="text-femure-primary">Healing</span> Ecosystem
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            More than medicine. A complete wellness experience designed just for you.
+                        </p>
+                    </div>
+
+                    {/* Services Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                        {/* Weekly Follow-ups - Available in All Plans */}
+                        <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div className="w-14 h-14 rounded-full bg-femure-primary/10 flex items-center justify-center mb-6">
+                                <Phone className="w-7 h-7 text-femure-primary" />
+                            </div>
+                            <h3 className="font-semibold text-xl text-gray-900 mb-4">Weekly Follow-ups</h3>
+                            <p className="text-gray-600 mb-4 leading-relaxed">
+                                Regular check-ins to monitor your progress and ensure your healing journey stays on track.
+                            </p>
+                            <div className="space-y-3">
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Symptom tracking & assessment</span>
                                 </div>
-                                <div className="flex items-start">
-                                    <span className="text-xl mr-3">☀️</span>
-                                    <p className="text-gray-700">Mindful Mornings — stress relief sessions</p>
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Progress monitoring</span>
                                 </div>
-                                <div className="flex items-start">
-                                    <span className="text-xl mr-3">💚</span>
-                                    <p className="text-gray-700">Mental Wellness — anxiety & emotional balance support</p>
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Treatment adjustments</span>
                                 </div>
                             </div>
+                            <div className="mt-4 text-xs text-femure-primary font-medium">✓ All Plans</div>
+                        </div>
+
+                        {/* Nutritionist Support - Holistic & Total Plans Only */}
+                        <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div className="w-14 h-14 rounded-full bg-femure-primary/10 flex items-center justify-center mb-6">
+                                <Users className="w-7 h-7 text-femure-primary" />
+                            </div>
+                            <h3 className="font-semibold text-xl text-gray-900 mb-4">Nutritionist Support</h3>
+                            <p className="text-gray-600 mb-4 leading-relaxed">
+                                Transform your relationship with food. Every bite becomes a step toward healing.
+                            </p>
+                            <div className="space-y-3">
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Bespoke meal journeys</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Healing food wisdom</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Lifestyle transformation</span>
+                                </div>
+                            </div>
+                            <div className="mt-4 text-xs text-femure-primary font-medium">✓ Holistic & Total Plans</div>
+                        </div>
+
+                        {/* Community Access - Total Plan Only */}
+                        <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+                            <div className="w-14 h-14 rounded-full bg-femure-primary/10 flex items-center justify-center mb-6">
+                                <Heart className="w-7 h-7 text-femure-primary" />
+                            </div>
+                            <h3 className="font-semibold text-xl text-gray-900 mb-4">Community Access</h3>
+                            <p className="text-gray-600 mb-4 leading-relaxed">
+                                Your personal wellness concierge, surrounded by a sisterhood of healing and growth.
+                            </p>
+                            <div className="space-y-3">
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Your personal wellness concierge</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Sacred sisterhood circles</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Weekly wisdom sessions</span>
+                                </div>
+                                <div className="flex items-center">
+                                    <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
+                                    <span className="text-sm text-gray-600">Healing journey companions</span>
+                                </div>
+                            </div>
+                            <div className="mt-4 text-xs text-femure-primary font-medium">✓ Total Health Plan</div>
+                        </div>
+                    </div>
+
+                    {/* Bottom CTA */}
+                    <div className="text-center mt-16">
+                        <div className="max-w-lg mx-auto">
+                            <h3 className="font-headline text-2xl text-gray-900 mb-4">
+                                Ready to bloom into your best self?
+                            </h3>
+                            <p className="text-gray-600 mb-8">
+                                Your transformation begins with a single step. Let's write your healing story together.
+                            </p>
                             <button 
                                 onClick={openModal}
-                                className="bg-femure-primary hover:bg-femure-accent text-white py-3 px-8 rounded-full shadow-md transition duration-300"
+                                className="bg-femure-primary hover:bg-femure-accent text-white py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-lg"
                             >
-                                Join the Wellness Circle
+                                Begin Your Story
                             </button>
-                        </div>
-                        <div className="md:w-1/2 flex justify-center">
-                            <Image src="/img4.png" alt="Women in circle" width={500} height={300} className="rounded-lg shadow-xl max-w-md w-full" />
                         </div>
                     </div>
                 </div>

@@ -40,11 +40,11 @@ export default function Home() {
       <section id="pricing">
         <PricingSection />
       </section>
+      <CommunitySection />
       <WhyFemureSection />
       <section id="testimonials">
         <TestimonialsSection />
       </section>
-      <CommunitySection />
 
       {/* Final Call to Action Section */}
       <section className="py-12 md:py-20" style={{ background: 'linear-gradient(to right, #C24C6E, #E8C9B1)' }}>
