@@ -5,6 +5,7 @@ import HeroSection from '@/components/heroSection';
 import DoctorsSection from '@/components/DoctorsSection';
 import InquiryForm from '@/components/InquiryForm';
 import ConditionsSection from '@/components/ConditionsSection';
+import HolisticApproachSection from '@/components/HolisticApproachSection';
 import WhyFemureSection from '@/components/WhyFemureSection';
 import PricingSection from '@/components/PricingSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
@@ -32,14 +33,15 @@ export default function Home() {
       <section id="doctors">
         <DoctorsSection />
       </section>
+      <HolisticApproachSection />
+      <section id="pricing">
+        <PricingSection />
+      </section>
       <section id="conditions">
         <ConditionsSection />
       </section>
       <InquiryForm />
       <JourneySection />
-      <section id="pricing">
-        <PricingSection />
-      </section>
       <CommunitySection />
       <WhyFemureSection />
       <section id="testimonials">
