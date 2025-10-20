@@ -89,7 +89,7 @@ export default function TestimonialsSection() {
                                 <div key={i} className="min-w-full md:min-w-[50%] lg:min-w-[33.3333%] pr-3 md:pr-4 snap-start">
                                     <div className="bg-white p-4 md:p-8 rounded-2xl shadow-sm h-full">
                                         <div className="flex items-center mb-3 md:mb-4">
-                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4 flex items-center justify-center text-white font-semibold bg-gradient-to-br from-femure-primary to-femure-secondary">
+                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4 flex items-center justify-center text-white font-semibold bg-femure-primary ring-1 ring-white/60 shadow-sm">
                                                 <span>{getInitials(t.name)}</span>
                                             </div>
                                             <div>
@@ -109,20 +109,17 @@ export default function TestimonialsSection() {
                         })}
                     </div>
 
-                    {/* Dots */}
-                    <div className="flex justify-center gap-2 mt-6">
-                        {testimonials.map((_, i) => (
-                            <button
-                                key={i}
-                                aria-label={`Go to slide ${i + 1}`}
-                                onClick={() => {
-                                    const container = scrollRef.current;
-                                    if (!container) return;
-                                    container.scrollTo({ left: i * container.clientWidth, behavior: 'smooth' });
+                    {/* Minimal progress tracker */}
+                    <div className="flex justify-center mt-6">
+                        <div className="relative w-20 h-1.5 bg-gray-200 rounded-full" aria-hidden="true">
+                            <div
+                                className="absolute top-0 h-full bg-femure-primary rounded-full transition-all duration-300"
+                                style={{
+                                    width: `${100 / testimonials.length}%`,
+                                    left: `${(active / Math.max(testimonials.length - 1, 1)) * 100}%`
                                 }}
-                                className={`w-2.5 h-2.5 rounded-full transition-all ${i === active ? 'bg-femure-primary scale-110' : 'bg-gray-300 hover:bg-gray-400'}`}
                             />
-                        ))}
+                        </div>
                     </div>
 
                     {/* Mobile arrows */}
