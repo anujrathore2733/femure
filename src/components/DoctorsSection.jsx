@@ -45,16 +45,6 @@ const doctors = [
         languages: 'English, Hindi',
         quote: 'Your health journey is unique, and so should be your treatment.',
         image: '/DrPoojaPatidar.jpeg'
-    },
-    {
-        name: 'Dr Nisha Dhiman',
-        specialty: "Menstrual & Period Cycle Specialist",
-        rating: 4.7,
-        experience: '8+ years',
-        patients: '2700+',
-        languages: 'English, Hindi',
-        quote: 'Understanding your period cycle is the first step to a healthier you.',
-      image: '/dr.nisha.png'
     }
     
 ];
