@@ -76,6 +76,7 @@ export default function PricingSection() {
     const [selectedPlan, setSelectedPlan] = useState(null);
     const [expandedPlans, setExpandedPlans] = useState(new Set());
     const [activeMobilePlanId, setActiveMobilePlanId] = useState(plans.find(p => p.popular)?.id || plans[1]?.id || plans[0]?.id);
+    const [isFading, setIsFading] = useState(false);
 
     const openModal = (plan) => {
         setSelectedPlan(plan);
@@ -144,7 +145,7 @@ export default function PricingSection() {
         }
     };
 
-    const renderPlanCard = (plan) => {
+    const renderPlanCard = (plan, prevPlan = null) => {
         const Icon = plan.icon;
         const isExpanded = expandedPlans.has(plan.id);
         const visibleFeatures = plan.features; // always show all features per latest request
@@ -215,12 +216,15 @@ export default function PricingSection() {
 
                     {/* Features - Minimal - Flexible Height */}
                     <div className="px-5 md:px-8 pb-5 md:pb-8 flex-grow flex flex-col">
-                        <div className="space-y-2.5 md:space-y-3 mb-4 md:mb-8 flex-grow">
-                            {visibleFeatures.map((feature, featureIndex) => {
+                                            <div className="space-y-2.5 md:space-y-3 mb-4 md:mb-8 flex-grow">
+                                                {visibleFeatures.map((feature, featureIndex) => {
                                 const FeatureIcon = feature.icon;
+                                                    const prevIncluded = prevPlan ? Boolean(prevPlan.features.find((f) => f.text === feature.text && f.included)) : false;
+                                                    const isNew = feature.included && !prevIncluded;
+                                                    const isVideo = /video/i.test(feature.text);
                                 return (
-                                    <div key={featureIndex} className="flex items-center">
-                                        <div className={`w-3.5 h-3.5 md:w-4 md:h-4 rounded-full mr-2.5 md:mr-3 flex items-center justify-center flex-shrink-0 ${
+                                                        <div key={featureIndex} className="flex items-center">
+                                                            <div className={`w-3.5 h-3.5 md:w-4 md:h-4 rounded-full mr-2.5 md:mr-3 flex items-center justify-center flex-shrink-0 ${
                                             feature.included 
                                                 ? 'bg-femure-primary' 
                                                 : 'bg-gray-200'
@@ -231,14 +235,14 @@ export default function PricingSection() {
                                                 <div className="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
                                             )}
                                         </div>
-                                        <FeatureIcon className={`w-3.5 h-3.5 md:w-4 md:h-4 mr-2.5 md:mr-3 flex-shrink-0 ${
-                                            feature.included ? 'text-femure-primary' : 'text-gray-400'
-                                        }`} />
-                                        <span className={`text-xs md:text-sm ${
-                                            feature.included ? 'text-gray-700' : 'text-gray-400'
-                                        }`}>
-                                            {feature.text}
-                                        </span>
+                                                            <FeatureIcon className={`w-3.5 h-3.5 md:w-4 md:h-4 mr-2.5 md:mr-3 flex-shrink-0 ${
+                                                                feature.included ? 'text-femure-primary' : 'text-gray-400'
+                                                            }`} />
+                                                            <span className={`text-xs md:text-sm ${
+                                                                feature.included ? 'text-gray-700' : 'text-gray-400'
+                                                             } ${isVideo ? 'font-semibold' : ''}`}>
+                                                                {feature.text}
+                                                            </span>
                                     </div>
                                 );
                             })}
@@ -284,12 +288,19 @@ export default function PricingSection() {
                                 return (
                                     <button
                                         key={p.id}
-                                        onClick={() => setActiveMobilePlanId(p.id)}
-                                        className={`relative w-full flex items-center justify-center gap-1 text-[11px] py-2 px-2 rounded-full transition-all font-semibold whitespace-normal leading-tight text-center shadow-sm ${
+                                        onClick={() => {
+                                            if (p.id === activeMobilePlanId) return;
+                                            setIsFading(true);
+                                            setTimeout(() => {
+                                                setActiveMobilePlanId(p.id);
+                                                setIsFading(false);
+                                            }, 200);
+                                        }}
+                                        className={`relative w-full flex items-center justify-center gap-1 text-[11px] py-2 px-2 rounded-full font-semibold whitespace-normal leading-tight text-center shadow-sm ${
                                             activeMobilePlanId === p.id
                                                 ? `bg-gradient-to-r ${theme.tabActive} text-white shadow-md`
                                                 : 'bg-white text-femure-primary/90 hover:bg-rose-50'
-                                        }`}
+                                        } ${isFading ? 'transition-none' : 'transition-colors duration-300'}`}
                                     >
                                         <span className="break-words">{shortName}</span>
                                         {/* No discount in mobile tabs for cleaner look */}
@@ -297,13 +308,18 @@ export default function PricingSection() {
                                 );
                             })}
                         </div>
-
-                        {plans.filter((p) => p.id === activeMobilePlanId).map((p) => renderPlanCard(p))}
+                        <div className={`transition-all duration-300 ${isFading ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'}`}>
+                            {plans.filter((p) => p.id === activeMobilePlanId).map((p, idx) => {
+                                const currentIndex = plans.findIndex(x => x.id === p.id);
+                                const prev = currentIndex > 0 ? plans[currentIndex - 1] : null;
+                                return renderPlanCard(p, prev);
+                            })}
+                        </div>
                     </div>
 
                     {/* Desktop: 3-column grid */}
                     <div className="hidden md:grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                        {plans.map((plan) => renderPlanCard(plan))}
+                        {plans.map((plan, idx) => renderPlanCard(plan, idx > 0 ? plans[idx - 1] : null))}
                     </div>
 
                     {/* Minimal Bottom CTA */}
