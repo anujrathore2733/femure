@@ -1,6 +1,19 @@
+'use client';
+
+import { useState } from 'react';
 import { Calendar, User, Clock, Users, Heart, Shield, ArrowRight } from 'react-feather';
+import ConsultationModal from './ConsultationModal';
 
 export default function JourneySection() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
     const journeySteps = [
         {
             icon: Calendar,
@@ -29,6 +42,7 @@ export default function JourneySection() {
     ];
 
     return (
+        <>
         <section className="py-10 md:py-16 bg-white">
             <div className="container mx-auto px-6 max-w-6xl">
                 {/* Clean Header */}
@@ -224,14 +238,24 @@ export default function JourneySection() {
 
                     {/* Community CTA */}
                     <div className="text-center">
-                        <div className="inline-flex items-center bg-femure-primary hover:bg-femure-accent text-white rounded-full px-8 py-4 shadow-sm hover:shadow-md transition-all duration-300">
+                        <button 
+                            onClick={openModal}
+                            className="inline-flex items-center bg-femure-primary hover:bg-femure-accent text-white rounded-full px-8 py-4 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
+                        >
                             <Users className="w-5 h-5 mr-3" />
                             <span className="font-semibold">Join 5,000+ women in our wellness community</span>
                             <ArrowRight className="w-5 h-5 ml-3" />
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
+
+        {/* Consultation Modal */}
+        <ConsultationModal 
+            isOpen={isModalOpen}
+            onClose={closeModal}
+        />
+    </>
     );
 }
