@@ -23,8 +23,8 @@ function getAuthHeaders() {
     // In production, you should implement proper HMAC-SHA256 signing
     return {
         'Content-Type': 'application/json',
-        'AccessKey': LEAD_SQUARED_CONFIG.accessKey,
-        'SecretKey': LEAD_SQUARED_CONFIG.secretKey,
+        'x-LSQ-AccessKey': LEAD_SQUARED_CONFIG.accessKey,
+        'x-LSQ-SecretKey': LEAD_SQUARED_CONFIG.secretKey,
         'Timestamp': timestamp,
     };
 }
@@ -33,37 +33,27 @@ function getAuthHeaders() {
  * Build LeadSquared payload from form data
  */
 function buildLeadSquaredPayload(formData, formType = 'general', additionalData = {}) {
-    const payload = {
-        // Core LeadSquared fields
-        FirstName: formData.name || '',
-        Phone: formData.mobile || '',
-        
-        // Essential custom fields only
-        mx_Query: formData.query || '',
-        mx_SelectedCondition: formData.selectedCondition || formData.condition || '',
-        mx_SelectedPlan: additionalData.selectedPlan || '',
-        
-        // System data
-        mx_FormType: formType,
-        mx_Device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
-        mx_SubmissionTime: new Date().toISOString(),
-        
-        // UTM tracking data
-        mx_UTMSource: formData.utmSource || 'Direct',
-        mx_UTMMedium: formData.utmMedium || 'Website',
-        mx_UTMCampaign: formData.utmCampaign || 'Homeopathy-Consultation',
-        mx_UTMContent: formData.utmContent || '',
-        mx_UTMTerm: formData.utmTerm || '',
-    };
+    // LeadSquared expects a direct array of LeadProperty objects
+    const leadProperties = [
+        { Attribute: 'FirstName', Value: formData.name || '' },
+        { Attribute: 'Phone', Value: formData.mobile || '' },
+        { Attribute: 'mx_Query', Value: formData.query || '' },
+        { Attribute: 'mx_SelectedCondition', Value: formData.selectedCondition || formData.condition || '' },
+        { Attribute: 'mx_SelectedPlan', Value: additionalData.selectedPlan || '' },
+        { Attribute: 'mx_FormType', Value: formType },
+        { Attribute: 'mx_Device', Value: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop' },
+        { Attribute: 'mx_SubmissionTime', Value: new Date().toISOString() },
+        { Attribute: 'mx_UTMSource', Value: formData.utmSource || 'Direct' },
+        { Attribute: 'mx_UTMMedium', Value: formData.utmMedium || 'Website' },
+        { Attribute: 'mx_UTMCampaign', Value: formData.utmCampaign || 'Homeopathy-Consultation' },
+        { Attribute: 'mx_UTMContent', Value: formData.utmContent || '' },
+        { Attribute: 'mx_UTMTerm', Value: formData.utmTerm || '' },
+    ];
 
-    // Remove empty values
-    Object.keys(payload).forEach(key => {
-        if (payload[key] === '' || payload[key] === null || payload[key] === undefined) {
-            delete payload[key];
-        }
-    });
-
-    return payload;
+    // Remove empty values and return the array directly
+    return leadProperties.filter(prop => 
+        prop.Value && prop.Value !== '' && prop.Value !== null && prop.Value !== undefined
+    );
 }
 
 /**
