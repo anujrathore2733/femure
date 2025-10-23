@@ -98,9 +98,9 @@ async function checkLeadExists(phone) {
  */
 async function updateExistingLead(leadId, formData, formType, additionalData) {
     try {
-        const updateUrl = 'https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Update';
+        // LeadSquared requires leadId as URL parameter, not in request body
+        const updateUrl = `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Update?leadId=${encodeURIComponent(leadId)}`;
         const updatePayload = [
-            { Attribute: 'LeadId', Value: leadId },
             { Attribute: 'mx_LastInteraction', Value: new Date().toISOString() },
             { Attribute: 'mx_InteractionCount', Value: '1' }, // This will be incremented by LeadSquared
             { Attribute: 'mx_LastFormType', Value: formType },
@@ -172,9 +172,14 @@ export async function submitToLeadSquared(formData, formType = 'general', additi
                 
                 // Find and update the existing lead
                 const existingLead = await checkLeadExists(formData.mobile);
-                if (existingLead && existingLead.LeadId) {
+                console.log('Found existing lead:', existingLead);
+                
+                if (existingLead && (existingLead.LeadId || existingLead.ProspectID)) {
+                    const leadId = existingLead.LeadId || existingLead.ProspectID;
+                    console.log('Using leadId for update:', leadId);
+                    
                     const updateSuccess = await updateExistingLead(
-                        existingLead.LeadId, 
+                        leadId, 
                         formData, 
                         formType, 
                         additionalData
@@ -184,7 +189,7 @@ export async function submitToLeadSquared(formData, formType = 'general', additi
                         success: true,
                         message: 'Welcome back to your Femure journey! Your updated request will be processed within 5-10 minutes.',
                         isUpdate: true,
-                        leadId: existingLead.LeadId,
+                        leadId: leadId,
                         updateSuccess
                     };
                 } else {
