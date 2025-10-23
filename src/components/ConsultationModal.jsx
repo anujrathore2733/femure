@@ -117,9 +117,6 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
             const additionalData = {
                 selectedCondition: selectedCondition ? selectedCondition.title : '',
                 selectedPlan: formData.selectedPlan || (selectedPlan ? selectedPlan.name : ''),
-                planPrice: selectedPlan ? selectedPlan.price : '',
-                originalPrice: selectedPlan ? selectedPlan.originalPrice : '',
-                discount: selectedPlan ? selectedPlan.discount : '',
             };
             
             const result = await submitToLeadSquared(formData, formType, additionalData);

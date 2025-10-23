@@ -38,26 +38,22 @@ function buildLeadSquaredPayload(formData, formType = 'general', additionalData 
         FirstName: formData.name || '',
         Phone: formData.mobile || '',
         
-        // Custom fields for Femure
-        mx_FormType: formType,
-        mx_SelectedCondition: formData.selectedCondition || formData.condition || '',
+        // Essential custom fields only
         mx_Query: formData.query || '',
+        mx_SelectedCondition: formData.selectedCondition || formData.condition || '',
         mx_SelectedPlan: additionalData.selectedPlan || '',
-        mx_PlanPrice: additionalData.planPrice || '',
-        mx_OriginalPrice: additionalData.originalPrice || '',
-        mx_Discount: additionalData.discount || '',
         
-        // Source and tracking information
-        mx_Source: 'Website',
-        mx_Campaign: formData.utmCampaign || 'Direct',
+        // System data
+        mx_FormType: formType,
         mx_Device: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+        mx_SubmissionTime: new Date().toISOString(),
+        
+        // UTM tracking data
         mx_UTMSource: formData.utmSource || 'Direct',
         mx_UTMMedium: formData.utmMedium || 'Website',
         mx_UTMCampaign: formData.utmCampaign || 'Homeopathy-Consultation',
-        mx_SubmissionTime: new Date().toISOString(),
-        
-        // Additional data
-        ...additionalData,
+        mx_UTMContent: formData.utmContent || '',
+        mx_UTMTerm: formData.utmTerm || '',
     };
 
     // Remove empty values

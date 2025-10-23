@@ -38,35 +38,33 @@ The integration sends the following custom fields to LeadSquared:
 - `Email` - Email address (if collected)
 
 ### Custom Fields (mx_ prefix)
-- `mx_FormType` - Type of form (doctor-consultation, condition-consultation, quick-inquiry)
-- `mx_ConsultationType` - Video or Audio consultation
-- `mx_MedicalCondition` - Selected medical condition
-- `mx_Doctor` - Selected doctor name
-- `mx_SelectedCondition` - Condition title from "Know More" buttons
-- `mx_SelectedDoctor` - Doctor name from doctor selection
-- `mx_DoctorSpecialty` - Doctor's specialty
-- `mx_ConditionTagline` - Condition tagline
-- `mx_Source` - Source identifier (Femure-Website)
-- `mx_Campaign` - Campaign identifier
+- `mx_Query` - User's health concerns/questions
+- `mx_SelectedCondition` - Selected medical condition
+- `mx_SelectedPlan` - Selected pricing plan (if any)
+- `mx_FormType` - Type of form (condition-consultation, quick-inquiry)
 - `mx_Device` - Device type (Mobile/Desktop)
 - `mx_SubmissionTime` - Timestamp of submission
+- `mx_UTMSource` - UTM source tracking
+- `mx_UTMMedium` - UTM medium tracking
+- `mx_UTMCampaign` - UTM campaign tracking
+- `mx_UTMContent` - UTM content tracking
+- `mx_UTMTerm` - UTM term tracking
 
 ## Step 4: Create Custom Fields in LeadSquared
 
 1. Go to **Settings** → **Custom Fields**
 2. Create the following custom fields with `mx_` prefix:
-   - `mx_FormType` (Text)
-   - `mx_ConsultationType` (Text)
-   - `mx_MedicalCondition` (Text)
-   - `mx_Doctor` (Text)
+   - `mx_Query` (Text)
    - `mx_SelectedCondition` (Text)
-   - `mx_SelectedDoctor` (Text)
-   - `mx_DoctorSpecialty` (Text)
-   - `mx_ConditionTagline` (Text)
-   - `mx_Source` (Text)
-   - `mx_Campaign` (Text)
+   - `mx_SelectedPlan` (Text)
+   - `mx_FormType` (Text)
    - `mx_Device` (Text)
    - `mx_SubmissionTime` (Text)
+   - `mx_UTMSource` (Text)
+   - `mx_UTMMedium` (Text)
+   - `mx_UTMCampaign` (Text)
+   - `mx_UTMContent` (Text)
+   - `mx_UTMTerm` (Text)
 
 ## Step 5: Test the Integration
 
