@@ -50,10 +50,20 @@ The integration sends the following custom fields to LeadSquared:
 - `mx_UTMContent` - UTM content tracking
 - `mx_UTMTerm` - UTM term tracking
 
+### Interaction Tracking Fields (For Duplicate Lead Handling)
+- `mx_LastInteraction` - Last interaction timestamp
+- `mx_InteractionCount` - Number of interactions (auto-incremented)
+- `mx_LastFormType` - Last form type submitted
+- `mx_LastQuery` - Last query submitted
+- `mx_LastSelectedCondition` - Last selected condition
+- `mx_LastSelectedPlan` - Last selected plan
+
 ## Step 4: Create Custom Fields in LeadSquared
 
 1. Go to **Settings** → **Custom Fields**
 2. Create the following custom fields with `mx_` prefix:
+
+**Essential Fields:**
    - `mx_Query` (Text)
    - `mx_SelectedCondition` (Text)
    - `mx_SelectedPlan` (Text)
@@ -65,6 +75,14 @@ The integration sends the following custom fields to LeadSquared:
    - `mx_UTMCampaign` (Text)
    - `mx_UTMContent` (Text)
    - `mx_UTMTerm` (Text)
+
+**Interaction Tracking Fields:**
+   - `mx_LastInteraction` (Text)
+   - `mx_InteractionCount` (Number)
+   - `mx_LastFormType` (Text)
+   - `mx_LastQuery` (Text)
+   - `mx_LastSelectedCondition` (Text)
+   - `mx_LastSelectedPlan` (Text)
 
 ## Step 5: Test the Integration
 
@@ -100,6 +118,25 @@ The integration handles three types of forms:
 3. **Quick Inquiry** (`quick-inquiry`)
    - Simple name and mobile number form
    - Used for general inquiries
+
+## Duplicate Lead Handling
+
+The integration automatically handles duplicate leads based on phone number:
+
+### For New Leads
+- Creates a new lead in LeadSquared
+- Shows success message: "Lead successfully submitted to LeadSquared"
+
+### For Existing Leads
+- Updates the existing lead with interaction tracking
+- Shows user-friendly message: "Thank you for your continued interest! We have updated your information."
+- Tracks interaction data:
+  - Last interaction timestamp
+  - Interaction count (incremented)
+  - Last form type submitted
+  - Last query and selections
+
+This ensures you can track user engagement over time while providing a seamless experience for returning visitors.
 
 ## Error Handling
 

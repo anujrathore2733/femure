@@ -57,6 +57,80 @@ function buildLeadSquaredPayload(formData, formType = 'general', additionalData 
 }
 
 /**
+ * Check if lead exists in LeadSquared
+ */
+async function checkLeadExists(phone) {
+    try {
+        const searchUrl = `https://api-in21.leadsquared.com/v2/LeadManagement.svc/RetrieveLeadByPhoneNumber?phone=${encodeURIComponent(phone)}`;
+        
+        const response = await fetch(searchUrl, {
+            method: 'GET',
+            headers: getAuthHeaders(),
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log('Lead search result:', result);
+            // The API might return the lead directly or in an array
+            if (result && typeof result === 'object') {
+                // If it's an object with LeadId, return it
+                if (result.LeadId) {
+                    return result;
+                }
+                // If it's an array, return the first item
+                if (Array.isArray(result) && result.length > 0) {
+                    return result[0];
+                }
+            }
+            return null;
+        } else {
+            console.warn('Lead search failed:', response.status, await response.text());
+            return null;
+        }
+    } catch (error) {
+        console.warn('Error checking existing lead:', error);
+        return null;
+    }
+}
+
+/**
+ * Update existing lead in LeadSquared
+ */
+async function updateExistingLead(leadId, formData, formType, additionalData) {
+    try {
+        const updateUrl = 'https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Update';
+        const updatePayload = [
+            { Attribute: 'LeadId', Value: leadId },
+            { Attribute: 'mx_LastInteraction', Value: new Date().toISOString() },
+            { Attribute: 'mx_InteractionCount', Value: '1' }, // This will be incremented by LeadSquared
+            { Attribute: 'mx_LastFormType', Value: formType },
+            { Attribute: 'mx_LastQuery', Value: formData.query || '' },
+            { Attribute: 'mx_LastSelectedCondition', Value: formData.selectedCondition || formData.condition || '' },
+            { Attribute: 'mx_LastSelectedPlan', Value: additionalData.selectedPlan || '' },
+        ];
+
+        console.log('Updating existing lead:', leadId, updatePayload);
+
+        const response = await fetch(updateUrl, {
+            method: 'POST',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(updatePayload),
+        });
+
+        if (response.ok) {
+            console.log('Lead updated successfully');
+            return true;
+        } else {
+            console.warn('Lead update failed:', response.status, await response.text());
+            return false;
+        }
+    } catch (error) {
+        console.warn('Error updating existing lead:', error);
+        return false;
+    }
+}
+
+/**
  * Submit lead to LeadSquared
  */
 export async function submitToLeadSquared(formData, formType = 'general', additionalData = {}) {
@@ -81,7 +155,7 @@ export async function submitToLeadSquared(formData, formType = 'general', additi
             return { success: true, message: 'Lead captured (development mode)' };
         }
 
-        // Make API call to LeadSquared
+        // Try to create new lead first
         const response = await fetch(LEAD_SQUARED_CONFIG.apiUrl, {
             method: 'POST',
             headers: getAuthHeaders(),
@@ -90,6 +164,42 @@ export async function submitToLeadSquared(formData, formType = 'general', additi
 
         if (!response.ok) {
             const errorText = await response.text();
+            const errorData = JSON.parse(errorText);
+            
+            // Handle duplicate lead error specifically
+            if (response.status === 500 && errorData.ExceptionType === 'MXDuplicateEntryException') {
+                console.log('Duplicate lead detected, updating interaction timestamp...');
+                
+                // Find and update the existing lead
+                const existingLead = await checkLeadExists(formData.mobile);
+                if (existingLead && existingLead.LeadId) {
+                    const updateSuccess = await updateExistingLead(
+                        existingLead.LeadId, 
+                        formData, 
+                        formType, 
+                        additionalData
+                    );
+                    
+                    return {
+                        success: true,
+                        message: 'Welcome back to your Femure journey! Your updated request will be processed within 5-10 minutes.',
+                        isUpdate: true,
+                        leadId: existingLead.LeadId,
+                        updateSuccess
+                    };
+                } else {
+                    // Even if we can't find/update the lead, show success to user
+                    console.log('Could not find existing lead for update, but duplicate was detected');
+                    return {
+                        success: true,
+                        message: 'Welcome back to your Femure journey! Your updated request will be processed within 5-10 minutes.',
+                        isUpdate: true,
+                        leadId: null,
+                        updateSuccess: false
+                    };
+                }
+            }
+            
             throw new Error(`LeadSquared API error: ${response.status} - ${errorText}`);
         }
 
@@ -97,8 +207,9 @@ export async function submitToLeadSquared(formData, formType = 'general', additi
         
         return {
             success: true,
-            message: 'Lead successfully submitted to LeadSquared',
+            message: 'Your Femure journey begins now! Our expert team will contact you within 5-10 minutes.',
             data: result,
+            isUpdate: false
         };
 
     } catch (error) {

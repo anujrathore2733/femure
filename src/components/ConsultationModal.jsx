@@ -174,25 +174,16 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                     onClick={(e) => e.stopPropagation()}
                 >
                     <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">🎉 Welcome to Your Femure Journey!</h3>
                     <p className="text-gray-600 mb-6">
-                        Your consultation request has been submitted successfully. 
-                        Our team will contact you within 24 hours.
+                        Your transformation begins now! Our expert team will contact you within 5-10 minutes to start your personalized wellness journey.
                     </p>
-                    <div className="flex space-x-3">
-                        <button
-                            onClick={handleClose}
-                            className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-300"
-                        >
-                            Close
-                        </button>
-                        <button
-                            onClick={handleNewConsultation}
-                            className="flex-1 px-4 py-2 bg-femure-primary text-white rounded-lg hover:bg-femure-accent transition duration-300"
-                        >
-                            Book Another
-                        </button>
-                    </div>
+                    <button
+                        onClick={handleClose}
+                        className="w-full px-4 py-2 bg-femure-primary text-white rounded-lg hover:bg-femure-accent transition duration-300"
+                    >
+                        Close
+                    </button>
                 </div>
             </div>
         );
