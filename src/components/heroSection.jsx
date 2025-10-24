@@ -100,7 +100,7 @@ export default function HeroSection() {
                         {/* Powerful Solution Statement */}
                         <div className="mb-6 text-center">
                             <p className="text-3xl text-gray-900 leading-tight font-bold mb-4">
-                                <span className="text-femure-primary">Femure</span> is Your Answer
+                                <span className="text-femure-primary">Femure</span> is Your Answer<span className="text-femure-primary">.</span>
                             </p>
                             <p className="text-base text-gray-700 leading-relaxed mb-5">
                                 Personalized homeopathy for <span className="font-semibold text-gray-900">PCOS, hormonal issues, menstrual wellness, fertility, stress & mental health</span> — treating root causes with natural remedies, continuous care, and a supportive community.
@@ -232,7 +232,7 @@ export default function HeroSection() {
                         {/* Powerful Solution Statement - Desktop */}
                         <div className="mb-8">
                             <p className="text-4xl text-gray-900 leading-tight font-bold mb-5">
-                                <span className="text-femure-primary">Femure</span> is Your Answer
+                                <span className="text-femure-primary">Femure</span> is Your Answer<span className="text-femure-primary">.</span>
                             </p>
                             <p className="text-xl text-gray-700 leading-relaxed mb-6">
                                 Personalized homeopathy for <span className="font-semibold text-gray-900">PCOS, hormonal issues, menstrual wellness, fertility, stress & mental health</span> — treating root causes with natural remedies, continuous care, and a supportive community.

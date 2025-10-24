@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Heart, Menu, X } from 'react-feather';
-import Image from 'next/image';
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -53,15 +52,8 @@ export default function Navbar() {
     return (
         <nav className="bg-white shadow-sm py-4 sticky top-0 z-50" ref={menuRef}>
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <div className="flex items-center space-x-2">
-                    <Image 
-                        src="/logo.svg" 
-                        alt="Femure Logo" 
-                        width={32} 
-                        height={32} 
-                        className="w-8 h-8"
-                    />
-                    <span className="font-headline text-xl text-femure-primary">Femure</span>
+                <div className="flex items-center">
+                    <span className="font-headline text-2xl font-bold text-femure-primary">Femure</span>
                 </div>
                 <div className="hidden md:flex space-x-8">
                     <a href="#home" className="text-femure-primary font-medium">Home</a>
