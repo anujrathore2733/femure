@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Star, Video, Phone, Package, Users, Heart, CheckCircle, ArrowDown, Tag } from 'react-feather';
+import { Star, Video, Phone, Package, Users, Heart, CheckCircle, ArrowDown, Tag, Check } from 'react-feather';
 import ConsultationModal from './ConsultationModal';
 
 const plans = [
@@ -166,14 +166,6 @@ export default function PricingSection() {
                     </div>
                 )}
 
-                {/* Round Percent Badge - Top Left */}
-                {getDiscountPercent(plan.discount) && (
-                    <div className="absolute -top-2 -left-2 z-20">
-                        <div className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-emerald-500 text-white shadow flex items-center justify-center text-[10px] md:text-xs font-extrabold ring-1 ring-black/5">
-                            {getDiscountPercent(plan.discount)}%
-                        </div>
-                    </div>
-                )}
 
                 {/* Card - Fixed Height */}
                 <div className={`border transition-all duration-500 rounded-2xl flex flex-col h-full ${
@@ -203,13 +195,6 @@ export default function PricingSection() {
                                 </div>
                                 <div className="text-2xl md:text-3xl font-light text-femure-primary mb-0.5 md:mb-1">{plan.price}</div>
                                 <div className="text-[10px] md:text-xs text-gray-400 uppercase tracking-wider">{plan.duration}</div>
-                                {savings > 0 && (
-                                    <div className="mt-2">
-                                        <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 text-[10px] md:text-xs font-medium">
-                                            Save {formatINR(savings)}
-                                        </span>
-                                    </div>
-                                )}
                             </div>
                         </div>
                     </div>
@@ -222,25 +207,34 @@ export default function PricingSection() {
                                                     const prevIncluded = prevPlan ? Boolean(prevPlan.features.find((f) => f.text === feature.text && f.included)) : false;
                                                     const isNew = feature.included && !prevIncluded;
                                                     const isVideo = /video/i.test(feature.text);
+                                                    const isNutritionist = /nutritionist/i.test(feature.text);
+                                                    const isCommunity = /community/i.test(feature.text);
+                                                    const isPremium = isVideo || isNutritionist || isCommunity;
                                 return (
                                                         <div key={featureIndex} className="flex items-center">
-                                                            <div className={`w-3.5 h-3.5 md:w-4 md:h-4 rounded-full mr-2.5 md:mr-3 flex items-center justify-center flex-shrink-0 ${
-                                            feature.included 
-                                                ? 'bg-femure-primary' 
-                                                : 'bg-gray-200'
-                                        }`}>
-                                            {feature.included ? (
-                                                <CheckCircle className="w-2 h-2 md:w-2.5 md:h-2.5 text-white" />
-                                            ) : (
+                                                            {feature.included ? (
+                                            <Check className={`w-4 h-4 md:w-5 md:h-5 mr-2.5 md:mr-3 flex-shrink-0 text-green-600 stroke-2 ${
+                                                feature.text.includes('Video consultation') || 
+                                                feature.text.includes('Ongoing nutritionist support') || 
+                                                feature.text.includes('Exclusive community access')
+                                                    ? 'animate-shine-icon' 
+                                                    : ''
+                                            }`} />
+                                        ) : (
+                                            <div className="w-4 h-4 md:w-5 md:h-5 mr-2.5 md:mr-3 flex-shrink-0 flex items-center justify-center">
                                                 <div className="w-1.5 h-1.5 rounded-full bg-gray-400"></div>
-                                            )}
-                                        </div>
+                                            </div>
+                                        )}
                                                             <FeatureIcon className={`w-3.5 h-3.5 md:w-4 md:h-4 mr-2.5 md:mr-3 flex-shrink-0 ${
                                                                 feature.included ? 'text-femure-primary' : 'text-gray-400'
                                                             }`} />
                                                             <span className={`text-xs md:text-sm ${
-                                                                feature.included ? 'text-gray-700' : 'text-gray-400'
-                                                             } ${isVideo ? 'font-semibold' : ''}`}>
+                                                                feature.included 
+                                                                    ? isPremium 
+                                                                        ? 'font-semibold animate-shine text-femure-primary' 
+                                                                        : 'text-femure-primary'
+                                                                    : 'text-gray-400'
+                                                             }`}>
                                                                 {feature.text}
                                                             </span>
                                     </div>
