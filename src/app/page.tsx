@@ -43,9 +43,9 @@ export default function Home() {
         <ConditionsSection />
       </section>
       <InquiryForm />
+      <WhyFemureSection />
       <JourneySection />
       <CommunitySection />
-      <WhyFemureSection />
       <section id="testimonials">
         <TestimonialsSection />
       </section>
