@@ -1,39 +1,83 @@
-import { Star, ChevronLeft, ChevronRight } from 'react-feather';
+import { Star, ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from 'react-feather';
 import { useRef, useState, useEffect } from 'react';
 
 const testimonials = [
-    { name: 'Ritika', meta: '28, Mumbai', quote: '3 mahine baad... finally cycle set 🙏 call pe follow‑up ne confidence de diya.', rating: 5, image: '/img1.png' },
-    { name: 'Aditi', meta: '35, Bengaluru', quote: 'doctor actually suna... cramps kam, neend better. simple tips, kaafi kaam ke.', rating: 5, image: '/img2.png' },
-    { name: 'Meera', meta: '27, Delhi', quote: 'har month ka stress tha... ab smooth hai. mood bhi zyada stable ✨', rating: 4, image: '/img3.png' },
-    { name: 'Sana', meta: '31, Pune', quote: 'pcos acne dheere dheere gaya... creams se better ye long‑term waali cheez lagi.', rating: 4, image: '/img4.png' },
-    { name: 'Nisha', meta: '29, Jaipur', quote: 'first time feel hua ki kisi ne samjha. period pain ~60% kam.', rating: 5, image: '/img1.png' },
-    { name: 'Ananya', meta: '24, Lucknow', quote: 'ghar ka khana tweak kiya bas... pms ka gussa control 😅', rating: 4, image: '/img2.png' },
-    { name: 'Kavya', meta: '33, Hyderabad', quote: 'video consult smooth... meds time pe. slow n steady change.', rating: 4, image: '/img3.png' },
-    { name: 'Priya', meta: '26, Indore', quote: 'spotting issue solve ✅ ab cycle predictable lagta.', rating: 5, image: '/img4.png' },
-    { name: 'Simran', meta: '30, Chandigarh', quote: 'bloating + cramps dono control... check‑ins helpful the.', rating: 4, image: '/img1.png' },
-    { name: 'Ishita', meta: '32, Gurgaon', quote: 'saalon baad painkillers nahi liye. relief!', rating: 5, image: '/img2.png' },
-    { name: 'Tanya', meta: '25, Noida', quote: 'pehle delay... ab on time. skin bhi thodi better 😊', rating: 4, image: '/img3.png' },
-    { name: 'Neha', meta: '34, Kolkata', quote: 'stress kam to sleep theek... overall calmer feel.', rating: 4, image: '/img4.png' },
-    { name: 'Aisha', meta: '29, Ahmedabad', quote: 'remedies gentle... side effects zero. patience rakho... result aata hai.', rating: 5, image: '/img1.png' },
-    { name: 'Pooja', meta: '27, Bhopal', quote: 'plan personalize kiya... 2 months mein clear difference.', rating: 5, image: '/img2.png' },
-    { name: 'Shruti', meta: '31, Thane', quote: 'mood swings control mein.. partner bhi notice kar raha 😄', rating: 4, image: '/img3.png' },
-    { name: 'Rhea', meta: '23, Surat', quote: 'irregular se stable. tension kam... life easy.', rating: 5, image: '/img4.png' },
-    { name: 'Gayatri', meta: '36, Nagpur', quote: 'thyroid + period dono manageable ab. slow improvements but solid.', rating: 4, image: '/img1.png' },
-    { name: 'Bhavana', meta: '28, Patna', quote: 'call notes clear... next steps simple. follow karna easy laga.', rating: 4, image: '/img2.png' },
-    { name: 'Zoya', meta: '26, Kochi', quote: 'cravings aur pms headache... dono kam. thoda time laga... worth.', rating: 4, image: '/img3.png' },
-    { name: 'Avni', meta: '30, Udaipur', quote: 'weight stable... period pehle jaisa heavy nahi. good.', rating: 3, image: '/img4.png' },
-    { name: 'Mahima', meta: '33, Amritsar', quote: 'nutrition waali call useful... realistic changes bataye.', rating: 5, image: '/img1.png' },
-    { name: 'Ira', meta: '22, Kanpur', quote: 'college schedule ke saath bhi manageable... nice.', rating: 4, image: '/img2.png' },
-    { name: 'Yashika', meta: '29, Vadodara', quote: 'cycle set + skin glow... bonus mila 😌', rating: 5, image: '/img3.png' },
-    { name: 'Srishti', meta: '27, Guwahati', quote: 'pehle doubt tha... ab believer. slow par steady.', rating: 4, image: '/img4.png' },
-    { name: 'Anushka', meta: '26, Delhi', quote: '2 lines? nahi.. bas itna: works for me 👍', rating: 4, image: '/img1.png' },
-    { name: 'Heena', meta: '35, Mumbai', quote: 'pehle cramps, mood, acne... sab ek saath trigger hota tha. ab cycle kaafi normal lagta, mind bhi shaant 🙂', rating: 5, image: '/img2.png' },
-    { name: 'Rimsha', meta: '24, Jaipur', quote: 'nice. helpful team.', rating: 4, image: '/img3.png' }
+    { 
+        name: 'Priya Sharma', 
+        meta: '28, Mumbai', 
+        quote: 'I was struggling with irregular periods for 2 years. Every month I would worry about when it would come, when it wouldn\'t. The homeopathic medicine the doctor gave me is actually working. Now my cycle is regular and cramps have reduced significantly. The best part is there are no side effects. My mom is also happy that I finally found a natural solution.', 
+        rating: 5, 
+        image: '/img1.png' 
+    },
+    { 
+        name: 'Ananya Singh', 
+        meta: '25, Delhi', 
+        quote: 'PCOS ke karan weight gain aur acne dono problems thi. Main bahut frustrated thi kyunki koi bhi treatment kaam nahi kar raha tha. Yahan jo personalized approach hai, woh actually different hai. Nutritionist ne jo diet plan diya aur doctor ne jo medicines di, dono milake 4 months mein maine 8 kg weight loss kiya hai. Acne bhi clear ho raha hai gradually. Ab confidence aa raha hai.', 
+        rating: 5, 
+        image: '/img2.png' 
+    },
+    { 
+        name: 'Kavya Reddy', 
+        meta: '32, Bangalore', 
+        quote: 'I started experiencing menopause symptoms and was completely confused. Hot flashes, mood swings, sleep issues - everything at once. The approach the doctor took is very gentle and effective. Now I\'m sleeping better and mood swings are under control. My family can also see that I\'m calmer than before. I\'m thankful that I got help in a natural way.', 
+        rating: 4, 
+        image: '/img3.png' 
+    },
+    { 
+        name: 'Meera Patel', 
+        meta: '30, Ahmedabad', 
+        quote: 'Pregnancy ke baad weight gain aur hormonal imbalance dono issues the. Main bahut tired feel karti thi aur energy level zero tha. Jo treatment plan diya gaya, woh step by step follow kiya. 6 months mein maine apna energy level wapas paaya hai. Weight bhi gradually kam ho raha hai aur skin bhi glow aa raha hai. Husband bhi notice kar raha hai ki main pehle se zyada active hun.', 
+        rating: 5, 
+        image: '/img4.png' 
+    },
+    { 
+        name: 'Ritika Agarwal', 
+        meta: '26, Pune', 
+        quote: 'I had irregular periods since college. Due to stress and unhealthy lifestyle, the condition got worse. The holistic approach here actually works. Lifestyle changes, proper nutrition and homeopathic medicines combined, I started seeing improvement in 3 months. Now my cycle is regular and PMS symptoms are also reduced. My friends also ask what I did.', 
+        rating: 4, 
+        image: '/img1.png' 
+    },
+    { 
+        name: 'Shruti Joshi', 
+        meta: '29, Hyderabad', 
+        quote: 'Thyroid ki problem thi aur periods bhi irregular the. Main bahut worried thi kyunki future mein pregnancy ke liye ye sab issues ho sakte the. Doctor ne jo treatment diya, woh bahut comprehensive hai. Thyroid levels improve ho rahe hain aur periods bhi regular hone lage hain. Ab main confident feel karti hun ki future mein koi problem nahi hogi. Family bhi supportive hai aur sab khush hain.', 
+        rating: 5, 
+        image: '/img2.png' 
+    },
+    { 
+        name: 'Neha Gupta', 
+        meta: '34, Kolkata', 
+        quote: 'Due to work stress and personal life pressure, I developed hormonal imbalance. Mood swings, anxiety, and sleep issues - everything together. The counseling and treatment I received is actually helpful. Now I\'m better at managing stress and sleep quality has also improved. My performance at office is also better because my mind is clear. Colleagues are also noticing the positive change.', 
+        rating: 4, 
+        image: '/img3.png' 
+    },
+    { 
+        name: 'Pooja Singh', 
+        meta: '27, Jaipur', 
+        quote: 'Shaadi ke baad weight gain aur PCOS dono problems develop ho gayi thi. Main bahut conscious thi aur confidence level low tha. Jo personalized plan diya gaya, woh actually realistic aur achievable hai. 5 months mein maine significant improvement dekha hai. Weight loss ho raha hai, skin better ho raha hai, aur periods bhi regular hain. Husband bhi supportive hai aur sab khush hain.', 
+        rating: 5, 
+        image: '/img4.png' 
+    },
+    { 
+        name: 'Aisha Khan', 
+        meta: '31, Lucknow', 
+        quote: 'I had postpartum depression and hormonal changes. I was feeling very overwhelmed and had problems with baby care too. The support system I got here is actually helpful. Counseling sessions and homeopathic treatment combined, I improved my mental health in 4 months. Now I\'m becoming a better mother and family life is also smooth.', 
+        rating: 4, 
+        image: '/img1.png' 
+    },
+    { 
+        name: 'Sana Sheikh', 
+        meta: '28, Mumbai', 
+        quote: 'Endometriosis ki problem thi aur period pain unbearable tha. Har month 3-4 din bed rest karna padta tha. Jo treatment approach hai, woh actually effective hai. Pain level significantly kam ho gaya hai aur quality of life improve ho gayi hai. Ab main normal routine follow kar sakti hun aur work life bhi better hai. Family bhi relieved hai ki finally koi solution mil gaya.', 
+        rating: 5, 
+        image: '/img2.png' 
+    }
 ];
 
 export default function TestimonialsSection() {
     const scrollRef = useRef(null);
     const [active, setActive] = useState(0);
+    const [expandedCards, setExpandedCards] = useState(new Set());
     const getInitials = (name) => {
         if (!name) return '';
         const parts = name.trim().split(/\s+/);
@@ -61,6 +105,16 @@ export default function TestimonialsSection() {
         container.scrollTo({ left: (active + delta) * width, behavior: 'smooth' });
     };
 
+    const toggleExpanded = (index) => {
+        const newExpanded = new Set(expandedCards);
+        if (newExpanded.has(index)) {
+            newExpanded.delete(index);
+        } else {
+            newExpanded.add(index);
+        }
+        setExpandedCards(newExpanded);
+    };
+
     return (
         <section className="py-10 md:py-16 bg-gradient-to-r from-[#FFF8F8] to-white">
             <div className="container mx-auto px-6">
@@ -84,25 +138,46 @@ export default function TestimonialsSection() {
                         style={{ scrollBehavior: 'smooth' }}
                     >
                         {testimonials.map((t, i) => {
-                            const clampClass = i % 3 === 0 ? '' : i % 3 === 1 ? 'line-clamp-3' : 'line-clamp-2';
+                            const isExpanded = expandedCards.has(i);
+                            const shouldTruncate = t.quote.length > 150;
+                            const displayText = isExpanded || !shouldTruncate ? t.quote : t.quote.substring(0, 150) + '...';
+                            
                             return (
-                                <div key={i} className="min-w-full md:min-w-[50%] lg:min-w-[33.3333%] pr-3 md:pr-4 snap-start">
-                                    <div className="bg-white p-4 md:p-8 rounded-2xl shadow-sm h-full">
-                                        <div className="flex items-center mb-3 md:mb-4">
-                                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full mr-3 md:mr-4 flex items-center justify-center text-white font-semibold bg-femure-primary ring-1 ring-white/60 shadow-sm">
-                                                <span>{getInitials(t.name)}</span>
+                                <div key={i} className="min-w-full md:min-w-[50%] lg:min-w-[33.3333%] pr-3 md:pr-4 snap-start mb-4">
+                                    <div className="bg-white p-3 md:p-6 rounded-2xl shadow-sm h-full">
+                                        <div className="flex items-center mb-2 md:mb-3">
+                                            <div className="w-8 h-8 md:w-10 md:h-10 rounded-full mr-2 md:mr-3 flex items-center justify-center text-white font-semibold bg-femure-primary ring-1 ring-white/60 shadow-sm">
+                                                <span className="text-xs md:text-sm">{getInitials(t.name)}</span>
                                             </div>
                                             <div>
-                                                <h4 className="font-semibold text-gray-900 text-sm md:text-base">{t.name}</h4>
-                                                <p className="text-[10px] md:text-xs text-gray-500">{t.meta}</p>
-                                                <div className="flex text-yellow-400 mt-0.5 md:mt-1">
+                                                <h4 className="font-semibold text-gray-900 text-xs md:text-sm">{t.name}</h4>
+                                                <p className="text-[9px] md:text-[10px] text-gray-500">{t.meta}</p>
+                                                <div className="flex text-yellow-400 mt-0.5">
                                                     {Array.from({ length: t.rating }).map((_, j) => (
-                                                        <Star key={j} className="w-3.5 h-3.5 md:w-4 md:h-4 fill-current" />
+                                                        <Star key={j} className="w-3 h-3 md:w-3.5 md:h-3.5 fill-current" />
                                                     ))}
                                                 </div>
                                             </div>
                                         </div>
-                                        <p className={`text-gray-700 leading-relaxed text-sm md:text-base ${clampClass}`}>{`"${t.quote}"`}</p>
+                                        <p className="text-gray-700 leading-relaxed text-xs md:text-sm mb-2">{`"${displayText}"`}</p>
+                                        {shouldTruncate && (
+                                            <button
+                                                onClick={() => toggleExpanded(i)}
+                                                className="flex items-center text-femure-primary text-[10px] font-medium hover:text-femure-accent transition-colors"
+                                            >
+                                                {isExpanded ? (
+                                                    <>
+                                                        <span>See less</span>
+                                                        <ChevronUp className="w-2.5 h-2.5 ml-1" />
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <span>See more</span>
+                                                        <ChevronDown className="w-2.5 h-2.5 ml-1" />
+                                                    </>
+                                                )}
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             );

@@ -141,7 +141,7 @@ export default function ConditionsSection() {
                         </h2>
                         <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-4 leading-relaxed">
                             <span className="font-semibold text-gray-900">20,000+ women</span> have found relief through our personalized homeopathic approach. 
-                            Our doctors have successfully treated these conditions with <span className="font-semibold text-femure-primary">95% patient satisfaction</span>.
+                            Our doctors have successfully treated these conditions with <span className="font-semibold text-femure-primary">90% satisfaction</span>.
                         </p>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
                             Do any of these symptoms sound familiar? You're not alone, and there's a natural solution.
