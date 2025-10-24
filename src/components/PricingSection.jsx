@@ -226,11 +226,21 @@ export default function PricingSection() {
                                             </div>
                                         )}
                                                             <FeatureIcon className={`w-3.5 h-3.5 md:w-4 md:h-4 mr-2.5 md:mr-3 flex-shrink-0 ${
-                                                                feature.included ? 'text-femure-primary' : 'text-gray-400'
+                                                                feature.included 
+                                                                    ? (feature.text.includes('Video consultation') || 
+                                                                       feature.text.includes('Ongoing nutritionist support') || 
+                                                                       feature.text.includes('One nutritionist session') ||
+                                                                       feature.text.includes('Exclusive community access')
+                                                                           ? 'text-femure-primary animate-shine animate-shine-icon-flip' 
+                                                                           : 'text-femure-primary')
+                                                                    : 'text-gray-400'
                                                             }`} />
                                                             <span className={`text-xs md:text-sm ${
                                                                 feature.included 
-                                                                    ? isPremium 
+                                                                    ? (feature.text.includes('Video consultation') || 
+                                                                       feature.text.includes('Ongoing nutritionist support') || 
+                                                                       feature.text.includes('One nutritionist session') ||
+                                                                       feature.text.includes('Exclusive community access'))
                                                                         ? 'font-semibold animate-shine text-femure-primary' 
                                                                         : 'text-femure-primary'
                                                                     : 'text-gray-400'
