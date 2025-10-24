@@ -9,40 +9,52 @@ const doctors = [
     {
         name: 'Dr. Tanya Vaish',
         specialty: 'Homeopathy, PCOS & Fertility Specialist',
+        qualification: 'BHMS, MD',
         rating: 4.8,
         experience: '8+ years',
         patients: '3700+',
         languages: 'English, Hindi',
+        license: 'H041477',
+        licenseUrl: 'https://cchindia.com/verify-license',
         quote: "Empowering women through holistic, personalized care is my passion.",
         image: '/drtanya.png'
     },
     {
         name: 'Dr Nisha Dhiman',
         specialty: "Menstrual & Period Cycle Specialist",
+        qualification: 'BHMS',
         rating: 4.7,
         experience: '8+ years',
         patients: '2700+',
         languages: 'English, Hindi',
+        license: '695/A',
+        licenseUrl: 'https://cchindia.com/verify-license',
         quote: 'Understanding your period cycle is the first step to a healthier you.',
       image: '/dr.nisha.png'
     },
     {
         name: 'Dr. Sakshi Bhadana',
         specialty: 'Homeopathy & Hormone Expert',
+        qualification: 'BHMS, MD',
         rating: 4.8,
         experience: '7+ years',
         patients: '2500+',
         languages: 'English, Hindi',
+        license: 'H040065',
+        licenseUrl: 'https://cchindia.com/verify-license',
         quote: "Balance comes from understanding your body's natural rhythm.",
         image: '/SakshiBhadana.png'
     },
     {
         name: 'Dr. Pooja Patidar',
         specialty: "Women's Health Specialist",
+        qualification: 'BHMS, MD',
         rating: 4.5,
         experience: '6+ years',
         patients: '1700+',
         languages: 'English, Hindi',
+        license: '0047846',
+        licenseUrl: 'https://cchindia.com/verify-license',
         quote: 'Your health journey is unique, and so should be your treatment.',
         image: '/DrPoojaPatidar.jpeg'
     }
@@ -67,7 +79,13 @@ export default function DoctorsSection() {
                     <h2 className="font-headline text-2xl md:text-3xl text-center mb-6 md:mb-12">Meet the Experts Who Listen</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
                         {doctors.map((doctor, index) => (
-                            <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-lg border-2 md:border-4 border-femure-primary">
+                            <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden transition duration-300 hover:shadow-lg border-2 md:border-4 border-femure-primary relative">
+                                {/* License Number */}
+                                <div className="absolute top-2 right-2 z-10">
+                                    <div className="text-[10px] text-gray-500 font-medium">
+                                        License No: {doctor.license}
+                                    </div>
+                                </div>
                                 <div className="p-4 md:p-6 flex flex-col items-center">
                                     <Image 
                                         src={doctor.image} 
@@ -83,15 +101,15 @@ export default function DoctorsSection() {
                                         }}
                                     />
                                     <h3 className="mt-3 md:mt-4 font-headline text-xl md:text-xl">{doctor.name}</h3>
-                                    <p className="text-femure-accent text-base md:text-base mb-2 md:mb-3">{doctor.specialty}</p>
-                                    <div className="flex items-center text-sm md:text-sm text-gray-600 mb-2">
-                                        <Star className="w-4 h-4 md:w-4 md:h-4 fill-current text-yellow-400 mr-1" />
-                                        <span>{doctor.rating}★ Rating</span>
-                                    </div>
-                                    <div className="text-center text-sm md:text-sm text-gray-600 space-y-1 mb-3 md:mb-4">
-                                        <p><span className="font-semibold">Experience:</span> {doctor.experience}</p>
-                                        <p><span className="font-semibold">Patients:</span> {doctor.patients}</p>
-                                        <p><span className="font-semibold">Languages:</span> {doctor.languages}</p>
+                                    <p className="text-femure-accent text-base md:text-base mb-1">{doctor.specialty}</p>
+                                    <p className="text-femure-primary text-sm md:text-sm font-semibold mb-2 md:mb-3">{doctor.qualification}</p>
+                                    <div className="text-center text-sm md:text-sm text-gray-600 mb-3 md:mb-4">
+                                        <div className="flex items-center justify-center mb-1">
+                                            <Star className="w-4 h-4 md:w-4 md:h-4 fill-current text-yellow-400 mr-1" />
+                                            <span className="font-semibold">{doctor.rating}★ Rating</span>
+                                        </div>
+                                        <p className="text-xs md:text-sm"><span className="font-semibold">Experience:</span> {doctor.experience} • <span className="font-semibold">Patients:</span> {doctor.patients}</p>
+                                        <p className="text-xs md:text-sm"><span className="font-semibold">Languages:</span> {doctor.languages}</p>
                                     </div>
                                     <p className="text-gray-600 text-center italic text-sm md:text-sm">{`"${doctor.quote}"`}</p>
                                 </div>
