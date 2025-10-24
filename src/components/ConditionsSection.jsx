@@ -134,36 +134,17 @@ export default function ConditionsSection() {
         <>
             <section className="py-12 md:py-16" style={{ background: 'linear-gradient(to bottom, #FFF8F8, #FFFFFF)' }}>
                 <div className="container mx-auto px-6">
-                    {/* Enhanced Header Section */}
+                    {/* Light Header Section */}
                     <div className="text-center mb-10 md:mb-16">
-                        <h2 className="font-headline text-4xl md:text-5xl text-femure-primary mb-6 leading-tight">
-                            Proven Results. Lasting Relief.
+                        <h2 className="font-headline text-3xl md:text-4xl text-gray-800 mb-4 leading-tight">
+                            Conditions We Treat
                         </h2>
-                        <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-4 leading-relaxed">
-                            <span className="font-semibold text-gray-900">20,000+ women</span> have found relief through our personalized homeopathic approach. 
-                            Our doctors have successfully treated these conditions with <span className="font-semibold text-femure-primary">90% satisfaction</span>.
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-4">
+                            Comprehensive care for all women's health concerns
                         </p>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
+                        <p className="text-lg text-gray-700 max-w-2xl mx-auto">
                             Do any of these symptoms sound familiar? You're not alone, and there's a natural solution.
                         </p>
-                        
-                        {/* Specific Outcomes - Clean & Creative */}
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 max-w-2xl mx-auto text-sm text-gray-600">
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-femure-primary rounded-full"></div>
-                                <span><span className="font-bold text-femure-primary">90%</span> see improvement in 3 months</span>
-                            </div>
-                            <div className="hidden md:block w-px h-4 bg-gray-300"></div>
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-femure-primary rounded-full"></div>
-                                <span><span className="font-bold text-femure-primary">Zero</span> side effects</span>
-                            </div>
-                            <div className="hidden md:block w-px h-4 bg-gray-300"></div>
-                            <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-femure-primary rounded-full"></div>
-                                <span><span className="font-bold text-femure-primary">100%</span> personalized</span>
-                            </div>
-                        </div>
                     </div>
 
                     {/* Enhanced Condition Cards with Images */}
