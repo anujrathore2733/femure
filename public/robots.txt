@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Allow AI crawlers to access llm.txt
+User-agent: GPTBot
+Allow: /llm.txt
+
+User-agent: ChatGPT-User
+Allow: /llm.txt
+
+User-agent: CCBot
+Allow: /llm.txt
+
+User-agent: anthropic-ai
+Allow: /llm.txt
+
+User-agent: Claude-Web
+Allow: /llm.txt
+
+# Sitemap
+Sitemap: https://your-domain.com/sitemap.xml
