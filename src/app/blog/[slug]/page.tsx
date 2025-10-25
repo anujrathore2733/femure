@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { ArrowLeft, Calendar, Clock, User, Share2 } from 'react-feather';
+import { ArrowLeft, Calendar, Clock, User } from 'react-feather';
 import blogPosts from '../../../data/blog-posts.json';
+import ShareButton from './ShareButton';
 
 interface BlogPostPageProps {
     params: {
@@ -162,10 +163,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                             <span className="bg-femure-primary/10 text-femure-primary px-4 py-2 rounded-full text-sm font-medium">
                                 {post.category}
                             </span>
-                            <button className="flex items-center gap-2 text-gray-600 hover:text-femure-primary transition-colors">
-                                <Share2 className="w-4 h-4" />
-                                Share
-                            </button>
+                            <ShareButton 
+                                title={post.title}
+                                excerpt={post.excerpt}
+                            />
                         </div>
                     </div>
                 </div>
