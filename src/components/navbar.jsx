@@ -2,10 +2,15 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Heart, Menu, X } from 'react-feather';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
     const menuRef = useRef(null);
+    const pathname = usePathname();
+    
+    // Check if we're on the blog page
+    const isBlogPage = pathname?.startsWith('/blog');
 
     // Close menu when clicking outside
     useEffect(() => {
@@ -56,11 +61,11 @@ export default function Navbar() {
                     <span className="font-headline text-2xl font-bold text-femure-primary">Femure</span>
                 </div>
                 <div className="hidden md:flex space-x-8">
-                    <a href="#home" className="text-femure-primary font-medium">Home</a>
-                    <a href="#conditions" className="text-gray-600 hover:text-femure-primary">Conditions</a>
-                    <a href="#doctors" className="text-gray-600 hover:text-femure-primary">Doctors</a>
-                    <a href="#pricing" className="text-gray-600 hover:text-femure-primary">Pricing</a>
-                    <a href="#testimonials" className="text-gray-600 hover:text-femure-primary">Testimonials</a>
+                    <a href={isBlogPage ? "/#home" : "#home"} className="text-femure-primary font-medium">Home</a>
+                    <a href={isBlogPage ? "/#conditions" : "#conditions"} className="text-gray-600 hover:text-femure-primary">Conditions</a>
+                    <a href={isBlogPage ? "/#doctors" : "#doctors"} className="text-gray-600 hover:text-femure-primary">Doctors</a>
+                    <a href={isBlogPage ? "/#pricing" : "#pricing"} className="text-gray-600 hover:text-femure-primary">Pricing</a>
+                    <a href={isBlogPage ? "/#testimonials" : "#testimonials"} className="text-gray-600 hover:text-femure-primary">Testimonials</a>
                     <a href="/blog" className="text-gray-600 hover:text-femure-primary">Blog</a>
                 </div>
                 <button 
@@ -77,11 +82,11 @@ export default function Navbar() {
             </div>
             <div className={`${menuOpen ? 'block' : 'hidden'} md:hidden px-6 pb-4`}>
                 <div className="flex flex-col space-y-4 pt-4 border-t border-gray-100">
-                    <a href="#home" className="text-femure-primary font-medium" onClick={closeMenu}>Home</a>
-                    <a href="#conditions" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Conditions</a>
-                    <a href="#doctors" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Doctors</a>
-                    <a href="#pricing" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Pricing</a>
-                    <a href="#testimonials" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Testimonials</a>
+                    <a href={isBlogPage ? "/#home" : "#home"} className="text-femure-primary font-medium" onClick={closeMenu}>Home</a>
+                    <a href={isBlogPage ? "/#conditions" : "#conditions"} className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Conditions</a>
+                    <a href={isBlogPage ? "/#doctors" : "#doctors"} className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Doctors</a>
+                    <a href={isBlogPage ? "/#pricing" : "#pricing"} className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Pricing</a>
+                    <a href={isBlogPage ? "/#testimonials" : "#testimonials"} className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Testimonials</a>
                     <a href="/blog" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Blog</a>
                 </div>
             </div>
