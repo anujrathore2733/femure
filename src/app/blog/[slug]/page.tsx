@@ -195,9 +195,17 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     {/* Author Bio */}
                     <div className="mt-12 bg-white rounded-2xl shadow-lg p-8">
                         <div className="flex items-start gap-6">
-                            <div className="w-16 h-16 bg-femure-primary/10 rounded-full flex items-center justify-center">
-                                <User className="w-8 h-8 text-femure-primary" />
-                            </div>
+                            {post.authorImage ? (
+                                <img 
+                                    src={post.authorImage} 
+                                    alt={post.author}
+                                    className="w-16 h-16 rounded-full object-cover border-2 border-femure-primary/20"
+                                />
+                            ) : (
+                                <div className="w-16 h-16 bg-femure-primary/10 rounded-full flex items-center justify-center">
+                                    <User className="w-8 h-8 text-femure-primary" />
+                                </div>
+                            )}
                             <div>
                                 <h3 className="font-headline text-xl text-gray-900 mb-2">{post.author}</h3>
                                 <p className="text-gray-600 leading-relaxed">

@@ -116,8 +116,16 @@ export default function BlogPage() {
                                             {post.excerpt}
                                         </p>
                                         <div className="flex items-center justify-between mt-auto">
-                                            <div className="flex items-center gap-1">
-                                                <User className="w-3 h-3 text-gray-400" />
+                                            <div className="flex items-center gap-2">
+                                                {post.authorImage ? (
+                                                    <img 
+                                                        src={post.authorImage} 
+                                                        alt={post.author}
+                                                        className="w-4 h-4 rounded-full object-cover"
+                                                    />
+                                                ) : (
+                                                    <User className="w-3 h-3 text-gray-400" />
+                                                )}
                                                 <span className="text-xs text-gray-600">{post.author}</span>
                                             </div>
                                             <span className="bg-femure-primary/10 text-femure-primary px-2 py-1 rounded-full text-xs font-medium">
