@@ -18,4 +18,4 @@ User-agent: Claude-Web
 Allow: /llm.txt
 
 # Sitemap
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://femure.in/sitemap.xml
