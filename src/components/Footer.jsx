@@ -11,6 +11,7 @@ export default function Footer() {
                     <div className="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
                         <a href="#" className="text-gray-600 hover:text-femure-primary">About</a>
                         <a href="#" className="text-gray-600 hover:text-femure-primary">Doctors</a>
+                        <a href="/blog" className="text-gray-600 hover:text-femure-primary">Blog</a>
                         <a href="#" className="text-gray-600 hover:text-femure-primary">FAQ</a>
                         <a href="#" className="text-gray-600 hover:text-femure-primary">Privacy</a>
                         <a href="#" className="text-gray-600 hover:text-femure-primary">Terms</a>

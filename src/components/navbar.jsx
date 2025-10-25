@@ -61,6 +61,7 @@ export default function Navbar() {
                     <a href="#doctors" className="text-gray-600 hover:text-femure-primary">Doctors</a>
                     <a href="#pricing" className="text-gray-600 hover:text-femure-primary">Pricing</a>
                     <a href="#testimonials" className="text-gray-600 hover:text-femure-primary">Testimonials</a>
+                    <a href="/blog" className="text-gray-600 hover:text-femure-primary">Blog</a>
                 </div>
                 <button 
                     onClick={toggleMenu} 
@@ -81,6 +82,7 @@ export default function Navbar() {
                     <a href="#doctors" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Doctors</a>
                     <a href="#pricing" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Pricing</a>
                     <a href="#testimonials" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Testimonials</a>
+                    <a href="/blog" className="text-gray-600 hover:text-femure-primary" onClick={closeMenu}>Blog</a>
                 </div>
             </div>
         </nav>
