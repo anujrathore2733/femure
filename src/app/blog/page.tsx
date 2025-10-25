@@ -8,16 +8,23 @@ export default function BlogPage() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* Header */}
-            <div className="bg-white shadow-sm">
+            <div className="bg-white">
                 <div className="container mx-auto px-6 py-12">
                     <div className="text-center max-w-3xl mx-auto">
-                        <h1 className="font-headline text-4xl md:text-5xl text-gray-900 mb-4">
-                            Femure Blog
+                        <h1 className="font-headline text-4xl md:text-5xl text-gray-900 mb-6">
+                            Welcome to Our 
+                            <span className="text-femure-primary"> Health Corner</span>
                         </h1>
-                        <p className="text-xl text-gray-600 leading-relaxed">
-                            Expert insights, tips, and guidance for your wellness journey. 
-                            Learn about women&apos;s health, homeopathy, and natural healing.
+                        <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                            Real stories, practical tips, and gentle guidance for your wellness journey. 
+                            Because every woman deserves to feel her best, naturally.
                         </p>
+                        <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+                            <span className="bg-gray-100 px-3 py-1 rounded-full">Hormonal Health</span>
+                            <span className="bg-gray-100 px-3 py-1 rounded-full">Natural Healing</span>
+                            <span className="bg-gray-100 px-3 py-1 rounded-full">Wellness Tips</span>
+                            <span className="bg-gray-100 px-3 py-1 rounded-full">Expert Insights</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -26,7 +33,7 @@ export default function BlogPage() {
                 {/* Featured Posts */}
                 {featuredPosts.length > 0 && (
                     <section className="mb-16">
-                        <h2 className="font-headline text-3xl text-gray-900 mb-8 text-center">Featured Articles</h2>
+                        <h2 className="font-headline text-3xl text-gray-900 mb-8 text-center">✨ Our Favorites</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                             {featuredPosts.map((post) => (
                                 <Link key={post.id} href={`/blog/${post.id}`} className="group">
