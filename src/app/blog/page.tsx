@@ -31,15 +31,21 @@ export default function BlogPage() {
                             {featuredPosts.map((post) => (
                                 <Link key={post.id} href={`/blog/${post.id}`} className="group">
                                     <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100">
-                                        <div className="relative h-48 bg-gradient-to-br from-femure-primary/10 to-femure-secondary/10">
+                                        <div className="relative h-48 overflow-hidden">
                                             <img 
                                                 src={post.image} 
                                                 alt={post.title}
-                                                className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                             />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                                             <div className="absolute top-4 left-4">
                                                 <span className="bg-femure-primary text-white px-3 py-1 rounded-full text-sm font-medium">
                                                     Featured
+                                                </span>
+                                            </div>
+                                            <div className="absolute top-4 right-4">
+                                                <span className="bg-white/90 text-femure-primary px-3 py-1 rounded-full text-sm font-medium">
+                                                    {post.category}
                                                 </span>
                                             </div>
                                         </div>
@@ -88,12 +94,18 @@ export default function BlogPage() {
                         {blogPosts.map((post) => (
                             <Link key={post.id} href={`/blog/${post.id}`} className="group">
                                 <article className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 h-full">
-                                    <div className="relative h-40 bg-gradient-to-br from-femure-primary/10 to-femure-secondary/10">
+                                    <div className="relative h-40 overflow-hidden">
                                         <img 
                                             src={post.image} 
                                             alt={post.title}
-                                            className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-300"
+                                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                         />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                        <div className="absolute top-3 right-3">
+                                            <span className="bg-femure-primary text-white px-2 py-1 rounded-full text-xs font-medium">
+                                                {post.category}
+                                            </span>
+                                        </div>
                                     </div>
                                     <div className="p-5 flex flex-col h-full">
                                         <div className="flex items-center gap-3 text-xs text-gray-500 mb-2">
@@ -115,22 +127,17 @@ export default function BlogPage() {
                                         <p className="text-gray-600 mb-4 line-clamp-3 flex-grow">
                                             {post.excerpt}
                                         </p>
-                                        <div className="flex items-center justify-between mt-auto">
-                                            <div className="flex items-center gap-2">
-                                                {post.authorImage ? (
-                                                    <img 
-                                                        src={post.authorImage} 
-                                                        alt={post.author}
-                                                        className="w-4 h-4 rounded-full object-cover"
-                                                    />
-                                                ) : (
-                                                    <User className="w-3 h-3 text-gray-400" />
-                                                )}
-                                                <span className="text-xs text-gray-600">{post.author}</span>
-                                            </div>
-                                            <span className="bg-femure-primary/10 text-femure-primary px-2 py-1 rounded-full text-xs font-medium">
-                                                {post.category}
-                                            </span>
+                                        <div className="flex items-center gap-2 mt-auto">
+                                            {post.authorImage ? (
+                                                <img 
+                                                    src={post.authorImage} 
+                                                    alt={post.author}
+                                                    className="w-4 h-4 rounded-full object-cover"
+                                                />
+                                            ) : (
+                                                <User className="w-3 h-3 text-gray-400" />
+                                            )}
+                                            <span className="text-xs text-gray-600">{post.author}</span>
                                         </div>
                                     </div>
                                 </article>

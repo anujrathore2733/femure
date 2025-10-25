@@ -123,7 +123,7 @@
     "date": "2025-04-20",
     "readTime": "12 min read",
     "category": "Hormones",
-    "image": "/img1.png",
+    "image": "/blogs/thumbnail_blog_1.png",
     "featured": true,
     "tags": ["Hormones", "Hormonal Imbalance", "Women's Health", "Natural Healing", "PCOS"]
   },
@@ -268,7 +268,7 @@
     "date": "2025-05-25",
     "readTime": "8 min read",
     "category": "Hormones",
-    "image": "/img2.png",
+    "image": "/blogs/thumbnail_blog_2.png",
     "featured": false,
     "tags": ["Hormones", "Stress", "Sleep", "Nutrition", "Natural Healing", "Hormonal Balance"]
   },
@@ -443,7 +443,7 @@
     "date": "2025-06-30",
     "readTime": "10 min read",
     "category": "Hormones",
-    "image": "/img3.png",
+    "image": "/blogs/thumbnail_blog_3.png",
     "featured": false,
     "tags": ["Hormones", "Hormonal Imbalance", "Symptoms", "Natural Healing", "Women's Health", "Body Signals"]
   },
