@@ -37,17 +37,19 @@ function buildLeadSquaredPayload(formData, formType = 'general', additionalData 
         { Attribute: 'FirstName', Value: formData.name || '' },
         { Attribute: 'Phone', Value: formData.mobile || '' },
         { Attribute: 'mx_Query', Value: formData.query || '' },
-        { Attribute: 'mx_SelectedCondition', Value: formData.selectedCondition || formData.condition || '' },
+        { Attribute: 'mx_Disease', Value: formData.selectedCondition || formData.condition || '' },
         { Attribute: 'mx_SelectedPlan', Value: additionalData.selectedPlan || '' },
         { Attribute: 'mx_ConditionDuration', Value: formData.duration || '' },
         { Attribute: 'mx_FormType', Value: formType },
         { Attribute: 'mx_Device', Value: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop' },
         { Attribute: 'mx_SubmissionTime', Value: new Date().toISOString() },
+        { Attribute: 'mx_LastInteraction', Value: new Date().toISOString() },
         { Attribute: 'mx_UTMSource', Value: formData.utmSource || 'Direct' },
         { Attribute: 'mx_UTMMedium', Value: formData.utmMedium || 'Website' },
         { Attribute: 'mx_UTMCampaign', Value: formData.utmCampaign || 'Homeopathy-Consultation' },
         { Attribute: 'mx_UTMContent', Value: formData.utmContent || '' },
         { Attribute: 'mx_UTMTerm', Value: formData.utmTerm || '' },
+        { Attribute: 'mx_Lead_type', Value: "Femure" },
     ];
 
     // Remove empty values and return the array directly
@@ -101,13 +103,7 @@ async function updateExistingLead(leadId, formData, formType, additionalData) {
         // LeadSquared requires leadId as URL parameter, not in request body
         const updateUrl = `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Update?leadId=${encodeURIComponent(leadId)}`;
         const updatePayload = [
-            { Attribute: 'mx_LastInteraction', Value: new Date().toISOString() },
-            { Attribute: 'mx_InteractionCount', Value: '1' }, // This will be incremented by LeadSquared
-            { Attribute: 'mx_LastFormType', Value: formType },
-            { Attribute: 'mx_LastQuery', Value: formData.query || '' },
-            { Attribute: 'mx_LastSelectedCondition', Value: formData.selectedCondition || formData.condition || '' },
-            { Attribute: 'mx_LastSelectedPlan', Value: additionalData.selectedPlan || '' },
-            { Attribute: 'mx_ConditionDuration', Value: formData.duration || '' },
+            { Attribute: 'mx_LastInteraction', Value: new Date().toISOString() }
         ];
 
         console.log('Updating existing lead:', leadId, updatePayload);
