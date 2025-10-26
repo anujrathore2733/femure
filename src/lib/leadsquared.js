@@ -17,7 +17,6 @@ const LEAD_SQUARED_CONFIG = {
  */
 function getAuthHeaders() {
     const timestamp = new Date().toISOString();
-    const stringToSign = `POST\n${timestamp}\n${LEAD_SQUARED_CONFIG.apiUrl}`;
     
     // For now, we'll use a simpler approach with access key
     // In production, you should implement proper HMAC-SHA256 signing
@@ -40,6 +39,7 @@ function buildLeadSquaredPayload(formData, formType = 'general', additionalData 
         { Attribute: 'mx_Query', Value: formData.query || '' },
         { Attribute: 'mx_SelectedCondition', Value: formData.selectedCondition || formData.condition || '' },
         { Attribute: 'mx_SelectedPlan', Value: additionalData.selectedPlan || '' },
+        { Attribute: 'mx_ConditionDuration', Value: formData.duration || '' },
         { Attribute: 'mx_FormType', Value: formType },
         { Attribute: 'mx_Device', Value: /Mobi|Android/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop' },
         { Attribute: 'mx_SubmissionTime', Value: new Date().toISOString() },
@@ -107,6 +107,7 @@ async function updateExistingLead(leadId, formData, formType, additionalData) {
             { Attribute: 'mx_LastQuery', Value: formData.query || '' },
             { Attribute: 'mx_LastSelectedCondition', Value: formData.selectedCondition || formData.condition || '' },
             { Attribute: 'mx_LastSelectedPlan', Value: additionalData.selectedPlan || '' },
+            { Attribute: 'mx_ConditionDuration', Value: formData.duration || '' },
         ];
 
         console.log('Updating existing lead:', leadId, updatePayload);
@@ -282,9 +283,11 @@ export function getFormType(selectedDoctor, selectedCondition) {
     }
 }
 
-export default {
+const leadSquaredUtils = {
     submitToLeadSquared,
     validatePhoneNumber,
     formatPhoneNumber,
     getFormType,
 };
+
+export default leadSquaredUtils;

@@ -16,12 +16,21 @@ const conditions = [
     'General feminine health issues'
 ];
 
+const durationOptions = [
+    { value: 'less-than-6-months', label: 'Less than 6 months' },
+    { value: '6-months-to-1-year', label: '6 months to 1 year' },
+    { value: '1-year-to-2-years', label: '1 year to 2 years' },
+    { value: '2-years-to-3-years', label: '2 years to 3 years' },
+    { value: 'more-than-3-years', label: 'More than 3 years' }
+];
+
 export default function ConsultationModal({ isOpen, onClose, selectedCondition = null, selectedPlan = null }) {
         const [formData, setFormData] = useState({
             name: '',
             mobile: '',
             condition: '',
-            selectedPlan: ''
+            selectedPlan: '',
+            duration: ''
         });
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -98,6 +107,10 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
             newErrors.mobile = 'Please enter a valid 10-digit mobile number';
         }
         
+        if (!formData.duration) {
+            newErrors.duration = 'Please select how long you have been experiencing this condition';
+        }
+        
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
@@ -137,7 +150,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
     };
 
         const handleClose = () => {
-            setFormData({ name: '', mobile: '', condition: '', selectedPlan: '' });
+            setFormData({ name: '', mobile: '', condition: '', selectedPlan: '', duration: '' });
             setErrors({});
             setSubmitError('');
             setIsSubmitted(false);
@@ -147,7 +160,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
 
         const handleNewConsultation = () => {
             setIsSubmitted(false);
-            setFormData({ name: '', mobile: '', condition: '', selectedPlan: '' });
+            setFormData({ name: '', mobile: '', condition: '', selectedPlan: '', duration: '' });
             setErrors({});
             setSubmitError('');
         };
@@ -203,7 +216,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
             }}
         >
             <div 
-                className="bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
+                className="bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[95vh] overflow-y-auto"
                 onClick={(e) => e.stopPropagation()}
             >
                     {/* Modal Header */}
@@ -240,11 +253,11 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                     </div>
 
                 {/* Modal Body */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                     <h4 className="font-headline text-lg mb-4 text-femure-primary">
                         {selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
                     </h4>
-                    <form onSubmit={handleSubmit} className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                         {/* Hidden field for selected plan */}
                         {selectedPlan && (
                             <input
@@ -332,6 +345,42 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                                 )}
                             </div>
                         )}
+
+                        {/* Duration of condition - always show */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                                How long have you been experiencing this condition? *
+                            </label>
+                            <div className="grid grid-cols-2 gap-1.5">
+                                {durationOptions.map((option) => (
+                                    <label key={option.value} className={`flex items-center p-2 rounded-md border transition-all duration-200 cursor-pointer ${
+                                        formData.duration === option.value 
+                                            ? 'border-femure-primary bg-femure-primary/10' 
+                                            : 'border-gray-200 hover:border-femure-primary/50 hover:bg-femure-primary/5'
+                                    }`}>
+                                        <input
+                                            type="radio"
+                                            name="duration"
+                                            value={option.value}
+                                            checked={formData.duration === option.value}
+                                            onChange={handleInputChange}
+                                            className="h-3.5 w-3.5 text-femure-primary focus:ring-femure-primary border-gray-300 flex-shrink-0"
+                                        />
+                                        <span className={`ml-2 text-xs font-medium leading-tight ${
+                                            formData.duration === option.value 
+                                                ? 'text-femure-primary' 
+                                                : 'text-gray-700'
+                                        }`}>{option.label}</span>
+                                    </label>
+                                ))}
+                            </div>
+                            {errors.duration && (
+                                <p className="text-red-500 text-xs sm:text-sm mt-1.5 flex items-center">
+                                    <AlertCircle className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                                    {errors.duration}
+                                </p>
+                            )}
+                        </div>
 
                         {submitError && (
                             <div className="bg-red-50 border border-red-200 rounded-lg p-3">

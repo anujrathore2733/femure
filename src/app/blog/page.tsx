@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Calendar, Clock, User } from 'react-feather';
 import blogPosts from '../../data/blog-posts.json';
 
@@ -39,9 +40,11 @@ export default function BlogPage() {
                                 <Link key={post.id} href={`/blog/${post.id}`} className="group">
                                     <article className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100">
                                         <div className="relative h-48 overflow-hidden">
-                                            <img 
+                                            <Image 
                                                 src={post.image} 
                                                 alt={post.title}
+                                                width={400}
+                                                height={192}
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                             />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -102,9 +105,11 @@ export default function BlogPage() {
                             <Link key={post.id} href={`/blog/${post.id}`} className="group">
                                 <article className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100 h-full">
                                     <div className="relative h-40 overflow-hidden">
-                                        <img 
+                                        <Image 
                                             src={post.image} 
                                             alt={post.title}
+                                            width={300}
+                                            height={160}
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -136,9 +141,11 @@ export default function BlogPage() {
                                         </p>
                                         <div className="flex items-center gap-2 mt-auto">
                                             {post.authorImage ? (
-                                                <img 
+                                                <Image 
                                                     src={post.authorImage} 
                                                     alt={post.author}
+                                                    width={16}
+                                                    height={16}
                                                     className="w-4 h-4 rounded-full object-cover"
                                                 />
                                             ) : (

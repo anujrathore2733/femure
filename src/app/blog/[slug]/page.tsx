@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, User } from 'react-feather';
 import blogPosts from '../../../data/blog-posts.json';
 import ShareButton from './ShareButton';
@@ -36,9 +37,11 @@ function renderContent(content: { introduction?: string; sections?: Array<{ head
                         )}
                         {section.image && (
                             <div className="mb-6">
-                                <img 
+                                <Image 
                                     src={section.image} 
                                     alt={section.heading}
+                                    width={800}
+                                    height={400}
                                     className="w-full rounded-lg shadow-md"
                                 />
                             </div>
@@ -197,9 +200,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                     <div className="mt-12 bg-white rounded-2xl shadow-lg p-8">
                         <div className="flex items-start gap-6">
                             {post.authorImage ? (
-                                <img 
+                                <Image 
                                     src={post.authorImage} 
                                     alt={post.author}
+                                    width={64}
+                                    height={64}
                                     className="w-16 h-16 rounded-full object-cover border-2 border-femure-primary/20"
                                 />
                             ) : (
@@ -228,9 +233,11 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                                     <Link key={relatedPost.id} href={`/blog/${relatedPost.id}`} className="group">
                                         <article className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 border border-gray-100">
                                             <div className="relative h-40 bg-gradient-to-br from-femure-primary/10 to-femure-secondary/10">
-                                                <img 
+                                                <Image 
                                                     src={relatedPost.image} 
                                                     alt={relatedPost.title}
+                                                    width={300}
+                                                    height={160}
                                                     className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-300"
                                                 />
                                             </div>
