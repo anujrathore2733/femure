@@ -98,7 +98,7 @@ async function checkLeadExists(phone) {
 /**
  * Update existing lead in LeadSquared
  */
-async function updateExistingLead(leadId, formData, formType, additionalData) {
+async function updateExistingLead(leadId) {
     try {
         // LeadSquared requires leadId as URL parameter, not in request body
         const updateUrl = `https://api-in21.leadsquared.com/v2/LeadManagement.svc/Lead.Update?leadId=${encodeURIComponent(leadId)}`;
@@ -175,12 +175,7 @@ export async function submitToLeadSquared(formData, formType = 'general', additi
                     const leadId = existingLead.LeadId || existingLead.ProspectID;
                     console.log('Using leadId for update:', leadId);
                     
-                    const updateSuccess = await updateExistingLead(
-                        leadId, 
-                        formData, 
-                        formType, 
-                        additionalData
-                    );
+                    const updateSuccess = await updateExistingLead(leadId);
                     
                     return {
                         success: true,
