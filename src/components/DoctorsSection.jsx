@@ -57,6 +57,32 @@ const doctors = [
         licenseUrl: 'https://cchindia.com/verify-license',
         quote: 'Your health journey is unique, and so should be your treatment.',
         image: '/DrPoojaPatidar.jpeg'
+    },
+    {
+        name: 'Dr. Shivani',
+        specialty: "PCOS & Hormonal Imbalance Specialist",
+        qualification: 'BHMS',
+        rating: 4.4,
+        experience: '4+ years',
+        patients: '1000+',
+        languages: 'English, Hindi',
+        license: '09884',
+        licenseUrl: 'https://cchindia.com/verify-license',
+        quote: "Small hormonal changes can create big transformations — let's journey together.",
+        image: '/drshivani.png'
+    },
+    {
+        name: 'Dr. Parul Gupta',
+        specialty: "Women's Health & Mental Health Specialist",
+        qualification: 'BHMS',
+        rating: 4.7,
+        experience: '10+ years',
+        patients: '5000+',
+        languages: 'English, Hindi',
+        license: '7411',
+        licenseUrl: 'https://cchindia.com/verify-license',
+        quote: "Every woman deserves compassionate care for both body and mind.",
+        image: '/drparul.jpg'
     }
     
 ];
