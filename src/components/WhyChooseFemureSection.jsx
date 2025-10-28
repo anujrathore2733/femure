@@ -7,7 +7,7 @@ export default function WhyChooseFemureSection() {
                 {/* Compact Header */}
                 <div className="text-center mb-8">
                     <h2 className="font-headline text-2xl md:text-3xl text-gray-900 mb-2">
-                        Why Choose <span className="text-femure-primary">Femure</span>
+                        Why Choose <span className="femure-logo text-femure-primary">Femure</span>
                     </h2>
                     <p className="text-sm md:text-base text-gray-600">Science Meets Empathy</p>
                 </div>

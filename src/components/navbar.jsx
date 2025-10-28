@@ -58,7 +58,7 @@ export default function Navbar() {
         <nav className="bg-white shadow-sm py-4 sticky top-0 z-50" ref={menuRef}>
             <div className="container mx-auto px-6 flex justify-between items-center">
                 <div className="flex items-center">
-                    <span className="font-headline text-2xl font-bold text-femure-primary">Femure</span>
+                    <span className="femure-logo text-2xl font-bold text-femure-primary">Femure</span>
                 </div>
                 <div className="hidden md:flex space-x-8">
                     <a href={isBlogPage ? "/#home" : "#home"} className="text-femure-primary font-medium">Home</a>

@@ -7,7 +7,7 @@ export default function WhyFemureSection() {
                 {/* Crisp Header */}
                 <div className="text-center mb-12">
                     <h2 className="font-headline text-4xl md:text-5xl text-gray-900 mb-4">
-                        The <span className="text-femure-primary">Femure</span> Difference
+                        The <span className="femure-logo text-femure-primary">Femure</span> Difference
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         <span className="font-semibold text-gray-900">Two approaches. One choice.</span> 
@@ -58,7 +58,7 @@ export default function WhyFemureSection() {
                             <div className="w-16 h-16 rounded-full bg-femure-primary flex items-center justify-center mb-4 mx-auto shadow-lg">
                                 <Shield className="text-white w-8 h-8" />
                             </div>
-                            <h3 className="font-headline text-2xl text-femure-primary mb-2">Femure Homeopathy</h3>
+                            <h3 className="femure-logo text-2xl text-femure-primary mb-2">Femure Homeopathy</h3>
                             <p className="text-gray-700">Natural healing, lasting wellness</p>
                         </div>
                         
@@ -96,7 +96,7 @@ export default function WhyFemureSection() {
                             <span className="font-bold text-femure-primary">Traditional medicine fights your symptoms.</span>
                         </p>
                         <p>
-                            <span className="font-bold text-femure-primary">Femure homeopathy strengthens your body.</span>
+                            <span className="femure-logo font-bold text-femure-primary">Femure</span> homeopathy strengthens your body.
                         </p>
                         <p className="text-base text-gray-600 mt-6">
                             Like training a muscle, we teach your immune system to recognize and eliminate the root cause. 
@@ -107,7 +107,7 @@ export default function WhyFemureSection() {
 
                 {/* Disclaimer */}
                 <p className="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">
-                    <span className="font-semibold">Important:</span> Femure homeopathy is not a substitute for emergency medical care. 
+                    <span className="font-semibold">Important:</span> <span className="femure-logo">Femure</span> homeopathy is not a substitute for emergency medical care. 
                     Please seek immediate medical help for serious conditions.
                 </p>
             </div>

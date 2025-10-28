@@ -33,6 +33,19 @@ const doctors = [
       image: '/dr.nisha.png'
     },
     {
+        name: 'Dr. Parul Gupta',
+        specialty: "Women's Health & Mental Health Specialist",
+        qualification: 'BHMS',
+        rating: 4.7,
+        experience: '10+ years',
+        patients: '5000+',
+        languages: 'English, Hindi',
+        license: '7411',
+        licenseUrl: 'https://cchindia.com/verify-license',
+        quote: "Every woman deserves compassionate care for both body and mind.",
+        image: '/drparul.jpg'
+    },
+    {
         name: 'Dr. Sakshi Bhadana',
         specialty: 'Homeopathy & Hormone Expert',
         qualification: 'BHMS, MD',
@@ -70,20 +83,8 @@ const doctors = [
         licenseUrl: 'https://cchindia.com/verify-license',
         quote: "Small hormonal changes can create big transformations — let's journey together.",
         image: '/drshivani.png'
-    },
-    {
-        name: 'Dr. Parul Gupta',
-        specialty: "Women's Health & Mental Health Specialist",
-        qualification: 'BHMS',
-        rating: 4.7,
-        experience: '10+ years',
-        patients: '5000+',
-        languages: 'English, Hindi',
-        license: '7411',
-        licenseUrl: 'https://cchindia.com/verify-license',
-        quote: "Every woman deserves compassionate care for both body and mind.",
-        image: '/drparul.jpg'
     }
+    
     
 ];
 

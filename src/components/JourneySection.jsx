@@ -52,7 +52,7 @@ export default function JourneySection() {
                         <span className="text-sm font-medium text-femure-primary">Your Healing Journey</span>
                     </div>
                     <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 leading-tight">
-                        Your <span className="text-femure-primary">Femure</span> Journey
+                        Your <span className="femure-logo text-femure-primary">Femure</span> Journey
                     </h2>
                     <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
                         From consultation to community — a personalized path to lasting wellness
@@ -193,7 +193,7 @@ export default function JourneySection() {
                     <div className="text-center mb-8">
                         <div className="inline-flex items-center bg-femure-primary/10 rounded-full px-6 py-3 mb-6">
                             <Shield className="w-5 h-5 text-femure-primary mr-2" />
-                            <span className="text-sm font-medium text-femure-primary">The Femure Promise</span>
+                            <span className="femure-logo text-sm font-medium text-femure-primary">The Femure Promise</span>
                         </div>
                         <h3 className="font-headline text-2xl md:text-3xl text-gray-900 mb-4">
                             <span className="text-femure-primary">Homeopathy</span> Works Best With
