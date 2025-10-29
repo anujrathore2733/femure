@@ -4,6 +4,7 @@ import { useState } from 'react';
 import HeroSection from '@/components/heroSection';
 import DoctorsSection from '@/components/DoctorsSection';
 import InquiryForm from '@/components/InquiryForm';
+import FemureFrameworkSection from '@/components/FemureFrameworkSection';
 import ConditionsSection from '@/components/ConditionsSection';
 import HolisticApproachSection from '@/components/HolisticApproachSection';
 import ProvenResultsSection from '@/components/ProvenResultsSection';
@@ -43,6 +44,7 @@ export default function Home() {
         <ConditionsSection />
       </section>
       <InquiryForm />
+      <FemureFrameworkSection />
       <WhyFemureSection />
       <JourneySection />
       <CommunitySection />
