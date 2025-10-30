@@ -1,9 +1,9 @@
-import { Heart, Activity, RefreshCw, Droplet, Sun } from 'react-feather';
+import Image from 'next/image';
 
 export default function FemureFrameworkSection() {
     const frameworkPillars = [
         {
-            icon: Activity,
+            iconSrc: '/femureFramework/Hormonal Healing.svg',
             title: "Hormonal Healing",
             description: "Bringing your body's rhythm back in balance",
             color: "from-femure-primary/10 to-femure-secondary/10",
@@ -11,7 +11,7 @@ export default function FemureFrameworkSection() {
             bgColor: "bg-white"
         },
         {
-            icon: RefreshCw,
+            iconSrc: '/femureFramework/Metabolic Reset.svg',
             title: "Metabolic Reset",
             description: "Restoring natural energy and healthy weight",
             color: "from-femure-primary/10 to-femure-secondary/10",
@@ -19,7 +19,7 @@ export default function FemureFrameworkSection() {
             bgColor: "bg-white"
         },
         {
-            icon: Heart,
+            iconSrc: '/femureFramework/Emotional Wellness.svg',
             title: "Emotional Wellness",
             description: "Calming the mind and healing from within",
             color: "from-femure-primary/10 to-femure-secondary/10",
@@ -27,7 +27,7 @@ export default function FemureFrameworkSection() {
             bgColor: "bg-white"
         },
         {
-            icon: Droplet,
+            iconSrc: '/femureFramework/Nutritional Nourishment.svg',
             title: "Nutritional Nourishment",
             description: "Giving your body the right food to thrive",
             color: "from-femure-primary/10 to-femure-secondary/10",
@@ -35,7 +35,7 @@ export default function FemureFrameworkSection() {
             bgColor: "bg-white"
         },
         {
-            icon: Sun,
+            iconSrc: '/femureFramework/Lifestyle Alignment.svg',
             title: "Lifestyle Alignment",
             description: "Living in harmony with your body's natural flow",
             color: "from-femure-primary/10 to-femure-secondary/10",
@@ -65,23 +65,23 @@ export default function FemureFrameworkSection() {
 
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
                     {frameworkPillars.map((pillar, index) => {
-                        const IconComponent = pillar.icon;
+                        const { iconSrc } = pillar;
                         const isLastOdd = index === frameworkPillars.length - 1 && frameworkPillars.length % 2 === 1;
                         return (
                             <div 
                                 key={index}
-                                className={`group text-center ${isLastOdd ? 'col-span-2 sm:col-span-1 justify-self-center' : ''}`}
+                                className={`group text-center flex flex-col items-center ${isLastOdd ? 'col-span-2 sm:col-span-1 justify-self-center' : ''}`}
                             >
-                                {/* Icon */}
-                                <div className="mx-auto mb-3 sm:mb-4 w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-femure-primary/40 bg-white flex items-center justify-center group-hover:border-femure-primary transition-colors duration-300">
-                                    <IconComponent className="w-7 h-7 md:w-9 md:h-9 text-femure-primary" />
+                                {/* Icon (uses intrinsic outer circle from asset) */}
+                                <div className="mx-auto mb-3 sm:mb-4">
+                                    <Image src={iconSrc} alt={pillar.title} width={80} height={80} className="block w-16 h-16 md:w-20 md:h-20 object-contain" />
                                 </div>
 
                                 {/* Content */}
                                 <h3 className="font-semibold text-femure-primary text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">
                                     {pillar.title}
                                 </h3>
-                                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
+                                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed max-w-[16rem]">
                                     {pillar.description}
                                 </p>
                             </div>
