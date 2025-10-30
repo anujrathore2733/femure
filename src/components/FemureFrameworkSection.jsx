@@ -63,49 +63,40 @@ export default function FemureFrameworkSection() {
                         Femure Framework
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 md:gap-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8">
                     {frameworkPillars.map((pillar, index) => {
                         const IconComponent = pillar.icon;
+                        const isLastOdd = index === frameworkPillars.length - 1 && frameworkPillars.length % 2 === 1;
                         return (
                             <div 
                                 key={index}
-                                className="group text-center"
+                                className={`group text-center ${isLastOdd ? 'col-span-2 sm:col-span-1 justify-self-center' : ''}`}
                             >
                                 {/* Icon */}
-                                <div className="mx-auto mb-4 w-20 h-20 rounded-full border-2 border-femure-primary/40 bg-white flex items-center justify-center group-hover:border-femure-primary transition-colors duration-300">
-                                    <IconComponent className="w-9 h-9 text-femure-primary" />
+                                <div className="mx-auto mb-3 sm:mb-4 w-16 h-16 md:w-20 md:h-20 rounded-full border-2 border-femure-primary/40 bg-white flex items-center justify-center group-hover:border-femure-primary transition-colors duration-300">
+                                    <IconComponent className="w-7 h-7 md:w-9 md:h-9 text-femure-primary" />
                                 </div>
 
                                 {/* Content */}
-                                <h3 className="font-semibold text-femure-primary text-base md:text-lg mb-1">
+                                <h3 className="font-semibold text-femure-primary text-sm sm:text-base md:text-lg mb-0.5 sm:mb-1">
                                     {pillar.title}
                                 </h3>
-                                <p className="text-gray-600 text-sm leading-relaxed">
+                                <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
                                     {pillar.description}
                                 </p>
                             </div>
                         );
                     })}
                     </div>
-                </div>
 
-                {/* Bottom Quote Section */}
-                <div className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-femure-primary/20 relative overflow-hidden">
-                    {/* Background decoration */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-femure-primary/30"></div>
-
-                    <div className="relative z-10 text-center max-w-4xl mx-auto">
-                        <div className="mb-3" />
-                        <blockquote className="text-2xl md:text-3xl text-gray-900 leading-relaxed mb-6 font-medium">
-                            "Your body remembers how to heal — it just needs the right support."
-                        </blockquote>
-                        <p className="text-lg text-gray-600 leading-relaxed">
-                            Healing with <span className="femure-logo text-femure-primary">Femure</span> isn't about chasing quick fixes. 
-                            It's about rediscovering trust in your body — learning how to listen, nurture, and align with its wisdom. 
-                            Because when you restore your rhythm, everything — your skin, your sleep, your emotions, your energy — starts to glow again.
+                    {/* Supporting Paragraph inside framework area */}
+                    <div className="mt-8 md:mt-10 text-center max-w-4xl mx-auto">
+                        <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                            Healing with <span className="femure-logo text-femure-primary">Femure</span> isn't about chasing quick fixes. It's about rediscovering trust in your body — learning how to listen, nurture, and align with its wisdom. Because when you restore your rhythm, everything — your skin, your sleep, your emotions, your energy — starts to glow again.
                         </p>
                     </div>
                 </div>
+                {/* Removed quote block per request */}
             </div>
         </section>
     );
