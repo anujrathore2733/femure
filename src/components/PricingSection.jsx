@@ -254,7 +254,7 @@ export default function PricingSection() {
                         {/* CTA - Minimal - Fixed at Bottom */}
                         <button
                             onClick={() => openModal(plan)}
-                            className="w-full py-2.5 md:py-3 px-4 text-sm font-medium transition-all duration-300 mt-auto rounded-full bg-femure-primary hover:bg-femure-accent text-white shadow-lg hover:shadow-xl"
+                            className="w-full py-2.5 md:py-3 px-4 text-sm font-medium transition-all duration-300 mt-auto rounded-full bg-femure-primary hover:brightness-90 text-white shadow-lg hover:shadow-xl hover:shadow-femure-primary/40"
                         >
                             Start Your Journey
                         </button>
@@ -330,13 +330,13 @@ export default function PricingSection() {
                     <div className="text-center mt-16">
                         <div className="max-w-md mx-auto">
                             <p className="text-gray-500 text-sm mb-6">
-                                Need guidance? Our experts are here to help you choose.
+                                Need guidance? Our experts are here to help you.
                             </p>
                             <button
                                 onClick={() => openModal(null)}
                                 className="text-femure-primary hover:text-femure-accent text-sm font-medium tracking-wide uppercase transition-colors duration-300"
                             >
-                                Get Consultation →
+                                Book Free Discovery Call →
                             </button>
                         </div>
                     </div>

@@ -127,13 +127,16 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        {/* CTA Button with Consultation Info */}
-                        <button
-                            onClick={openModal}
-                            className="w-full bg-femure-primary hover:bg-femure-accent text-white py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 text-lg font-semibold mb-2"
-                        >
-                            Book Consultation
-                        </button>
+                        {/* CTA Button with Offer Badge */}
+                        <div className="relative mb-2">
+                            <button
+                                onClick={openModal}
+                                className="w-full bg-femure-primary hover:brightness-90 text-white py-4 px-8 rounded-full shadow-xl hover:shadow-2xl hover:shadow-femure-primary/40 transition-all duration-300 text-lg font-semibold"
+                            >
+                                Book Call
+                            </button>
+                            <span className="burst-badge burst-badge-hero">Free discovery call</span>
+                        </div>
                         <p className="text-sm text-gray-600 text-center mb-3">
                             Audio & Video consultations available
                         </p>
@@ -259,16 +262,14 @@ export default function HeroSection() {
                             </div>
                         </div>
 
-                        <div className="mb-8">
+                        <div className="mb-8 relative inline-block">
                             <button
                                 onClick={openModal}
-                                className="bg-femure-primary hover:bg-femure-accent text-white py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg font-semibold"
+                                className="bg-femure-primary hover:brightness-90 text-white py-4 px-20 rounded-full shadow-lg hover:shadow-xl hover:shadow-femure-primary/40 transition-all duration-300 text-lg font-semibold min-w-[280px]"
                             >
-                                Book Consultation
+                                Book Call
                             </button>
-                            <p className="text-sm text-gray-600 mt-3">
-                                Audio & Video consultations available
-                            </p>
+                            <span className="burst-badge burst-badge-hero">Free discovery call</span>
                         </div>
 
                         <div className="flex flex-wrap gap-4 text-sm">

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Calendar, User, Clock, Users, Heart, Shield, ArrowRight } from 'react-feather';
+import { PhoneCall, Package, TrendingUp, Users, Heart, Shield, ArrowRight } from 'react-feather';
 import ConsultationModal from './ConsultationModal';
 
 export default function JourneySection() {
@@ -16,108 +16,109 @@ export default function JourneySection() {
     };
     const journeySteps = [
         {
-            icon: Calendar,
-            title: "Initial Consultation",
-            description: "Connect with certified homeopaths",
-            detail: "Share your health story and get personalized assessment"
+            icon: PhoneCall,
+            title: "Get Consultation",
+            description: "Start Your Journey",
+            detail: "Share your story with certified homeopaths in a personalized 30-minute discovery call"
         },
         {
-            icon: User,
-            title: "Custom Treatment",
-            description: "Personalized medicine for you",
-            detail: "Tailored remedies based on your unique symptoms and constitution"
+            icon: Package,
+            title: "Personalized Medicine Delivered",
+            description: "Tailored For You",
+            detail: "Custom remedies designed for your unique constitution, delivered to your doorstep"
         },
         {
-            icon: Clock,
-            title: "Healing Journey",
-            description: "Consistent progress tracking",
-            detail: "Regular follow-ups and treatment adjustments for optimal results"
+            icon: TrendingUp,
+            title: "Track Progress",
+            description: "Guided Healing",
+            detail: "Regular follow-ups ensure your treatment evolves with your healing journey"
         },
         {
             icon: Users,
-            title: "Community Support",
-            description: "Wellness circles & guidance",
-            detail: "Join thousands of women on similar healing journeys"
+            title: "Join Community",
+            description: "Thrive Together",
+            detail: "Connect with 5,000+ women sharing stories, support, and celebrating wellness"
         }
     ];
 
     return (
         <>
-        <section className="py-10 md:py-16 bg-white">
+        <section className="py-16 md:py-24 bg-gradient-to-b from-white via-rose-50/30 to-white">
             <div className="container mx-auto px-6 max-w-6xl">
-                {/* Clean Header */}
-                <div className="text-center mb-10 md:mb-16">
-                    <div className="inline-flex items-center bg-femure-primary/10 rounded-full px-4 py-2 mb-6">
+                {/* Premium Header */}
+                <div className="text-center mb-12 md:mb-20">
+                    <div className="inline-flex items-center bg-gradient-to-r from-femure-primary/10 to-femure-secondary/10 rounded-full px-5 py-2.5 mb-6 border border-femure-primary/20 shadow-sm">
                         <Heart className="w-4 h-4 text-femure-primary mr-2" />
-                        <span className="text-sm font-medium text-femure-primary">Your Healing Journey</span>
+                        <span className="text-sm font-semibold text-femure-primary tracking-wide">Your Healing Journey</span>
                     </div>
-                    <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4 leading-tight">
+                    <h2 className="font-headline text-4xl md:text-5xl lg:text-6xl text-gray-900 mb-5 leading-tight">
                         Your <span className="femure-logo text-femure-primary">Femure</span> Journey
                     </h2>
-                    <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                        From consultation to community — a personalized path to lasting wellness
+                    <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+                        A simple, proven path to <span className="text-femure-primary font-semibold">lasting healing</span> — designed uniquely for you
                     </p>
                 </div>
 
                 {/* Elegant Journey Flow */}
                 <div className="mb-16">
-                    {/* Desktop: Curved Flow Design */}
+                    {/* Desktop: Premium Flow Design */}
                     <div className="hidden md:block">
                         <div className="relative max-w-5xl mx-auto">
-                            {/* Curved SVG Path */}
-                            <svg className="absolute inset-0 w-full h-64" viewBox="0 0 800 200" preserveAspectRatio="none">
-                                <defs>
-                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                                        <polygon points="0 0, 10 3.5, 0 7" fill="#C24C6E" />
-                                    </marker>
-                                </defs>
-                                <path
-                                    d="M 50 100 Q 200 50 400 100 T 750 100"
-                                    stroke="#C24C6E"
-                                    strokeWidth="2"
-                                    fill="none"
-                                    markerEnd="url(#arrowhead)"
-                                    opacity="0.6"
-                                />
-                            </svg>
-                            
-                            {/* Journey Steps with Enhanced Design */}
-                            <div className="relative grid grid-cols-4 gap-8">
+                            {/* Journey Steps with Elegant Connectors */}
+                            <div className="relative grid grid-cols-4 gap-4">
                                 {journeySteps.map((step, index) => {
                                     const Icon = step.icon;
+                                    const isLast = index === journeySteps.length - 1;
                                     
                                     return (
                                         <div key={index} className="relative">
-                                            {/* Enhanced Step Circle */}
-                                            <div className="relative w-28 h-28 mx-auto mb-6">
-                                                <div className="w-full h-full rounded-full bg-white border-2 border-femure-primary/30 shadow-lg relative overflow-hidden">
-                                                    {/* Subtle gradient overlay */}
-                                                    <div className="absolute inset-0 bg-gradient-to-br from-femure-primary/5 to-transparent"></div>
+                                            {/* Premium Elegant Flow Connector */}
+                                            {!isLast && (
+                                                <div className="absolute top-14 left-full w-full flex items-center justify-center z-0 px-2" style={{width: 'calc(100% + 1rem)'}}>
+                                                    {/* Elegant decorative dots */}
+                                                    <div className="flex items-center gap-1.5">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-femure-primary/30"></div>
+                                                        <div className="w-2 h-2 rounded-full bg-femure-primary/50 border border-femure-primary/40"></div>
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-femure-primary/30"></div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                            
+                                            <div className="relative group">
+                                                {/* Premium Step Circle */}
+                                                <div className="relative w-32 h-32 mx-auto mb-6">
+                                                    {/* Outer glow ring */}
+                                                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-femure-primary/10 to-femure-secondary/10 blur-xl group-hover:blur-2xl transition-all duration-300 opacity-50 group-hover:opacity-70"></div>
                                                     
-                                                    {/* Icon Container */}
-                                                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                                                        <div className="w-12 h-12 rounded-full bg-femure-primary/10 flex items-center justify-center">
-                                                            <Icon className="w-6 h-6 text-femure-primary" />
+                                                    <div className="relative w-full h-full rounded-full bg-gradient-to-br from-white via-femure-primary/3 to-white border border-femure-primary/20 shadow-2xl shadow-femure-primary/10 relative overflow-hidden group-hover:border-femure-primary/50 group-hover:shadow-2xl group-hover:shadow-femure-primary/20 transition-all duration-300">
+                                                        {/* Elegant multi-layer gradient overlay */}
+                                                        <div className="absolute inset-0 bg-gradient-to-br from-femure-primary/8 via-transparent to-femure-primary/5"></div>
+                                                        <div className="absolute inset-[2px] rounded-full bg-gradient-to-t from-white/50 to-transparent"></div>
+                                                        
+                                                        {/* Premium Icon Container */}
+                                                        <div className="absolute inset-0 flex items-center justify-center z-10">
+                                                            <div className="relative w-16 h-16 rounded-full bg-gradient-to-br from-femure-primary/20 via-femure-primary/10 to-femure-primary/5 flex items-center justify-center shadow-lg shadow-femure-primary/10 border border-femure-primary/15 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-femure-primary/20 transition-all duration-300">
+                                                                {/* Inner glow */}
+                                                                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent"></div>
+                                                                <Icon className="relative w-7 h-7 text-femure-primary group-hover:scale-110 transition-transform duration-300" strokeWidth={3} fill="none" />
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        {/* Premium Step Number Badge - Prominent for Flow */}
+                                                        <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-gradient-to-br from-femure-primary to-femure-secondary text-white flex items-center justify-center text-sm font-bold shadow-xl shadow-femure-primary/50 z-20 ring-3 ring-white group-hover:ring-femure-primary/30 group-hover:scale-110 transition-all duration-300">
+                                                            <span className="drop-shadow-sm">{index + 1}</span>
                                                         </div>
                                                     </div>
-                                                    
-                                                    {/* Step Number Badge */}
-                                                    <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-femure-primary text-white flex items-center justify-center text-sm font-bold shadow-lg z-20">
-                                                        {index + 1}
-                                                    </div>
-                                                    
-                                                    {/* Subtle pulse effect */}
-                                                    <div className="absolute inset-0 rounded-full bg-femure-primary/10 animate-pulse opacity-50"></div>
                                                 </div>
-                                            </div>
 
-                                            {/* Enhanced Step Content */}
-                                            <div className="text-center">
-                                                <h3 className="font-headline text-lg font-semibold mb-2 text-gray-900">
-                                                    {step.title}
-                                                </h3>
-                                                <p className="text-sm text-gray-600 mb-2 font-medium">{step.description}</p>
-                                                <p className="text-xs text-gray-500 leading-relaxed">{step.detail}</p>
+                                                {/* Premium Step Content */}
+                                                <div className="text-center">
+                                                    <h3 className="font-headline text-lg font-bold mb-2 text-gray-900 group-hover:text-femure-primary transition-colors duration-300 leading-tight">
+                                                        {step.title}
+                                                    </h3>
+                                                    <p className="text-xs text-femure-primary font-semibold mb-2.5 tracking-wider uppercase leading-tight">{step.description}</p>
+                                                    <p className="text-sm text-gray-600 leading-relaxed px-1">{step.detail}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     );
@@ -129,56 +130,58 @@ export default function JourneySection() {
                     {/* Mobile: Elegant Vertical Flow */}
                     <div className="md:hidden">
                         <div className="relative max-w-sm mx-auto">
-                            {/* Vertical SVG Path */}
-                            <svg className="absolute left-6 top-0 w-1 h-full" viewBox="0 0 4 400" preserveAspectRatio="none">
-                                <defs>
-                                    <marker id="arrowhead-mobile" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                                        <polygon points="0 0, 8 3, 0 6" fill="#C24C6E" />
-                                    </marker>
-                                </defs>
-                                <path
-                                    d="M 2 20 L 2 380"
-                                    stroke="#C24C6E"
-                                    strokeWidth="2"
-                                    fill="none"
-                                    markerEnd="url(#arrowhead-mobile)"
-                                    opacity="0.6"
-                                />
-                            </svg>
-                            
-                            <div className="space-y-8">
+                            <div className="space-y-12">
                                 {journeySteps.map((step, index) => {
                                     const Icon = step.icon;
+                                    const isLast = index === journeySteps.length - 1;
                                     
                                     return (
-                                        <div key={index} className="flex items-start space-x-4 relative">
-                                            {/* Enhanced Step Circle */}
-                                            <div className="relative w-14 h-14 flex-shrink-0 z-10">
-                                                <div className="w-full h-full rounded-full bg-white border-2 border-femure-primary/30 shadow-lg relative overflow-hidden">
-                                                    {/* Subtle gradient overlay */}
-                                                    <div className="absolute inset-0 bg-gradient-to-br from-femure-primary/5 to-transparent"></div>
+                                        <div key={index} className="relative">
+                                            {/* Premium Minimal Vertical Connector */}
+                                            {!isLast && (
+                                                <div className="absolute left-8 top-20 bottom-0 flex flex-col items-center z-0">
+                                                    {/* Clean minimal vertical line */}
+                                                    <div className="w-0.5 h-full bg-gradient-to-b from-femure-primary/20 via-femure-primary/30 to-femure-primary/20"></div>
+                                                    {/* Subtle center dot */}
+                                                    <div className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-femure-primary/50"></div>
+                                                </div>
+                                            )}
+                                            
+                                            <div className="flex items-start space-x-5 relative group">
+                                                {/* Premium Step Circle */}
+                                                <div className="relative w-20 h-20 flex-shrink-0 z-10">
+                                                    {/* Outer glow */}
+                                                    <div className="absolute inset-0 rounded-full bg-gradient-to-br from-femure-primary/10 to-femure-secondary/10 blur-md group-hover:blur-lg transition-all duration-300 opacity-50 group-hover:opacity-70"></div>
                                                     
-                                                    {/* Icon Container */}
-                                                    <div className="absolute inset-0 flex items-center justify-center z-10">
-                                                        <div className="w-8 h-8 rounded-full bg-femure-primary/10 flex items-center justify-center">
-                                                            <Icon className="w-4 h-4 text-femure-primary" />
+                                                    <div className="relative w-full h-full rounded-full bg-gradient-to-br from-white via-femure-primary/3 to-white border border-femure-primary/20 shadow-xl shadow-femure-primary/10 relative overflow-hidden group-hover:border-femure-primary/50 group-hover:shadow-2xl group-hover:shadow-femure-primary/20 transition-all duration-300">
+                                                        {/* Elegant multi-layer gradient overlay */}
+                                                        <div className="absolute inset-0 bg-gradient-to-br from-femure-primary/8 via-transparent to-femure-primary/5"></div>
+                                                        <div className="absolute inset-[2px] rounded-full bg-gradient-to-t from-white/50 to-transparent"></div>
+                                                        
+                                                        {/* Premium Icon Container */}
+                                                        <div className="absolute inset-0 flex items-center justify-center z-10">
+                                                            <div className="relative w-12 h-12 rounded-full bg-gradient-to-br from-femure-primary/20 via-femure-primary/10 to-femure-primary/5 flex items-center justify-center shadow-lg shadow-femure-primary/10 border border-femure-primary/15 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-femure-primary/20 transition-all duration-300">
+                                                                {/* Inner glow */}
+                                                                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/40 to-transparent"></div>
+                                                                <Icon className="relative w-6 h-6 text-femure-primary group-hover:scale-110 transition-transform duration-300" strokeWidth={3} fill="none" />
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        {/* Premium Step Number Badge - Prominent for Flow */}
+                                                        <div className="absolute -top-2.5 -right-2.5 w-8 h-8 rounded-full bg-gradient-to-br from-femure-primary to-femure-secondary text-white flex items-center justify-center text-xs font-bold shadow-xl shadow-femure-primary/50 z-20 ring-3 ring-white group-hover:ring-femure-primary/30 group-hover:scale-110 transition-all duration-300">
+                                                            <span className="drop-shadow-sm">{index + 1}</span>
                                                         </div>
                                                     </div>
-                                                    
-                                                    {/* Step Number Badge */}
-                                                    <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-femure-primary text-white flex items-center justify-center text-xs font-bold shadow-lg z-20">
-                                                        {index + 1}
-                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            {/* Enhanced Step Content */}
-                                            <div className="flex-1 pt-2">
-                                                <h3 className="font-headline text-base font-semibold mb-1 text-gray-900">
-                                                    {step.title}
-                                                </h3>
-                                                <p className="text-sm text-gray-600 mb-1 font-medium">{step.description}</p>
-                                                <p className="text-xs text-gray-500 leading-relaxed">{step.detail}</p>
+                                                {/* Premium Step Content */}
+                                                <div className="flex-1 pt-1">
+                                                    <h3 className="font-headline text-lg font-bold mb-1.5 text-gray-900 group-hover:text-femure-primary transition-colors duration-300 leading-tight">
+                                                        {step.title}
+                                                    </h3>
+                                                    <p className="text-xs text-femure-primary font-semibold mb-1.5 tracking-wider uppercase leading-tight">{step.description}</p>
+                                                    <p className="text-sm text-gray-600 leading-relaxed">{step.detail}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     );
@@ -188,66 +191,6 @@ export default function JourneySection() {
                     </div>
                 </div>
 
-                {/* Clean Bottom Section */}
-                <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
-                    <div className="text-center mb-8">
-                        <div className="inline-flex items-center bg-femure-primary/10 rounded-full px-6 py-3 mb-6">
-                            <Shield className="w-5 h-5 text-femure-primary mr-2" />
-                            <span className="femure-logo text-sm font-medium text-femure-primary">The Femure Promise</span>
-                        </div>
-                        <h3 className="font-headline text-2xl md:text-3xl text-gray-900 mb-4">
-                            <span className="text-femure-primary">Homeopathy</span> Works Best With
-                        </h3>
-                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                            Discipline, community, and consistent care create the foundation for lasting healing
-                        </p>
-                    </div>
-
-                    {/* Key Principles */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-xl bg-femure-primary/10 flex items-center justify-center mb-4 mx-auto">
-                                <Clock className="w-8 h-8 text-femure-primary" />
-                            </div>
-                            <h4 className="font-headline text-lg font-semibold text-gray-900 mb-3">Daily Discipline</h4>
-                            <p className="text-gray-600 leading-relaxed">
-                                Consistent medicine intake and lifestyle changes create the foundation for sustainable healing.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-xl bg-femure-primary/10 flex items-center justify-center mb-4 mx-auto">
-                                <Shield className="w-8 h-8 text-femure-primary" />
-                            </div>
-                            <h4 className="font-headline text-lg font-semibold text-gray-900 mb-3">Continuous Care</h4>
-                            <p className="text-gray-600 leading-relaxed">
-                                Regular follow-ups and treatment adjustments ensure optimal healing progress.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <div className="w-16 h-16 rounded-xl bg-femure-primary/10 flex items-center justify-center mb-4 mx-auto">
-                                <Heart className="w-8 h-8 text-femure-primary" />
-                            </div>
-                            <h4 className="font-headline text-lg font-semibold text-gray-900 mb-3">Community Connection</h4>
-                            <p className="text-gray-600 leading-relaxed">
-                                Join wellness circles and find support from women on similar healing journeys.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Community CTA */}
-                    <div className="text-center">
-                        <button 
-                            onClick={openModal}
-                            className="inline-flex items-center bg-femure-primary hover:bg-femure-accent text-white rounded-full px-8 py-4 shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer"
-                        >
-                            <Users className="w-5 h-5 mr-3" />
-                            <span className="font-semibold">Join 5,000+ women in our wellness community</span>
-                            <ArrowRight className="w-5 h-5 ml-3" />
-                        </button>
-                    </div>
-                </div>
             </div>
         </section>
 

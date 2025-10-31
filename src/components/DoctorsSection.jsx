@@ -152,15 +152,19 @@ export default function DoctorsSection() {
                         <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
                             Book a consultation with our expert homeopaths and take the first step towards personalized, natural healing.
                         </p>
-                        <button
-                            onClick={openModal}
-                            className="bg-femure-primary hover:bg-femure-accent text-white py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg font-semibold"
-                        >
-                            Book Consultation
-                        </button>
-                        <p className="text-sm text-gray-500 mt-3">
-                            Audio & Video consultations available
-                        </p>
+                            {/* Button + Badge as a tight cluster */}
+                            <div className="relative inline-block">
+                                <button
+                                    onClick={openModal}
+                                    className="bg-femure-primary hover:brightness-90 text-white py-3 px-8 rounded-full shadow-lg hover:shadow-xl hover:shadow-femure-primary/40 transition-all duration-300 text-lg font-semibold"
+                                >
+                                    Book Call
+                                </button>
+                                <span className="burst-badge burst-badge-doctors">Free discovery call</span>
+                            </div>
+                            <p className="text-sm text-gray-500 mt-3">
+                                Audio & Video consultations available
+                            </p>
                     </div>
                 </div>
             </section>

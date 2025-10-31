@@ -89,7 +89,7 @@ export default function InquiryForm() {
                         <p className="text-xs text-gray-600 mb-3">We'll contact you soon.</p>
                         <button
                             onClick={resetForm}
-                            className="bg-femure-primary hover:bg-femure-accent text-white py-1 px-3 rounded text-xs transition duration-200"
+                            className="bg-femure-primary hover:brightness-90 hover:shadow-md hover:shadow-femure-primary/30 text-white py-1 px-3 rounded text-xs transition duration-200"
                         >
                             Send Another
                         </button>
@@ -194,7 +194,7 @@ export default function InquiryForm() {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full bg-femure-primary hover:bg-femure-accent text-white py-2.5 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-sm font-semibold disabled:opacity-50 flex items-center justify-center"
+                            className="w-full bg-femure-primary hover:brightness-90 text-white py-2.5 px-6 rounded-full shadow-lg hover:shadow-xl hover:shadow-femure-primary/40 transition-all duration-300 text-sm font-semibold disabled:opacity-50 flex items-center justify-center"
                         >
                             {isSubmitting ? (
                                 <>

@@ -207,7 +207,7 @@ export default function ConditionsSection() {
                             </p>
                             <button 
                                 onClick={openModal}
-                                className="bg-femure-primary hover:bg-femure-accent text-white py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 text-lg font-semibold"
+                                className="bg-femure-primary hover:brightness-90 text-white py-4 px-10 rounded-full shadow-lg hover:shadow-xl hover:shadow-femure-primary/40 transition-all duration-300 text-lg font-semibold"
                             >
                                 Get Expert Consultation Now
                             </button>

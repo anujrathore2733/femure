@@ -116,7 +116,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-gray-900 mb-4">Post Not Found</h1>
                     <p className="text-gray-600 mb-8">The blog post you&apos;re looking for doesn&apos;t exist.</p>
-                    <Link href="/blog" className="bg-femure-primary text-white px-6 py-3 rounded-lg hover:bg-femure-accent transition-colors">
+                    <Link href="/blog" className="bg-femure-primary text-white px-6 py-3 rounded-lg hover:brightness-90 hover:shadow-lg hover:shadow-femure-primary/40 transition-all duration-300">
                         Back to Blog
                     </Link>
                 </div>

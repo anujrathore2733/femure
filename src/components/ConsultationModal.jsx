@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { X, User, MessageCircle, CheckCircle, AlertCircle } from 'react-feather';
 import { submitToLeadSquared, validatePhoneNumber, getFormType } from '@/lib/leadsquared';
@@ -36,10 +36,15 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [submitError, setSubmitError] = useState('');
+    const nameInputRef = useRef(null);
 
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            // Auto-focus the first input field when modal opens
+            setTimeout(() => {
+                nameInputRef.current?.focus();
+            }, 100);
         } else {
             document.body.style.overflow = 'unset';
         }
@@ -171,7 +176,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
     if (isSubmitted) {
         return (
             <div 
-                className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4"
+                className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4 cursor-pointer"
                 onClick={handleClose}
                 style={{ 
                     position: 'fixed', 
@@ -193,7 +198,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                     </p>
                     <button
                         onClick={handleClose}
-                        className="w-full px-4 py-2 bg-femure-primary text-white rounded-lg hover:bg-femure-accent transition duration-300"
+                        className="w-full px-4 py-2 bg-femure-primary text-white rounded-lg hover:brightness-90 hover:shadow-lg hover:shadow-femure-primary/40 transition duration-300"
                     >
                         Close
                     </button>
@@ -204,7 +209,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
 
     return (
         <div 
-            className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4"
+            className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center p-4 cursor-pointer"
             onClick={handleClose}
             style={{ 
                 position: 'fixed', 
@@ -238,7 +243,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                                         <User className="w-8 h-8 text-white" />
                                     </div>
                                     <div>
-                                        <h3 className="font-headline text-xl text-femure-primary">Book Consultation</h3>
+                                        <h3 className="font-headline text-xl text-femure-primary">Book Call</h3>
                                         <p className="text-femure-accent text-sm">Get expert advice</p>
                                     </div>
                                 </>
@@ -254,9 +259,6 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
 
                 {/* Modal Body */}
                 <div className="p-4 sm:p-6">
-                    <h4 className="font-headline text-lg mb-4 text-femure-primary">
-                        {selectedCondition ? `Get Expert Help for ${selectedCondition.title}` : 'Get Expert Consultation'}
-                    </h4>
                     <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                         {/* Hidden field for selected plan */}
                         {selectedPlan && (
@@ -275,9 +277,10 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                                 type="text"
                                 id="name"
                                 name="name"
+                                ref={nameInputRef}
                                 value={formData.name}
                                 onChange={handleInputChange}
-                                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 ${
+                                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 text-gray-900 placeholder-gray-400 ${
                                     errors.name ? 'border-red-500' : 'border-gray-300'
                                 }`}
                                 placeholder="Enter your full name"
@@ -301,7 +304,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                                 value={formData.mobile}
                                 onChange={handleInputChange}
                                 required
-                                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 ${
+                                className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 text-gray-900 placeholder-gray-400 ${
                                     errors.mobile ? 'border-red-500' : 'border-gray-300'
                                 }`}
                                 placeholder="Enter your 10-digit mobile number"
@@ -326,11 +329,11 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                                     name="condition"
                                     value={formData.condition}
                                     onChange={handleInputChange}
-                                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 ${
+                                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-femure-primary focus:border-transparent transition duration-300 text-gray-900 ${
                                         errors.condition ? 'border-red-500' : 'border-gray-300'
                                     }`}
                                 >
-                                    <option value="">Select your condition</option>
+                                    <option value="" className="text-gray-400">Select your condition</option>
                                     {conditions.map((condition, index) => (
                                         <option key={index} value={condition}>
                                             {condition}
@@ -403,7 +406,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="flex-1 px-4 py-2 bg-femure-primary text-white rounded-lg hover:bg-femure-accent transition duration-300 disabled:opacity-50 flex items-center justify-center"
+                                className="flex-1 px-4 py-2 bg-femure-primary text-white rounded-lg hover:brightness-90 hover:shadow-lg hover:shadow-femure-primary/40 transition duration-300 disabled:opacity-50 flex items-center justify-center"
                             >
                                 {isSubmitting ? (
                                     <>
@@ -411,7 +414,7 @@ export default function ConsultationModal({ isOpen, onClose, selectedCondition =
                                         Submitting...
                                     </>
                                 ) : (
-                                    'Get Consultation'
+                                    'Book Call'
                                 )}
                             </button>
                         </div>

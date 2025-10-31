@@ -4,18 +4,6 @@ export default function WhyFemureSection() {
     return (
         <section className="py-12 md:py-16 bg-white">
             <div className="container mx-auto px-6">
-                {/* Crisp Header */}
-                <div className="text-center mb-12">
-                    <h2 className="font-headline text-4xl md:text-5xl text-gray-900 mb-4">
-                        The <span className="femure-logo text-femure-primary">Femure</span> Difference
-                    </h2>
-                    <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        <span className="font-semibold text-gray-900">Two approaches. One choice.</span> 
-                        <br className="hidden md:block" />
-                        Choose the path that heals, not just treats.
-                    </p>
-                </div>
-
                 {/* Clear Comparison */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
                     {/* Traditional Medicine */}

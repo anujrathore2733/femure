@@ -18,7 +18,7 @@ export default function NotFound() {
         <div className="space-y-4">
           <Link
             href="/"
-            className="inline-flex items-center bg-femure-primary hover:bg-femure-accent text-white py-3 px-6 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center bg-femure-primary hover:brightness-90 text-white py-3 px-6 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-femure-primary/40"
           >
             <Home className="w-5 h-5 mr-2" />
             Go Home

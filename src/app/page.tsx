@@ -8,7 +8,6 @@ import FemureFrameworkSection from '@/components/FemureFrameworkSection';
 import ConditionsSection from '@/components/ConditionsSection';
 import HolisticApproachSection from '@/components/HolisticApproachSection';
 import ProvenResultsSection from '@/components/ProvenResultsSection';
-import WhyFemureSection from '@/components/WhyFemureSection';
 import PricingSection from '@/components/PricingSection';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import JourneySection from '@/components/JourneySection';
@@ -45,7 +44,6 @@ export default function Home() {
       </section>
       <InquiryForm />
       <FemureFrameworkSection />
-      <WhyFemureSection />
       <JourneySection />
       <CommunitySection />
       <section id="testimonials">

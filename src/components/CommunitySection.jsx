@@ -38,20 +38,20 @@ export default function CommunitySection() {
                             </div>
                             <h3 className="font-semibold text-xl text-gray-900 mb-4">Weekly Follow-ups</h3>
                             <p className="text-gray-600 mb-4 leading-relaxed">
-                                Regular check-ins to monitor your progress and ensure your healing journey stays on track.
+                                Your doctor checks in every week. Someone who listens, celebrates your wins, and adjusts your plan as you heal.
                             </p>
                             <div className="space-y-3">
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Symptom tracking & assessment</span>
+                                    <span className="text-sm text-gray-600">Someone who actually listens to how you're feeling</span>
                                 </div>
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Progress monitoring</span>
+                                    <span className="text-sm text-gray-600">Celebrate small wins — every improvement matters</span>
                                 </div>
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Treatment adjustments</span>
+                                    <span className="text-sm text-gray-600">Adjust your plan as your body responds naturally</span>
                                 </div>
                             </div>
                             <div className="mt-4 text-xs text-femure-primary font-medium">✓ All Plans</div>
@@ -64,20 +64,20 @@ export default function CommunitySection() {
                             </div>
                             <h3 className="font-semibold text-xl text-gray-900 mb-4">Nutritionist Support</h3>
                             <p className="text-gray-600 mb-4 leading-relaxed">
-                                Transform your relationship with food. Every bite becomes a step toward healing.
+                                Stop guessing what to eat. Personalized meal plans that work with your body and hormones, not against them.
                             </p>
                             <div className="space-y-3">
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Bespoke meal journeys</span>
+                                    <span className="text-sm text-gray-600">Meal plans tailored to your condition and preferences</span>
                                 </div>
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Healing food wisdom</span>
+                                    <span className="text-sm text-gray-600">Learn which foods heal you vs. trigger symptoms</span>
                                 </div>
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Lifestyle transformation</span>
+                                    <span className="text-sm text-gray-600">No more food guilt — eat with confidence and joy</span>
                                 </div>
                             </div>
                             <div className="mt-4 text-xs text-femure-primary font-medium">✓ Holistic & Total Plans</div>
@@ -90,24 +90,24 @@ export default function CommunitySection() {
                             </div>
                             <h3 className="font-semibold text-xl text-gray-900 mb-4">Community Access</h3>
                             <p className="text-gray-600 mb-4 leading-relaxed">
-                                Your personal wellness concierge, surrounded by a sisterhood of healing and growth.
+                                Join 5,000+ women healing together. Share your story, learn from others, celebrate wins — you're not alone.
                             </p>
                             <div className="space-y-3">
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Your personal wellness concierge</span>
+                                    <span className="text-sm text-gray-600">Connect with women who truly understand your struggle</span>
                                 </div>
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Sacred sisterhood circles</span>
+                                    <span className="text-sm text-gray-600">Share experiences and learn from others' healing stories</span>
                                 </div>
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Weekly wisdom sessions</span>
+                                    <span className="text-sm text-gray-600">Weekly group sessions on healing topics that matter</span>
                                 </div>
                                 <div className="flex items-center">
                                     <div className="w-2 h-2 bg-femure-primary rounded-full mr-3"></div>
-                                    <span className="text-sm text-gray-600">Healing journey companions</span>
+                                    <span className="text-sm text-gray-600">Celebrate wins together — your success inspires others</span>
                                 </div>
                             </div>
                             <div className="mt-4 text-xs text-femure-primary font-medium">✓ Total Health Plan</div>
@@ -125,7 +125,7 @@ export default function CommunitySection() {
                             </p>
                             <button 
                                 onClick={openModal}
-                                className="bg-femure-primary hover:bg-femure-accent text-white py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 font-semibold text-lg"
+                                className="bg-femure-primary hover:brightness-90 text-white py-4 px-10 rounded-full shadow-lg hover:shadow-xl hover:shadow-femure-primary/40 transition-all duration-300 font-semibold text-lg"
                             >
                                 Begin Your Story
                             </button>
